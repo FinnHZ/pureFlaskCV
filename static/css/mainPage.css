@@ -1,0 +1,82 @@
+body{
+    background: url('./static/img/homepage/finnSignature_fingers.jpg');
+    background-size: 100% 100%;
+}
+
+
+/* for front-end logo */
+#frontEnd{
+    width: 200px;
+    height: 200px;
+    margin: 20% 0 0 15%;
+    -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent 50%, rgba(255,255,255, 0.3));
+    float: left;
+
+
+}
+
+#paintingFrame{
+    width: 218px;
+    height:218px;
+    position: absolute;
+    -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent 50%, rgba(255,255,255, 0.3));
+}
+
+#brush{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    transform-origin: top left;
+}
+
+#hiddenBorder{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    position:relative;
+}
+#viewPicture{
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    position: absolute;
+}
+
+
+#viewCover{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+}
+
+#viewCover_small{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+}
+
+/* for back-end logo */
+#backEnd{
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    margin:600px 0 0 200px;
+    -webkit-box-reflect: below -5px -webkit-linear-gradient(transparent 0%, rgba(255,255,255, 0.9));
+    opacity: 1;
+    margin: 20% 0 0 15%;
+    float: left;
+}
+
+/* for 'other' logo (from google)*/
+#trangle{
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-color: #FF9600 transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+    border-width: 20px;
+}
