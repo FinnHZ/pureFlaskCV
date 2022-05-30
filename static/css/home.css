@@ -5,7 +5,7 @@ body{
 
 
 /* for front-end logo */
-#frontEnd{
+#info{
     width: 200px;
     height: 200px;
     margin: 20% 0 0 15%;
@@ -58,7 +58,7 @@ body{
 }
 
 /* for back-end logo */
-#backEnd{
+#skills{
     width: 200px;
     height: 200px;
     background-color: red;

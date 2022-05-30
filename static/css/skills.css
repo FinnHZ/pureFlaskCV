@@ -1,0 +1,40 @@
+html,body{
+    height:100%;
+    width: 100%;
+    margin: 0;
+}
+
+#bigSkills{
+    height: 100%;
+    width:100%;
+}
+
+#skillsInfo{
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 100%;
+    background-color: red;
+    /* box-shadow: 2px 0 5px 5px #ddd; */
+    float:left;
+}
+
+#skillsDistirbution{
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 50%;
+    background-color: green;
+    /* box-shadow: 2px 0 5px 5px #ddd; */
+    float:left;
+}
+
+#skillsApply{
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 50%;
+    background-color: yellow;
+    /* box-shadow: 2px 0 5px 5px #ddd; */
+    float:left;
+}

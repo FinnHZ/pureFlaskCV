@@ -7,6 +7,14 @@ cv_controller = Blueprint('cv_controller', __name__, template_folder='templates'
 def login():
     return render_template('login.html')
 
-@cv_controller.route('/mainPage')
-def mainPage():
-    return render_template('mainPage.html')
+@cv_controller.route('/home')
+def home():
+    return render_template('home.html')
+
+@cv_controller.route('/information')
+def information():
+    return render_template('information.html')
+
+@cv_controller.route('/skills')
+def skills():
+    return render_template('skills.html')
