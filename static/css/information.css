@@ -9,6 +9,8 @@ html,body{
     width:100%;
 }
 
+
+/* basic information part */
 #basicInfo{
     padding: 0;
     margin: 0;
@@ -18,6 +20,70 @@ html,body{
     /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
 }
+
+/* 1) title part include: img, position, jobtitle */
+#titlePart{
+    width:20%;
+    background-color: rgb(80, 80, 80, 0.5);
+    text-align: center;
+    float:left;
+}
+
+#developerImg{
+    border-radius: 50%;
+    height: 60%;
+    width:60%;
+    margin:10% 0 10% 0;
+}
+
+#seperate_title{
+    width: 80%;
+    height:2px;
+    margin: 0 0 10% 10%;
+}
+
+#position_basic{
+    font-size: 1.5em;
+    font-weight: 500;
+    /* margin: 0 0 5% 0; */
+}
+
+#job_basic{
+    font-size: 1.5em;
+    font-weight: 500;
+    /* margin: 5% 0 5% 0; */
+}
+
+/* 1) basic text part include: full name, perfer name, address, email */
+#textPart{
+    width:40%;
+    background-color: rgb(80, 80, 80, 0.5);
+    text-align: center;
+    float:left;
+}
+
+
+
+
+#summaryPart{
+    width:40%;
+    background-color: rgb(80, 80, 80, 0.5);
+    float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #linkLogo{
     padding: 0;

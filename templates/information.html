@@ -14,9 +14,31 @@
 </head>
 <body>
     
-    <div id="bigInfo">
-        <div id="basicInfo">
-            divide it to two part(left: basic, right:summary)
+    <div id = "bigInfo">
+        <div id = "basicInfo">
+            <div id = "titlePart">
+                <img id = "developerImg" src = "../static/img/developerImage.jpg" alt = "Developer"/>
+                <hr id = "seperate_title"/>
+                <span id = "position_basic"> {{position_basic}} </span><br/>
+                <span id = "job_basic"> {{job_basic}} </span>
+            </div>
+            
+            <div id="textPart">
+                <h2>Basic Information</h2>
+                <table>
+                    {% for item_t in text_basic %}
+                    <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
+                    {% endfor%}
+                </table>
+            </div>
+            <div id="summaryPart">
+                <h2>Summary</h2>
+                <ul>
+                    {% for item_s in summary_basic %}
+                    <li>{{item_s[1]}}</li>
+                    {% endfor%}
+                </ul>
+            </div>
         </div>
 
         <div id="linkLogo"></div>
