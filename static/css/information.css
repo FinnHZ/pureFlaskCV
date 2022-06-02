@@ -10,11 +10,18 @@ html,body{
 }
 
 
+.seperate_title{
+    width: 80%;
+    height:2px;
+    margin: 5% 0 5% 10%;
+}
+
+
 /* basic information part */
 #basicInfo{
     padding: 0;
     margin: 0;
-    width: 70%;
+    width: 50%;
     height: 50%;
     background-color: red;
     /* box-shadow: 2px 0 5px 5px #ddd; */
@@ -23,10 +30,12 @@ html,body{
 
 /* 1) title part include: img, position, jobtitle */
 #titlePart{
-    width:20%;
+    width:30%;
     background-color: rgb(80, 80, 80, 0.5);
     text-align: center;
     float:left;
+    margin: 2% 0 0 1%;
+    border-radius: 10px;
 }
 
 #developerImg{
@@ -36,66 +45,76 @@ html,body{
     margin:10% 0 10% 0;
 }
 
-#seperate_title{
-    width: 80%;
-    height:2px;
-    margin: 0 0 10% 10%;
-}
 
 #position_basic{
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 500;
     /* margin: 0 0 5% 0; */
 }
 
 #job_basic{
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 500;
     /* margin: 5% 0 5% 0; */
 }
 
-/* 1) basic text part include: full name, perfer name, address, email */
+
+/* 2) basic detal part include: basic, summary */
+#detailPart{
+    width:65%;
+    background-color: rgb(80, 80, 80, 0.5);
+    float:left;
+    margin: 2% 0 0 2%;
+    border-radius: 10px;
+}
+
+#linkedin{
+    margin: 0 0 0 2%;
+}
+
+#github{
+    margin: 0 0 0 2%;
+}
+
 #textPart{
-    width:40%;
-    background-color: rgb(80, 80, 80, 0.5);
     text-align: center;
-    float:left;
-}
-
-
-
-
-#summaryPart{
-    width:40%;
-    background-color: rgb(80, 80, 80, 0.5);
-    float:left;
+    margin: 2% 0 0 10%;
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-#linkLogo{
+/* ****************************** education******************************* */
+#education{
     padding: 0;
     margin: 0;
-    width: 30%;
+    width: 50%;
     height: 50%;
     background-color: green;
     /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
 }
 
-#education{
+
+#educationShow{
+    font-size: 1.2em;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.edTable{
+    width: 100%;
+    height: 40%;
+    margin: 3% 0 3% 0;
+    background-color: rgb(80, 80, 80, 0.5);
+    border-radius: 10px;
+}
+
+
+#workExp{
     padding: 0;
     margin: 0;
     width: 50%;
@@ -105,7 +124,7 @@ html,body{
     float:right;
 }
 
-#experience{
+#skillExp{
     padding: 0;
     margin: 0;
     width: 50%;

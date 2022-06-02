@@ -18,36 +18,67 @@
         <div id = "basicInfo">
             <div id = "titlePart">
                 <img id = "developerImg" src = "../static/img/developerImage.jpg" alt = "Developer"/>
-                <hr id = "seperate_title"/>
-                <span id = "position_basic"> {{position_basic}} </span><br/>
-                <span id = "job_basic"> {{job_basic}} </span>
+                <hr class = "seperate_title"/>
+                <span id = "position_basic"> {{job_basic[0]}} </span><br/>
+                <span id = "job_basic"> {{job_basic[1]}} </span>
             </div>
             
-            <div id="textPart">
-                <h2>Basic Information</h2>
-                <table>
-                    {% for item_t in text_basic %}
-                    <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
-                    {% endfor%}
-                </table>
+            <div id="detailPart">
+                <h3>Basic Information</h3>
+                <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>  <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>   <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <div id="textPart">
+                    <table >
+                        {% for item_t in text_basic %}
+                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
+                        {% endfor%}
+                    </table>
+                </div>
+                
+                <hr class = "seperate_title"/>
+                
+                <div id="summaryPart">
+                    <h3>Summary</h3>
+                    <ul>
+                        {% for item_s in summary_basic %}
+                        <li>{{item_s[1]}}</li>
+                        {% endfor%}
+                    </ul>
+                </div>
             </div>
-            <div id="summaryPart">
-                <h2>Summary</h2>
-                <ul>
-                    {% for item_s in summary_basic %}
-                    <li>{{item_s[1]}}</li>
-                    {% endfor%}
-                </ul>
-            </div>
+            
         </div>
-
-        <div id="linkLogo"></div>
 
         <div id="education">
+            <div id="educationShow">
+                {% for ed in educationDicList %}
+                <table class="edTable">
+                    <tr>
+                        <th><h3>{{ed["uni"]}}</h3></th>
+                        <th style="text-align: right;"><h3>{{ed["date"]}}</h3></th>
+                    </tr>
+                    <tr>
+                        <th colSpan="2">{{ed["degree"]}}</th>
+                    </tr>
+                    <tr>
+                        <td colSpan="2">{{ed["magior"]}}</td>
+                    </tr>
+                </table>
+                {% endfor %}
+
+
+                
+            </div>
+
+        </div>
+
+        <div id="workExp">
             
         </div>
 
-        <div id="experience"></div>
+        <div id="skillExp">
+
+        </div>
 
     </div>
 
