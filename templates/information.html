@@ -77,57 +77,137 @@
             <div id="workDisplay">
                 <table id="workTabel">
                     <tbody id="workBody">
-                    <tr>
-                        <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
-                    </tr>
-                    <tr>
-                        <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
-                    </tr>
-                    {% for item in workInfo[0]["workDescription"] %}
-                    <tr>
-                        <td colspan="2">{{item}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
+                        <tr>
+                            <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
+                        </tr>
+                        {% for item in workInfo[0]["workDescription"] %}
+                        <tr>
+                            <td colspan="2">{{item}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
             <nav aria-label="Page navigation example" id="workNav">
                 <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
+                    <li class="workOri">
+                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                    </li>
 
-                  {% for item in workInfo %}
-                  <li class="page-item"><a class="page-link" href="#">{{item["id"]}}</a></li>
-                  {% endfor %}
-                 
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
+                    {% for item in workInfo %}
+                    <li class="workPageItem">
+                        <a class="page-link" href="#">{{item["id"]}}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    <li class="workOri">
+                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                    </li>
                 </ul>
-              </nav>
+            </nav>
             
         </div>
 
         <div id="skillExp">
+            <div id="expDisplay">
+                <table id="expTabel">
+                    <tbody id="expBody">
+                        <tr>
+                            <th>{{expInfo[0]["expCompany"]}}</th><th>{{expInfo[0]["expDate"]}}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{expInfo[0]["expPosition"]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{expInfo[0]["expSkills"]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{expInfo[0]["expTitle"]}}</td>
+                        </tr>
+                        {% for item in expInfo[0]["expDescription"] %}
+                        <tr>
+                            <td colspan="2">{{item}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation example" id="expNav">
+                <ul class="pagination">
+                    <li class="expOri">
+                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                    </li>
 
+                    {% for item in expInfo %}
+                    <li class="expPageItem">
+                        <a class="page-link" href="#">{{item["id"]}}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    <li class="expOri">
+                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
     </div>
 
     <script type="text/javascript">
         $(function(){
-            var urlPath = 'http://127.0.0.1:5000';  
+            var urlPath = 'http://127.0.0.1:5000'; 
+
             var workNavs = $('#workNav a');
+            var workCurrentFlag = 1;
+            var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
+
+            var expNavs = $('#expNav a');
+            var expCurrentFlag = 1;
+            var totalExps = parseInt($('.expPageItem').children().eq(-1).html());
 
             workNavs.click(function(){
-                let currentPage= $(this).html()
-                $.changeWorkPage(urlPath, currentPage)
+                let pageText_work = $(this).html(); 
+
+                if(pageText_work == "«"){
+                    if(workCurrentFlag > 1){
+                        workCurrentFlag -= 1
+                        $.changeWorkPage(urlPath, workCurrentFlag)
+                    }
+                }else if(pageText_work == "»"){
+                    if(workCurrentFlag < totalWorks){
+                        workCurrentFlag += 1
+                        $.changeWorkPage(urlPath, workCurrentFlag)
+                    }
+                }else{
+                    workCurrentFlag = parseInt(pageText_work)
+                    $.changeWorkPage(urlPath, workCurrentFlag)
+                }
+            });
+
+            expNavs.click(function(){
+                let pageText_exp = $(this).html();
+                
+                console.log(pageText_exp)
+
+                if(pageText_exp == "«"){
+                    if(expCurrentFlag > 1){
+                        expCurrentFlag -= 1
+                        $.changeExpPage(urlPath, expCurrentFlag)
+                    }
+                }else if(pageText_exp == "»"){
+                    if(expCurrentFlag < totalExps){
+                        expCurrentFlag += 1
+                        $.changeExpPage(urlPath, expCurrentFlag)
+                    }
+                }else{
+                    expCurrentFlag = parseInt(pageText_exp)
+                    $.changeExpPage(urlPath, expCurrentFlag)
+                }
             })
+
 
          
 
