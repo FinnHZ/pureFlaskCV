@@ -56,6 +56,78 @@ def information():
       }
     ]
 
+
+    skillsInfo =  [
+        ["Language", ["Python", "HTML", "CSS", "JavaScript", "C#"]],
+        ["Frameworks/libraries", ["Flask", "jQuery", "react", "Tkinter", "eChart", "Matplotlib"]],
+        ["Database", ["PostgreSQL", "Microsoft SQL server"]],
+        ["Tools", ["Jira", "Git/GitHub", "ArcGIS", "Apache"]]
+    ]
+
+
+    return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
+                                               educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
+
+
+
+@cv_controller.route("/changeWorkPage", methods=['GET','POST'])
+def changeWorkPage():
+    if request.method == "POST":
+        # obj = json.loads(request.form.get("pageNum_json"))     # another method for receiving another kind of json data from ajax.
+        data_ajax = request.get_json()
+        pageNum = str(data_ajax['pageNum_json'])
+
+        workInfo = [ 
+          {
+            "id": "1",
+            "workCompany": "Hongfujin Precision Electronics(Chengdu)Co.,Ltd , China", 
+            "workDate": "Oct 2013 - July 2014", 
+            "workPosition": "Automatic Engineer", 
+            "workDescription": ["Be responsible for maintenance for the iPad production line."]
+          },
+          {
+            "id": "2",
+            "workCompany": "China National Tobacco Corporation , China", 
+            "workDate": "Aug 2014 - Feb 2018", 
+            "workPosition": " Management Staff", 
+            "workDescription": ["Be responsible for tobacco product sales work and sales data analysis."]
+          },
+          {
+            "id": "3",
+            "workCompany": "Trip.com Group , China", 
+            "workDate": "Mar 2018 - Oct 2019", 
+            "workPosition": "Product Manager", 
+            "workDescription": ["Be responsible for hotel product development and assist over 100 hotels in analyzing hotel operational data and operating hotels."]
+          },
+          {
+            "id": "4",
+            "workCompany": "AuCom electronics Ltd , Canterbury", 
+            "workDate": "July 2021- present", 
+            "workPosition": "Intern -> Graduate", 
+            "workDescription": ["Be responsible for data upload and background management system developments and machine process system improvement work."]
+          }
+        ]
+        
+        currentPageInfo = workInfo[int(pageNum)-1]
+        
+        delivery_workPage = {}
+        delivery_workPage['pageInfo'] = currentPageInfo
+
+        delivery_workPage_json = json.dumps(delivery_workPage)
+
+        return delivery_workPage_json
+
+
+
+
+
+
+
+###############################################
+
+@cv_controller.route('/skills')
+def skills():
+  
     expInfo = [
       {
         "id":"1",
@@ -136,57 +208,9 @@ def information():
 
 
 
-    return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
-                                               educationDicList = educationDicList, workInfo = workInfo, expInfo = expInfo)
+    return render_template('skills.html', expInfo = expInfo)
 
 
-
-@cv_controller.route("/changeWorkPage", methods=['GET','POST'])
-def changeWorkPage():
-    if request.method == "POST":
-        # obj = json.loads(request.form.get("pageNum_json"))     # another method for receiving another kind of json data from ajax.
-        data_ajax = request.get_json()
-        pageNum = str(data_ajax['pageNum_json'])
-
-        workInfo = [ 
-          {
-            "id": "1",
-            "workCompany": "Hongfujin Precision Electronics(Chengdu)Co.,Ltd , China", 
-            "workDate": "Oct 2013 - July 2014", 
-            "workPosition": "Automatic Engineer", 
-            "workDescription": ["Be responsible for maintenance for the iPad production line."]
-          },
-          {
-            "id": "2",
-            "workCompany": "China National Tobacco Corporation , China", 
-            "workDate": "Aug 2014 - Feb 2018", 
-            "workPosition": " Management Staff", 
-            "workDescription": ["Be responsible for tobacco product sales work and sales data analysis."]
-          },
-          {
-            "id": "3",
-            "workCompany": "Trip.com Group , China", 
-            "workDate": "Mar 2018 - Oct 2019", 
-            "workPosition": "Product Manager", 
-            "workDescription": ["Be responsible for hotel product development and assist over 100 hotels in analyzing hotel operational data and operating hotels."]
-          },
-          {
-            "id": "4",
-            "workCompany": "AuCom electronics Ltd , Canterbury", 
-            "workDate": "July 2021- present", 
-            "workPosition": "Intern -> Graduate", 
-            "workDescription": ["Be responsible for data upload and background management system developments and machine process system improvement work."]
-          }
-        ]
-        
-        currentPageInfo = workInfo[int(pageNum)-1]
-        
-        delivery_workPage = {}
-        delivery_workPage['pageInfo'] = currentPageInfo
-
-        delivery_workPage_json = json.dumps(delivery_workPage)
-
-        return delivery_workPage_json
 
 @cv_controller.route("/changeExpPage", methods=['GET','POST'])
 def changeExpPage():
@@ -281,14 +305,3 @@ def changeExpPage():
         delivery_expPage_json = json.dumps(delivery_expPage)
 
         return delivery_expPage_json
-
-
-
-
-
-
-
-
-@cv_controller.route('/skills')
-def skills():
-    return render_template('skills.html')

@@ -10,18 +10,93 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/skills.css')}}" />
     <script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/static/js/myLib.js"></script>
+    <script type="text/javascript" src="/static/js/myLib_js.js"></script>
+
     <title>skills page</title>
 </head>
 <body>
     
     <div id="bigSkills">
         <div id="skillsInfo">
+            <div id="expDisplay">
+                <table id="expTabel">
+                    <tbody id="expBody">
+                        <tr>
+                            <th>{{expInfo[0]["expCompany"]}}</th><th>{{expInfo[0]["expDate"]}}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{expInfo[0]["expPosition"]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{expInfo[0]["expSkills"]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{expInfo[0]["expTitle"]}}</td>
+                        </tr>
+                        {% for item in expInfo[0]["expDescription"] %}
+                        <tr>
+                            <td colspan="2">{{item}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation example" id="expNav">
+                <ul class="pagination">
+                    <li class="expOri">
+                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                    </li>
+
+                    {% for item in expInfo %}
+                    <li class="expPageItem">
+                        <a class="page-link" href="#">{{item["id"]}}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    <li class="expOri">
+                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
 
-        <div id="skillsDistirbution"></div>
+        <div id="skillsDistirbution">
+        <div id="distribution" style="width:500px; height: 500px;"></div>
+        <script type="text/javascript">
 
-        <div id="skillsApply">
+
+        </script>
+
+        </div>
+
+        <div id="skillsDetail">
+            <div id="detailChart" style="width:500px; height: 500px;"></div>
+            <script type="text/javascript">
+
+
+
+//   think about how to ger information below from flask directly!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+            const detailChartInfo = {  // this data should be from the axios data of backend
+                "Language": ["Language", ["Python", "HTML", "CSS", "JavaScript", "C#"], [1,2,3,4,5]],
+                "Frameworks/libraries": ["Frameworks/libraries", ["Flask", "jQuery", "react", "Tkinter", "eChart", "Matplotlib"],[1,2,3,4,5,6]],
+                "Database": ["Database", ["PostgreSQL", "Microsoft SQL server"],[1,2]],
+                "Tools": ["Tools", ["Jira", "Git/GitHub", "ArcGIS", "Apache"],[1,2,3,4]]
+              }
+    
+            const skillsDistribution = [   // this data should be from the axios data of backend
+                { value: 5, name: 'Language' },
+                { value: 6, name: 'Frameworks/libraries' },
+                { value: 2, name: 'Database' },
+                { value: 4, name: 'Tools' }
+            ]
+
+            distributionMap(skillsDistribution, detailChartInfo)
+            distributionDetailMap(detailChartInfo["Language"])
+            </script>
+
+
             
         </div>
 
@@ -29,7 +104,34 @@
 
     <script type="text/javascript">
         $(function(){
-         
+            var urlPath = 'http://127.0.0.1:5000'; 
+
+            var expNavs = $('#expNav a');
+            var expCurrentFlag = 1;
+            var totalExps = parseInt($('.expPageItem').children().eq(-1).html());
+
+
+            expNavs.click(function(){
+                let pageText_exp = $(this).html();
+
+                if(pageText_exp == "«"){
+                    if(expCurrentFlag > 1){
+                        expCurrentFlag -= 1
+                        $.changeExpPage(urlPath, expCurrentFlag)
+                    }
+                }else if(pageText_exp == "»"){
+                    if(expCurrentFlag < totalExps){
+                        expCurrentFlag += 1
+                        $.changeExpPage(urlPath, expCurrentFlag)
+                    }
+                }else{
+                    expCurrentFlag = parseInt(pageText_exp)
+                    $.changeExpPage(urlPath, expCurrentFlag)
+                }
+            })
+
+
+
 
         })
     </script>

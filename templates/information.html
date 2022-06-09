@@ -65,10 +65,7 @@
                         <td colSpan="2">{{ed["magior"]}}</td>
                     </tr>
                 </table>
-                {% endfor %}
-
-
-                
+                {% endfor %}    
             </div>
 
         </div>
@@ -111,47 +108,22 @@
             
         </div>
 
-        <div id="skillExp">
-            <div id="expDisplay">
-                <table id="expTabel">
-                    <tbody id="expBody">
-                        <tr>
-                            <th>{{expInfo[0]["expCompany"]}}</th><th>{{expInfo[0]["expDate"]}}</th>
-                        </tr>
-                        <tr>
-                            <td colspan="2">{{expInfo[0]["expPosition"]}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">{{expInfo[0]["expSkills"]}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">{{expInfo[0]["expTitle"]}}</td>
-                        </tr>
-                        {% for item in expInfo[0]["expDescription"] %}
-                        <tr>
-                            <td colspan="2">{{item}}</td>
-                        </tr>
+        <div id="skillsInfo">
+            <div id="skillsBasic">
+                <table id="skillsTable">
+                    {% for item_1 in skillsInfo %}
+                    <tr>
+                        <th>{{item_1[0]}}</th>
+                        <td>
+                        {% for item_2 in item_1[1] %}
+                        {{item_2}}.
                         {% endfor %}
-                    </tbody>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
                 </table>
             </div>
-            <nav aria-label="Page navigation example" id="expNav">
-                <ul class="pagination">
-                    <li class="expOri">
-                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
-                    </li>
-
-                    {% for item in expInfo %}
-                    <li class="expPageItem">
-                        <a class="page-link" href="#">{{item["id"]}}</a>
-                    </li>
-                    {% endfor %}
-                    
-                    <li class="expOri">
-                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
 
     </div>
@@ -163,10 +135,6 @@
             var workNavs = $('#workNav a');
             var workCurrentFlag = 1;
             var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
-
-            var expNavs = $('#expNav a');
-            var expCurrentFlag = 1;
-            var totalExps = parseInt($('.expPageItem').children().eq(-1).html());
 
             workNavs.click(function(){
                 let pageText_work = $(this).html(); 
@@ -187,29 +155,6 @@
                 }
             });
 
-            expNavs.click(function(){
-                let pageText_exp = $(this).html();
-                
-                console.log(pageText_exp)
-
-                if(pageText_exp == "«"){
-                    if(expCurrentFlag > 1){
-                        expCurrentFlag -= 1
-                        $.changeExpPage(urlPath, expCurrentFlag)
-                    }
-                }else if(pageText_exp == "»"){
-                    if(expCurrentFlag < totalExps){
-                        expCurrentFlag += 1
-                        $.changeExpPage(urlPath, expCurrentFlag)
-                    }
-                }else{
-                    expCurrentFlag = parseInt(pageText_exp)
-                    $.changeExpPage(urlPath, expCurrentFlag)
-                }
-            })
-
-
-         
 
         })
     </script>
