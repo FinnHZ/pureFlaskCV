@@ -206,9 +206,22 @@ def skills():
       }
     ]
 
+    skills_1 = {  
+                "Language": ["Language", ["Python", "HTML", "CSS", "JavaScript", "C#"], [1,2,3,4,5]],
+                "Frameworks/libraries": ["Frameworks/libraries", ["Flask", "jQuery", "react", "Tkinter", "eChart", "Matplotlib"],[1,2,3,4,5,6]],
+                "Database": ["Database", ["PostgreSQL", "Microsoft SQL server"],[1,2]],
+                "Tools": ["Tools", ["Jira", "Git/GitHub", "ArcGIS", "Apache"],[1,2,3,4]]
+              }
+    
+    skills_2 = [   
+                { "value": 5, "name": 'Language' },
+                { "value": 6, "name": 'Frameworks/libraries' },
+                { "value": 2, "name": 'Database' },
+                { "value": 4, "name": 'Tools' }
+            ]
 
-
-    return render_template('skills.html', expInfo = expInfo)
+    # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！！
+    return render_template('skills.html', expInfo = expInfo, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
 
 
 
