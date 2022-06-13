@@ -66,6 +66,45 @@
         },
 
 
+        ??????????????????????????????????
+        dyLine_cu:function(ctx, draw, lineStart, x, y){
+            // $.yesDraw(draw, lineStart);
+            let lastX = 0;
+            let lastY = 0;
+            setInterval(function(){
+                if(lineStart){
+                    lastX = x;
+                    lastY = y;
+                    lineStart = false;
+                    
+                }
+                
+                $.drawing(ctx, x, y, lastX, lastY);
+
+                lastX = x;
+                lastY = y;
+                y -=1;
+            }, 500);
+        },
+
+        yesDraw:function(draw, lineStart){
+            draw = true; lineStart = true
+        },
+
+        noDraw:function(draw){
+            draw = false
+        },
+
+        drawing:function(ctx, x, y, lastX, lastY) {
+            console.log(x, y, lastX, lastY);
+            ctx.beginPath();
+            ctx.lineTo(lastX, lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+
+        }
+
+
 
 
 

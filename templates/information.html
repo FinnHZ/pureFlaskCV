@@ -16,7 +16,91 @@
 <body>
     
     <div id = "bigInfo">
-        <div id = "basicInfo">
+        <div id="titlePart">
+
+        </div>
+
+
+
+        <canvas id="line_cu">
+
+        </canvas>
+
+
+
+        <div id="eduPart">
+
+        </div>
+
+
+
+
+        <canvas id="line_rc1">
+
+        </canvas>
+
+
+
+        <div id="skillPart">
+
+        </div>
+
+
+
+
+        <canvas id="line_lc">
+
+        </canvas>
+
+
+
+        
+        <div id="centrePart">
+
+            <div class="spinner-grow text-primary" role="status" id="startButton">
+            </div>
+
+        </div>
+
+
+        
+        <canvas id="line_rc2">
+
+        </canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="basicPart">
+
+        </div>
+
+
+
+        <canvas id="line_cd">
+
+        </canvas>
+
+
+
+
+
+        <div id="workPart">
+
+        </div>
+
+
+        <!-- <div id = "basicInfo">
             <div id = "titlePart">
                 <img id = "developerImg" src = "../static/img/developerImage.jpg" alt = "Developer"/>
                 <hr class = "seperate_title"/>
@@ -25,18 +109,18 @@
             </div>
             
             <div id="detailPart">
-                <h3>Basic Information</h3>
-                <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>  <!-- target="_blank" can make link opened by a new window(blank)   -->
-                <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>   <!-- target="_blank" can make link opened by a new window(blank)   -->
-                <div id="textPart">
+                <h3>Basic Information</h3> -->
+                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a> -->           <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a> -->               <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <!-- <div id="textPart">
                     <table >
                         {% for item_t in text_basic %}
                         <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
                         {% endfor%}
                     </table>
-                </div>
+                </div> -->
                 
-                <hr class = "seperate_title"/>
+                <!-- <hr class = "seperate_title"/>
                 
                 <div id="summaryPart">
                     <h3>Summary</h3>
@@ -124,36 +208,68 @@
 
                 </table>
             </div>
-        </div>
+        </div> -->
 
     </div>
+
+
+    
+
+
+
+
 
     <script type="text/javascript">
         $(function(){
             var urlPath = 'http://127.0.0.1:5000'; 
 
-            var workNavs = $('#workNav a');
-            var workCurrentFlag = 1;
-            var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
+            var startButton = $('#startButton');
+            
+            var start_top = startButton.offset().top;
+            var start_left = startButton.offset().left;
 
-            workNavs.click(function(){
-                let pageText_work = $(this).html(); 
 
-                if(pageText_work == "«"){
-                    if(workCurrentFlag > 1){
-                        workCurrentFlag -= 1
-                        $.changeWorkPage(urlPath, workCurrentFlag)
-                    }
-                }else if(pageText_work == "»"){
-                    if(workCurrentFlag < totalWorks){
-                        workCurrentFlag += 1
-                        $.changeWorkPage(urlPath, workCurrentFlag)
-                    }
-                }else{
-                    workCurrentFlag = parseInt(pageText_work)
-                    $.changeWorkPage(urlPath, workCurrentFlag)
-                }
-            });
+            var line_cu_dom =  $('#line_cu')[0];
+            var ctx_cu = line_cu_dom.getContext('2d');
+            var r_cu = 1; // draw radius
+            ctx_cu.lineWidth = r_cu * 2;
+            ctx_cu.lineCap = "round";
+            ctx_cu.fillStyle = "black";
+            var draw_cu = false;
+            var lineStart_cu = true;
+            var lastX_cu, lastY_cu;
+            $.yesDraw(draw_cu, lineStart_cu);
+            // $.noDraw(draw_cu)
+            //$.drawing(ctx_cu, x, y)
+            ?????????????????
+            $.dyLine_cu(ctx_cu, draw_cu, lineStart_cu, start_left+50, start_top)
+
+
+           
+
+
+            // var workNavs = $('#workNav a');
+            // var workCurrentFlag = 1;
+            // var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
+
+            // workNavs.click(function(){
+            //     let pageText_work = $(this).html(); 
+
+            //     if(pageText_work == "«"){
+            //         if(workCurrentFlag > 1){
+            //             workCurrentFlag -= 1
+            //             $.changeWorkPage(urlPath, workCurrentFlag)
+            //         }
+            //     }else if(pageText_work == "»"){
+            //         if(workCurrentFlag < totalWorks){
+            //             workCurrentFlag += 1
+            //             $.changeWorkPage(urlPath, workCurrentFlag)
+            //         }
+            //     }else{
+            //         workCurrentFlag = parseInt(pageText_work)
+            //         $.changeWorkPage(urlPath, workCurrentFlag)
+            //     }
+            // });
 
 
         })

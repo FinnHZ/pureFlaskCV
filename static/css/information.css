@@ -1,35 +1,127 @@
 html,body{
-    height:100%;
+    height: 100%;
     width: 100%;
     margin: 0;
+    margin: 0;
+    padding: 0;
 }
 
 #bigInfo{
     height: 100%;
-    width:100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#titlePart{
+    width: 25%;
+    height: 40%;
+    background-color: red;
+    float: left;
+    margin: 0;
+}
+
+#line_cu{
+    width: 25%;
+    height: 40%;
+    float: left;
+    margin: 0;
+}
+
+#eduPart{
+    width: 50%;
+    height: 20%;
+    background-color: yellow;
+    float: left;
+    margin: 0;
+}
+
+#line_lc{
+    width: 25%;
+    height: 20%;
+    float: left;
+    margin: 0;
+}
+
+#centrePart{
+    width: 25%;
+    height: 20%;
+    text-align: center;
+    float: left;
+    margin: 0;
+}
+
+#startButton{
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+
+#line_rc1{
+    width: 50%;
+    height: 15%;
+    float: left;
+    margin: 0;
+}
+
+#skillPart{
+    width: 50%;
+    height: 25%;
+    background-color: blue;
+    float: right;
+    margin: 0;
+}
+
+#basicPart{
+    width: 25%;
+    height: 40%;
+    background-color: black;
+    float: left;
+    margin: 0;
+}
+
+#line_cd{
+    width: 25%;
+    height: 40%;
+    float: left;
+    margin: 0;
+}
+
+#line_rc2{
+    width: 50%;
+    height: 15%;
+    float: right;
+    margin: 0;
 }
 
 
-.seperate_title{
+#workPart{
+    width: 50%;
+    height: 25%;
+    background-color: chocolate;
+    float: left;
+    margin: 0;
+}
+
+/* .seperate_title{
     width: 80%;
     height:2px;
     margin: 5% 0 5% 10%;
-}
+} */
 
 
 /* basic information part */
-#basicInfo{
+/* #basicInfo{
     padding: 0;
     margin: 0;
     width: 50%;
     height: 50%;
     background-color: red;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
-}
+} */
 
 /* 1) title part include: img, position, jobtitle */
-#titlePart{
+/* #titlePart{
     width:30%;
     background-color: rgb(80, 80, 80, 0.5);
     text-align: center;
@@ -49,18 +141,16 @@ html,body{
 #position_basic{
     font-size: 1.2em;
     font-weight: 500;
-    /* margin: 0 0 5% 0; */
 }
 
 #job_basic{
     font-size: 1.2em;
     font-weight: 500;
-    /* margin: 5% 0 5% 0; */
-}
+} */
 
 
 /* 2) basic detal part include: basic, summary */
-#detailPart{
+/* #detailPart{
     width:65%;
     background-color: rgb(80, 80, 80, 0.5);
     float:left;
@@ -79,20 +169,19 @@ html,body{
 #textPart{
     text-align: center;
     margin: 2% 0 0 10%;
-}
+} */
 
 
 
 
 
 /* ****************************** education******************************* */
-#education{
+/* #education{
     padding: 0;
     margin: 0;
     width: 50%;
     height: 50%;
     background-color: green;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
 }
 
@@ -120,7 +209,6 @@ html,body{
     width: 50%;
     height: 50%;
     background-color: yellow;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:right;
 }
 
@@ -130,6 +218,5 @@ html,body{
     width: 50%;
     height: 50%;
     background-color: gray;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:right;
-}
+} */
