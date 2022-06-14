@@ -66,41 +66,44 @@
         },
 
 
-        ?????????????????????????????????? why not error, not line?
-        dyLine_cu:function(ctx, draw, lineStart, x, y){
-            // $.yesDraw(draw, lineStart);
-            let lastX = 0;
-            let lastY = 0;
-            setInterval(function(){
-                if(lineStart){
-                    lastX = x;
-                    lastY = y;
-                    lineStart = false;
-                    
-                }
-                
-                $.drawing(ctx, x, y, lastX, lastY);
-
-                lastX = x;
-                lastY = y;
-                y -=1;
-            }, 500);
-        },
-
-        yesDraw:function(draw, lineStart){
-            draw = true; lineStart = true
-        },
-
-        noDraw:function(draw){
-            draw = false
-        },
-
-        drawing:function(ctx, x, y, lastX, lastY) {
-            console.log(x, y, lastX, lastY);
+        dyLine_cu: function(ctx, startX, startY, stopX, bounds){
+            const breakPoint = startY / 2;
             ctx.beginPath();
-            ctx.lineTo(lastX, lastY);
+            ctx.translate(0, 0);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+            ctx.moveTo(startX, startY);  //确定其实作画起点位置
+
+            let timer_cu = setInterval(function(){
+
+                if(startY > breakPoint){
+                    startY = startY - 1 //- bounds.top;
+                    ctx.lineWidth = 1;
+                }else if(startY <= breakPoint){
+                    startX = startX - 1 //- bounds.left;
+                    ctx.lineWidth = 1;
+                    console.log(startX, stopX, startY)
+                    if(startX <= stopX && startY <= breakPoint){
+                        clearInterval(timer_cu)
+                        
+                        console.log("timeouer")
+                    }
+                };
+                $.drawing(ctx, startX, startY)
+            },50)
+        },
+
+
+
+        drawing:function(ctx, x, y){
             ctx.lineTo(x, y);
+            ctx.strokeStyle = "red";
             ctx.stroke();
+        },
+
+        adjustDpi: function(context){
+            var backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio ||
+                               context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio ||
+                               context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
+            return (window.devicePixelRatio || 1) / backingStore
 
         }
 

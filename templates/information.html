@@ -216,35 +216,43 @@
     
 
 
-
-
-
     <script type="text/javascript">
         $(function(){
             var urlPath = 'http://127.0.0.1:5000'; 
+            var winWidth = $(window).width();
+            var winHeight = $(window).height();
+
 
             var startButton = $('#startButton');
+            var line_cu = $('#line_cu');
+            var centrePart = $('#centrePart');
             
-            var start_top = startButton.offset().top;
-            var start_left = startButton.offset().left;
+
+            var line_cu_width = line_cu.width();
+            var line_cu_height = line_cu.height();
+            // var startBtn_top = startButton.offset().top;
+            var startBtn_left = startButton.offset().left;
+            // var startBtn_topWidth = startButton.width();
+            // var startBtn_topHeight = startButton.height();
+            var centrePart_left = centrePart.offset().left;
 
 
-            var line_cu_dom =  $('#line_cu')[0];
+            var cu_ratio_x = line_cu_width / winWidth;
+            var cu_ratio_y = line_cu_height / winHeight;
+
+
+            var line_cu_dom = line_cu[0];
             var ctx_cu = line_cu_dom.getContext('2d');
-            var r_cu = 1; // draw radius
-            ctx_cu.lineWidth = r_cu * 2;
             ctx_cu.lineCap = "round";
-            ctx_cu.fillStyle = "black";
-            var draw_cu = false;
-            var lineStart_cu = true;
-            var lastX_cu, lastY_cu;
-            $.yesDraw(draw_cu, lineStart_cu);
-            // $.noDraw(draw_cu)
-            //$.drawing(ctx_cu, x, y)
-            ?????????????????
-            $.dyLine_cu(ctx_cu, draw_cu, lineStart_cu, start_left+50, start_top)
+            var x_cu = (line_cu_width+100) * cu_ratio_x;
+            var y_cu = line_cu_height * cu_ratio_y ;
 
+            const bounds = line_cu_dom.getBoundingClientRect();
 
+            console.log(x_cu, y_cu)
+            $.dyLine_cu(ctx_cu, x_cu, y_cu, 0, bounds)
+
+            
            
 
 
