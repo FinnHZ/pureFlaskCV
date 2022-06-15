@@ -66,46 +66,49 @@
         },
 
 
-        dyLine_cu: function(ctx, startX, startY, stopX, bounds){
-            const breakPoint = startY / 2;
+        dyLine_cu: function(ctx, startX, startY ){
             ctx.beginPath();
-            ctx.translate(0, 0);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+            ctx.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
             ctx.moveTo(startX, startY);  //确定其实作画起点位置
-
             let timer_cu = setInterval(function(){
-
-                if(startY > breakPoint){
+                if(startY > 75){    // 如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
                     startY = startY - 1 //- bounds.top;
                     ctx.lineWidth = 1;
-                }else if(startY <= breakPoint){
+                }else if(startY <= 75){
                     startX = startX - 1 //- bounds.left;
                     ctx.lineWidth = 1;
-                    console.log(startX, stopX, startY)
-                    if(startX <= stopX && startY <= breakPoint){
+                    if(startX <= 0 ){
                         clearInterval(timer_cu)
+                        console.log("cu_end")
+                        ctx.closePath();
+                        ctx.beginPath();
+                        ctx.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+                        ctx.moveTo(0, 5);  //确定其实作画起点位置
+                        $.drawing(ctx, 0, 150);
+                        $('#titleDetail').animate({margin: "5% 0% 0% 0%"}, 2500)
                         
-                        console.log("timeouer")
                     }
                 };
                 $.drawing(ctx, startX, startY)
-            },50)
+            },20)
         },
 
-
-
+    
         drawing:function(ctx, x, y){
             ctx.lineTo(x, y);
-            ctx.strokeStyle = "red";
+            ctx.lineCap = "round"
+            // ctx.lineJoin = "round";
+            ctx.strokeStyle = "rgb(0, 255, 255, 0.5)";
             ctx.stroke();
         },
 
-        adjustDpi: function(context){
-            var backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio ||
-                               context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio ||
-                               context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
-            return (window.devicePixelRatio || 1) / backingStore
+        // adjustDpi: function(context){
+        //     var backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio ||
+        //                        context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio ||
+        //                        context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
+        //     return (window.devicePixelRatio || 1) / backingStore
 
-        }
+        // }
 
 
 

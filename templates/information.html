@@ -12,101 +12,112 @@
     <script type="text/javascript" src="/static/js/echarts.min.js"></script>
     <script type="text/javascript" src="/static/js/myLib.js"></script>
     <title>information page</title>
+    
+    <style>
+      
+
+
+
+    </style>
+
+
+
 </head>
 <body>
     
     <div id = "bigInfo">
-        <div id="titlePart">
-
-        </div>
-
-
-
-        <canvas id="line_cu">
-
-        </canvas>
-
-
-
-        <div id="eduPart">
-
-        </div>
-
-
-
-
-        <canvas id="line_rc1">
-
-        </canvas>
-
-
-
-        <div id="skillPart">
-
-        </div>
-
-
-
-
-        <canvas id="line_lc">
-
-        </canvas>
-
-
-
-        
-        <div id="centrePart">
-
-            <div class="spinner-grow text-primary" role="status" id="startButton">
-            </div>
-
-        </div>
-
-
-        
-        <canvas id="line_rc2">
-
-        </canvas>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div id="basicPart">
-
-        </div>
-
-
-
-        <canvas id="line_cd">
-
-        </canvas>
-
-
-
-
-
-        <div id="workPart">
-
-        </div>
-
-
-        <!-- <div id = "basicInfo">
-            <div id = "titlePart">
+        <div id = "titlePart">
+            <div id = "titleDetail">
                 <img id = "developerImg" src = "../static/img/developerImage.jpg" alt = "Developer"/>
                 <hr class = "seperate_title"/>
                 <span id = "position_basic"> {{job_basic[0]}} </span><br/>
                 <span id = "job_basic"> {{job_basic[1]}} </span>
             </div>
+
+        </div>
+
+
+        <canvas id="line_cu"></canvas>
+
+
+        
+
+
+
+        <div id = "eduPart">
+
+        </div>
+
+
+
+
+        <canvas id = "line_rc1">
+
+        </canvas>
+
+
+
+        <div id = "skillPart">
+
+        </div>
+
+
+
+
+        <canvas id = "line_lc">
+
+        </canvas>
+
+
+
+        
+        <div id = "centrePart">
+
+            <div class = "spinner-grow text-primary" role = "status" id = "startButton">
+            </div>
+
+        </div>
+
+
+        
+        <canvas id = "line_rc2">
+
+        </canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id = "basicPart">
+
+        </div>
+
+
+
+        <canvas id = "line_cd">
+
+        </canvas>
+
+
+
+
+
+        <div id = "workPart">
+
+        </div>
+
+
+        <!-- <div id = "basicInfo">
+
             
             <div id="detailPart">
                 <h3>Basic Information</h3> -->
@@ -216,68 +227,70 @@
     
 
 
-    <script type="text/javascript">
+    <script type = "text/javascript">
         $(function(){
             var urlPath = 'http://127.0.0.1:5000'; 
             var winWidth = $(window).width();
             var winHeight = $(window).height();
 
-
+            var titlePart =  $('#titlePart');
             var startButton = $('#startButton');
             var line_cu = $('#line_cu');
-            var centrePart = $('#centrePart');
-            
-
-            var line_cu_width = line_cu.width();
-            var line_cu_height = line_cu.height();
-            // var startBtn_top = startButton.offset().top;
-            var startBtn_left = startButton.offset().left;
-            // var startBtn_topWidth = startButton.width();
-            // var startBtn_topHeight = startButton.height();
-            var centrePart_left = centrePart.offset().left;
-
-
-            var cu_ratio_x = line_cu_width / winWidth;
-            var cu_ratio_y = line_cu_height / winHeight;
-
-
             var line_cu_dom = line_cu[0];
             var ctx_cu = line_cu_dom.getContext('2d');
-            ctx_cu.lineCap = "round";
-            var x_cu = (line_cu_width+100) * cu_ratio_x;
-            var y_cu = line_cu_height * cu_ratio_y ;
+            var isDraw_cu = true;
 
-            const bounds = line_cu_dom.getBoundingClientRect();
-
-            console.log(x_cu, y_cu)
-            $.dyLine_cu(ctx_cu, x_cu, y_cu, 0, bounds)
-
+            var titleDetail =  $('#titleDetail')
             
+
+            var workNavs = $('#workNav a');
+            var workCurrentFlag = 1;
+            var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
+
+
+            // var allLineWidth = 10;
+            // var line_1 = $('#line_1');
+            // var line_2 = $('#line_2');
+            // startButton.click(function(){
+            //     const titlePart_width = titlePart.width();
+            //     const line_cu_width = line_cu.width();
+            //     const line_cu_height = line_cu.height();
+            //     line_1.css({left: titlePart_width + (line_cu_width - allLineWidth) / 2 + "px", top: line_cu_height + "px" });
+            //     line_2.css({left: titlePart_width + (line_cu_width - allLineWidth) / 2 + "px", top: (line_cu_height / 2) + "px" });
+
+            //     line_1.animate({height: (line_cu_height / 2) + "px", top: (line_cu_height / 2) + "px"}, 2000, function(){
+            //         line_2.animate({width: (line_cu_width / 2) + "px", left: titlePart_width + "px"}, 2000)
+            //     })
+            // })
+
+
+            // start the trip
+            startButton.click(function(){
+                if(isDraw_cu){
+                    $.dyLine_cu(ctx_cu, 150, 150);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
+                    isDraw_cu = false;
+                }
+            })
            
+            // work part change page
+            workNavs.click(function(){
+                let pageText_work = $(this).html(); 
 
-
-            // var workNavs = $('#workNav a');
-            // var workCurrentFlag = 1;
-            // var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
-
-            // workNavs.click(function(){
-            //     let pageText_work = $(this).html(); 
-
-            //     if(pageText_work == "«"){
-            //         if(workCurrentFlag > 1){
-            //             workCurrentFlag -= 1
-            //             $.changeWorkPage(urlPath, workCurrentFlag)
-            //         }
-            //     }else if(pageText_work == "»"){
-            //         if(workCurrentFlag < totalWorks){
-            //             workCurrentFlag += 1
-            //             $.changeWorkPage(urlPath, workCurrentFlag)
-            //         }
-            //     }else{
-            //         workCurrentFlag = parseInt(pageText_work)
-            //         $.changeWorkPage(urlPath, workCurrentFlag)
-            //     }
-            // });
+                if(pageText_work == "«"){
+                    if(workCurrentFlag > 1){
+                        workCurrentFlag -= 1
+                        $.changeWorkPage(urlPath, workCurrentFlag)
+                    }
+                }else if(pageText_work == "»"){
+                    if(workCurrentFlag < totalWorks){
+                        workCurrentFlag += 1
+                        $.changeWorkPage(urlPath, workCurrentFlag)
+                    }
+                }else{
+                    workCurrentFlag = parseInt(pageText_work)
+                    $.changeWorkPage(urlPath, workCurrentFlag)
+                }
+            });
 
 
         })

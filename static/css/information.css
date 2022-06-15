@@ -13,21 +13,82 @@ html,body{
     padding: 0;
 }
 
-#titlePart{
-    width: 25%;
-    height: 40%;
-    background-color: red;
-    float: left;
-    margin: 0;
-}
+
 
 #line_cu{
     width: 25%;
     height: 40%;
     float: left;
     margin: 0;
-    background-color: gray;
+    background-color: white;
 }
+
+
+/* #line_1{
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    background-color: cyan;
+    z-index:2;
+}
+
+#line_2{
+    position: absolute;
+    width: 0px;
+    height: 10px;
+    background-color: cyan;
+    z-index:2;
+} */
+
+#titlePart{
+    width: 25%;
+    height: 40%;
+    background-color: white;
+    float: left;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+#titleDetail{
+    width:50%;
+    background-color: rgb(80, 80, 80, 0.5);
+    text-align: center;
+    float:right;
+    margin: 5% -50% 0% 0%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+
+#developerImg{
+    border-radius: 50%;
+    height: 60%;
+    width:60%;
+    margin:10% 0 10% 0;
+}
+
+
+#position_basic{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#job_basic{
+    font-size: 1.2em;
+    font-weight: 500;
+} 
+
+
+
+
+
+
+
+
+
+
+
 
 #eduPart{
     width: 50%;
@@ -122,32 +183,7 @@ html,body{
 } */
 
 /* 1) title part include: img, position, jobtitle */
-/* #titlePart{
-    width:30%;
-    background-color: rgb(80, 80, 80, 0.5);
-    text-align: center;
-    float:left;
-    margin: 2% 0 0 1%;
-    border-radius: 10px;
-}
-
-#developerImg{
-    border-radius: 50%;
-    height: 60%;
-    width:60%;
-    margin:10% 0 10% 0;
-}
-
-
-#position_basic{
-    font-size: 1.2em;
-    font-weight: 500;
-}
-
-#job_basic{
-    font-size: 1.2em;
-    font-weight: 500;
-} */
+/* */
 
 
 /* 2) basic detal part include: basic, summary */
