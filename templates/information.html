@@ -26,6 +26,7 @@
 <body>
     
     <div id = "bigInfo">
+        <!-- #3 -->
         <div id = "titlePart">
             <div id = "titleDetail">
                 <img id = "developerImg" src = "../static/img/developerImage.jpg" alt = "Developer"/>
@@ -37,12 +38,11 @@
         </div>
 
 
+         <!-- #2 -->
         <canvas id="line_cu"></canvas>
 
 
         
-
-
 
         <div id = "eduPart">
 
@@ -63,19 +63,14 @@
 
 
 
-
-        <canvas id = "line_lc">
-
-        </canvas>
+        <!-- #4-->
+        <canvas id = "line_lc"></canvas>
 
 
 
-        
+        <!-- #1 -->
         <div id = "centrePart">
-
-            <div class = "spinner-grow text-primary" role = "status" id = "startButton">
-            </div>
-
+            <div class = "spinner-grow text-primary" role = "status" id = "startButton"></div>
         </div>
 
 
@@ -88,16 +83,30 @@
 
 
 
-
-
-
-
-
-
-
-
-
         <div id = "basicPart">
+            <div id="basicDetail">
+                <h5>Basic Information</h5>
+                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a> -->           <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a> -->               <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <div id="textPart">
+                    <table >
+                        {% for item_t in text_basic %}
+                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
+                        {% endfor%}
+                    </table>
+                </div>
+                
+                <hr class = "seperate_title"/>
+                
+                <div id="summaryPart">
+                    <h5>Summary</h5>
+                    <ul>
+                        {% for item_s in summary_basic %}
+                        <li>{{item_s[1]}}</li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
 
         </div>
 
@@ -119,29 +128,7 @@
         <!-- <div id = "basicInfo">
 
             
-            <div id="detailPart">
-                <h3>Basic Information</h3> -->
-                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a> -->           <!-- target="_blank" can make link opened by a new window(blank)   -->
-                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a> -->               <!-- target="_blank" can make link opened by a new window(blank)   -->
-                <!-- <div id="textPart">
-                    <table >
-                        {% for item_t in text_basic %}
-                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
-                        {% endfor%}
-                    </table>
-                </div> -->
-                
-                <!-- <hr class = "seperate_title"/>
-                
-                <div id="summaryPart">
-                    <h3>Summary</h3>
-                    <ul>
-                        {% for item_s in summary_basic %}
-                        <li>{{item_s[1]}}</li>
-                        {% endfor%}
-                    </ul>
-                </div>
-            </div>
+            
             
         </div>
 
@@ -233,14 +220,23 @@
             var winWidth = $(window).width();
             var winHeight = $(window).height();
 
-            var titlePart =  $('#titlePart');
+            // var titlePart =  $('#titlePart');
             var startButton = $('#startButton');
+
+            var isDraw = true;
             var line_cu = $('#line_cu');
             var line_cu_dom = line_cu[0];
             var ctx_cu = line_cu_dom.getContext('2d');
-            var isDraw_cu = true;
 
-            var titleDetail =  $('#titleDetail')
+
+
+            var titleDetail =  $('#titleDetail');
+
+            var line_lc = $('#line_lc');
+            var line_lc_dom = line_lc[0];
+            var ctx_lc = line_lc_dom.getContext('2d');
+
+
             
 
             var workNavs = $('#workNav a');
@@ -248,27 +244,19 @@
             var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
 
 
-            // var allLineWidth = 10;
-            // var line_1 = $('#line_1');
-            // var line_2 = $('#line_2');
-            // startButton.click(function(){
-            //     const titlePart_width = titlePart.width();
-            //     const line_cu_width = line_cu.width();
-            //     const line_cu_height = line_cu.height();
-            //     line_1.css({left: titlePart_width + (line_cu_width - allLineWidth) / 2 + "px", top: line_cu_height + "px" });
-            //     line_2.css({left: titlePart_width + (line_cu_width - allLineWidth) / 2 + "px", top: (line_cu_height / 2) + "px" });
+            // 调整titledetail的位置，方便后边动态出现的时候平稳平移
+            const title_detail_h = $('#titleDetail').height();
+            const title_part_h = $('#titlePart').height();
+            const title_detail_w = $('#titleDetail').width();
+            $('#titleDetail').css({margin: (title_part_h - title_detail_h) + "px -" + title_detail_w + "px 0 0"})  // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
 
-            //     line_1.animate({height: (line_cu_height / 2) + "px", top: (line_cu_height / 2) + "px"}, 2000, function(){
-            //         line_2.animate({width: (line_cu_width / 2) + "px", left: titlePart_width + "px"}, 2000)
-            //     })
-            // })
 
 
             // start the trip
             startButton.click(function(){
-                if(isDraw_cu){
-                    $.dyLine_cu(ctx_cu, 150, 150);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
-                    isDraw_cu = false;
+                if(isDraw){
+                    isDraw = false;
+                    $.dyLine_start(ctx_cu, 150, 150, ctx_lc, 225, 0);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
                 }
             })
            

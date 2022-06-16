@@ -66,40 +66,85 @@
         },
 
 
-        dyLine_cu: function(ctx, startX, startY ){
-            ctx.beginPath();
-            ctx.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
-            ctx.moveTo(startX, startY);  //确定其实作画起点位置
+        dyLine_start: function(ctx_1, x_1, y_1, ctx_2, x_2, y_2){
+            ctx_1.beginPath();
+            ctx_1.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+            ctx_1.moveTo(x_1, y_1);  //确定其实作画起点位置
             let timer_cu = setInterval(function(){
-                if(startY > 75){    // 如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
-                    startY = startY - 1 //- bounds.top;
-                    ctx.lineWidth = 1;
-                }else if(startY <= 75){
-                    startX = startX - 1 //- bounds.left;
-                    ctx.lineWidth = 1;
-                    if(startX <= 0 ){
-                        clearInterval(timer_cu)
-                        console.log("cu_end")
-                        ctx.closePath();
-                        ctx.beginPath();
-                        ctx.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
-                        ctx.moveTo(0, 5);  //确定其实作画起点位置
-                        $.drawing(ctx, 0, 150);
-                        $('#titleDetail').animate({margin: "5% 0% 0% 0%"}, 2500)
+                if(y_1 > 75){    // 如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
+                    y_1 = y_1 - 1 //- bounds.top;
+                    ctx_1.lineWidth = 2;
+                    $.drawing(ctx_1, x_1, y_1);
+                }else if(y_1 <= 75){
+                    x_1 = x_1 - 1 //- bounds.left;
+                    ctx_1.lineWidth = 1;
+                    if(x_1 <= 0 ){
+                        $.drawing(ctx_1, x_1, y_1);
+                        clearInterval(timer_cu);
+                        console.log("cu_end");
+                        ctx_1.closePath();
+                        ctx_1.beginPath();
+                        ctx_1.translate(0.5, 0.5);   
                         
+                        const title_in_h = $('#titleDetail').height();
+                        const title_out_h = $('#titlePart').height();
+                        const margin_top_ratio = (title_out_h - title_in_h) / title_out_h * 100
+
+                        ctx_1.moveTo(0, 150 * margin_top_ratio / 100);  
+                        $.drawing(ctx_1, 0, 150);
+                        ctx_1.closePath();
+                        $('#titleDetail').animate({margin: (title_out_h - title_in_h) + "px 0 0 0"}, 2500, function(){ // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
+                            $.dyLine_lc(ctx_2, x_2, y_2);
+                        })  
+                        
+                    }else{
+                        $.drawing(ctx_1, x_1, y_1)
                     }
                 };
-                $.drawing(ctx, startX, startY)
             },20)
         },
 
+
+        dyLine_lc: function(ctx, x, y){
+            ctx.beginPath();
+            ctx.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+            ctx.moveTo(x, y);  //确定起始作画起点位置
+            let timer_lc = setInterval(function(){
+                y = y + 1 //- bounds.top;
+                ctx.lineWidth = 2;
+                if(y >= 150){
+                    $.drawing(ctx, x, y);
+                    clearInterval(timer_lc);
+                    console.log("lc_end");
+                    ctx.closePath();
+                    ctx.beginPath();
+                    ctx.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+                    ctx.moveTo(0, 149);  //确定起始作画起点位置
+                    ctx.lineWidth = 2;
+                    $.drawing(ctx, 300, 149);
+                    ctx.closePath();
+
+
+                    // const basicDetail_h = $('#basicDetail').height();
+                    $('#basicDetail').animate({margin: "0% 0% 0% 0%"}, 2500, function(){ // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
+                        console.log("waitting for next cd line")
+                    })  
+                }else{
+                    $.drawing(ctx, x, y);
+                }
+
+            },20)
+        },
+
+        
+
     
-        drawing:function(ctx, x, y){
-            ctx.lineTo(x, y);
-            ctx.lineCap = "round"
-            // ctx.lineJoin = "round";
-            ctx.strokeStyle = "rgb(0, 255, 255, 0.5)";
-            ctx.stroke();
+        drawing:function(ctx_1, x, y){
+            ctx_1.lineTo(x, y);
+            ctx_1.lineCap = "round"
+            // ctx_1.lineJoin = "round";
+            ctx_1.strokeStyle = "rgb(0, 255, 255, 0.5)";
+            ctx_1.stroke();
         },
 
         // adjustDpi: function(context){
