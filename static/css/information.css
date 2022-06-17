@@ -123,11 +123,57 @@ html,body{
     z-index: 96;
 }
 
+/********************************* #6 ********************************/
+#line_cd{
+    width: 25%;
+    height: 40%;
+    float: left;
+    margin: 0;
+    z-index: 95;
+
+}
 
 
-
-
+/********************************* #7 ********************************/
 #eduPart{
+    width: 50%;
+    height: 25%;
+    background-color: white;
+    float: left;
+    margin: 0;
+    overflow: hidden;
+}
+
+#educationShow{
+    background-color: rgb(80, 80, 80, 0.5);
+    float: left;
+    font-size: 1.2em;
+    width: 100%;
+    height: 100%;
+    margin: 0% 0% 0% -100%;
+    z-index: 94;
+}
+
+
+#edTable{
+    width: 100%;
+    height: 40%;
+    margin: 3% 0 3% 0;
+    background-color: rgb(80, 80, 80, 0.5);
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#workPart{
     width: 50%;
     height: 20%;
     background-color: yellow;
@@ -156,12 +202,7 @@ html,body{
 
 
 
-#line_cd{
-    width: 25%;
-    height: 40%;
-    float: left;
-    margin: 0;
-}
+
 
 #line_rc2{
     width: 50%;
@@ -171,13 +212,7 @@ html,body{
 }
 
 
-#workPart{
-    width: 50%;
-    height: 25%;
-    background-color: chocolate;
-    float: left;
-    margin: 0;
-}
+
 
 /* .seperate_title{
     width: 80%;
@@ -237,21 +272,10 @@ html,body{
 }
 
 
-#educationShow{
-    font-size: 1.2em;
-    width: 100%;
-    height: 100%;
-
-}
 
 
-.edTable{
-    width: 100%;
-    height: 40%;
-    margin: 3% 0 3% 0;
-    background-color: rgb(80, 80, 80, 0.5);
-    border-radius: 10px;
-}
+
+
 
 
 #workExp{

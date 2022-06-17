@@ -21,8 +21,19 @@ def information():
     text_basic = [["Full Name:", "Chiyu He"], ["Prefer Name:", "Finn"], ["Address:", "35 Buffon St, Waltham, Christchurch, 8023"], ["E-mail:", "finn.he0102@gmail.com"]]
     summary_basic = [["sum1", "Over 50/% /of courses arrive A grade (4/6)."], ["sum2", "3 web projects development experience - full-stack developer."], ["sum3", "1 desk application development experience - software developer (tkinter )."], ["sum4", "1 C# .NET Framework solution improvement experience."], ["sum5", "Over half year internship experience."]]
     educationDicList = [
-        {"uni": "Lincoln University", "date":"Nov 2020 - Feb 2022", "degree":"Master of Computer Applications - MCA", "magior":"Advanced Programming, Arc GIS, Industry Project, Software Development, Studio Project, Business Analysis"},
-        {"uni": "Xihua University", "date":"Sep 2009 - Jun 2013  ", "degree":"Bachelor of Engineering (Automation Engineer Technology/Technician)", "magior":"Advanced Mathematics, Neural Networks(basic), PLC, C++(basic), VB(basic ), Analog electronic circuit, Digital electronic circuit, Circuit principle"},
+        {
+          "id": "1",
+          "uni": "Lincoln University", "date":"Nov 2020 - Feb 2022", 
+          "degree":"Master of Computer Applications - MCA", 
+          "major":"Advanced Programming, Arc GIS, Industry Project, Software Development, Studio Project, Business Analysis"
+        },
+        {
+          "id": "2",
+          "uni": "Xihua University", 
+          "date":"Sep 2009 - Jun 2013  ", 
+          "degree":"Bachelor of Engineering (Automation Engineer Technology/Technician)", 
+          "major":"Advanced Mathematics, Neural Networks(basic), PLC, C++(basic), VB(basic ), Analog electronic circuit, Digital electronic circuit, Circuit principle"
+        },
     ]
 
     workInfo = [ 
@@ -108,14 +119,47 @@ def changeWorkPage():
           }
         ]
         
-        currentPageInfo = workInfo[int(pageNum)-1]
+        currentWorkInfo = workInfo[int(pageNum)-1]
         
         delivery_workPage = {}
-        delivery_workPage['pageInfo'] = currentPageInfo
+        delivery_workPage['pageInfo'] = currentWorkInfo
 
         delivery_workPage_json = json.dumps(delivery_workPage)
 
         return delivery_workPage_json
+
+
+@cv_controller.route("/changeEduPage", methods=['GET','POST'])
+def changeEduPage():
+    if request.method == "POST":
+        # obj = json.loads(request.form.get("pageNum_json"))     # another method for receiving another kind of json data from ajax.
+        data_ajax = request.get_json()
+        pageNum = str(data_ajax['pageNum_json'])
+
+        educationDicList = [
+            {
+              "id": "1",
+              "uni": "Lincoln University", "date":"Nov 2020 - Feb 2022", 
+              "degree":"Master of Computer Applications - MCA", 
+              "major":"Advanced Programming, Arc GIS, Industry Project, Software Development, Studio Project, Business Analysis"
+            },
+            {
+              "id": "2",
+              "uni": "Xihua University", 
+              "date":"Sep 2009 - Jun 2013  ", 
+              "degree":"Bachelor of Engineering (Automation Engineer Technology/Technician)", 
+              "major":"Advanced Mathematics, Neural Networks(basic), PLC, C++(basic), VB(basic ), Analog electronic circuit, Digital electronic circuit, Circuit principle"
+            },
+        ]
+        
+        currentEduInfo = educationDicList[int(pageNum)-1]
+        
+        delivery_eduPage = {}
+        delivery_eduPage['pageInfo'] = currentEduInfo
+
+        delivery_eduPage_json = json.dumps(delivery_eduPage)
+
+        return delivery_eduPage_json
 
 
 
@@ -310,10 +354,10 @@ def changeExpPage():
           }
         ]
         
-        currentPageInfo = expInfo[int(pageNum)-1]
+        currentExpInfo = expInfo[int(pageNum)-1]
         
         delivery_expPage = {}
-        delivery_expPage['pageInfo'] = currentPageInfo
+        delivery_expPage['pageInfo'] = currentExpInfo
 
         delivery_expPage_json = json.dumps(delivery_expPage)
 

@@ -25,14 +25,14 @@
 </head>
 <body>
     
-    <div id = "bigInfo">
+    <div id="bigInfo">
         <!-- #3 -->
-        <div id = "titlePart">
-            <div id = "titleDetail">
-                <img id = "developerImg" src = "../static/img/developerImage.jpg" alt = "Developer"/>
-                <hr class = "seperate_title"/>
-                <span id = "position_basic"> {{job_basic[0]}} </span><br/>
-                <span id = "job_basic"> {{job_basic[1]}} </span>
+        <div id="titlePart">
+            <div id="titleDetail">
+                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
+                <hr class="seperate_title"/>
+                <span id="position_basic">{{job_basic[0]}} </span><br/>
+                <span id="job_basic">{{job_basic[1]}} </span>
             </div>
 
         </div>
@@ -42,117 +42,8 @@
         <canvas id="line_cu"></canvas>
 
 
-        
-
-        <div id = "eduPart">
-
-        </div>
-
-
-
-
-        <canvas id = "line_rc1">
-
-        </canvas>
-
-
-
-        <div id = "skillPart">
-
-        </div>
-
-
-
-        <!-- #4-->
-        <canvas id = "line_lc"></canvas>
-
-
-
-        <!-- #1 -->
-        <div id = "centrePart">
-            <div class = "spinner-grow text-primary" role = "status" id = "startButton"></div>
-        </div>
-
-
-        
-        <canvas id = "line_rc2">
-
-        </canvas>
-
-
-
-
-
-        <div id = "basicPart">
-            <div id="basicDetail">
-                <h5>Basic Information</h5>
-                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a> -->           <!-- target="_blank" can make link opened by a new window(blank)   -->
-                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a> -->               <!-- target="_blank" can make link opened by a new window(blank)   -->
-                <div id="textPart">
-                    <table >
-                        {% for item_t in text_basic %}
-                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
-                        {% endfor%}
-                    </table>
-                </div>
-                
-                <hr class = "seperate_title"/>
-                
-                <div id="summaryPart">
-                    <h5>Summary</h5>
-                    <ul>
-                        {% for item_s in summary_basic %}
-                        <li>{{item_s[1]}}</li>
-                        {% endfor%}
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-
-
-        <canvas id = "line_cd">
-
-        </canvas>
-
-
-
-
-
-        <div id = "workPart">
-
-        </div>
-
-
-        <!-- <div id = "basicInfo">
-
-            
-            
-            
-        </div>
-
-        <div id="education">
-            <div id="educationShow">
-                {% for ed in educationDicList %}
-                <table class="edTable">
-                    <tr>
-                        <th><h3>{{ed["uni"]}}</h3></th>
-                        <th style="text-align: right;"><h3>{{ed["date"]}}</h3></th>
-                    </tr>
-                    <tr>
-                        <th colSpan="2">{{ed["degree"]}}</th>
-                    </tr>
-                    <tr>
-                        <td colSpan="2">{{ed["magior"]}}</td>
-                    </tr>
-                </table>
-                {% endfor %}    
-            </div>
-
-        </div>
-
-        <div id="workExp">
+        <!-- #11 -->
+        <div id="workPart">
             <div id="workDisplay">
                 <table id="workTabel">
                     <tbody id="workBody">
@@ -187,10 +78,19 @@
                     </li>
                 </ul>
             </nav>
-            
+
         </div>
 
-        <div id="skillsInfo">
+
+
+
+        <canvas id = "line_rc1">
+
+        </canvas>
+
+
+
+        <div id = "skillPart">
             <div id="skillsBasic">
                 <table id="skillsTable">
                     {% for item_1 in skillsInfo %}
@@ -206,7 +106,103 @@
 
                 </table>
             </div>
-        </div> -->
+        </div>
+
+
+
+        <!-- #4-->
+        <canvas id = "line_lc"></canvas>
+
+
+
+        <!-- #1 -->
+        <div id = "centrePart">
+            <div class = "spinner-grow text-primary" role = "status" id = "startButton"></div>
+        </div>
+
+
+        
+        <canvas id = "line_rc2">
+
+        </canvas>
+
+
+
+
+        <!-- #5 -->
+        <div id = "basicPart">
+            <div id="basicDetail">
+                <h5>Basic Information</h5>
+                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a> -->           <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <!-- <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a> -->               <!-- target="_blank" can make link opened by a new window(blank)   -->
+                <div id="textPart">
+                    <table >
+                        {% for item_t in text_basic %}
+                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
+                        {% endfor%}
+                    </table>
+                </div>
+                
+                <hr class = "seperate_title"/>
+                
+                <div id="summaryPart">
+                    <h5>Summary</h5>
+                    <ul>
+                        {% for item_s in summary_basic %}
+                        <li>{{item_s[1]}}</li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- #6 -->
+        <canvas id = "line_cd"></canvas>
+
+
+
+
+        <!-- #7 -->
+        <div id="eduPart">
+            <div id="educationShow">
+                <table id="eduTable">
+                    <tbody id="eduBody">
+                        <tr>
+                            <th><h3>{{educationDicList[0]["uni"]}}</h3></th>
+                            <th style="text-align: right;"><h3>{{educationDicList[0]["date"]}}</h3></th>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">{{educationDicList[0]["degree"]}}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">{{educationDicList[0]["major"]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <nav aria-label="Page navigation example" id="eduNav">
+                    <ul class="pagination">
+                        <li class="eduOri">
+                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                        </li>
+
+                        {% for item in educationDicList %}
+                        <li class="eduPageItem">
+                            <a class="page-link" href="#">{{item["id"]}}</a>
+                        </li>
+                        {% endfor %}
+                        
+                        <li class="eduOri">
+                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+
 
     </div>
 
@@ -219,48 +215,101 @@
             var urlPath = 'http://127.0.0.1:5000'; 
             var winWidth = $(window).width();
             var winHeight = $(window).height();
+            var isDraw = true;
 
-            // var titlePart =  $('#titlePart');
+
+            // #1
             var startButton = $('#startButton');
 
-            var isDraw = true;
+            // #2
             var line_cu = $('#line_cu');
             var line_cu_dom = line_cu[0];
             var ctx_cu = line_cu_dom.getContext('2d');
 
-
-
+            // #3
             var titleDetail =  $('#titleDetail');
 
+            // #4
             var line_lc = $('#line_lc');
             var line_lc_dom = line_lc[0];
             var ctx_lc = line_lc_dom.getContext('2d');
 
+            // #5 basic part
+
+
+            // #6 line_cd
+            var line_cd = $('#line_cd');
+            var line_cd_dom = line_cd[0];
+            var ctx_cd = line_cd_dom.getContext('2d');
+            
+
+            // #7 educ
+            var eduNavs = $('#eduNav a');
+            var eduCurrentFlag = 1;
+            var totalEdus = parseInt($('.eduPageItem').children().eq(-1).html());
 
             
 
+            // #8 rc1
+
+            
+
+            // #9 skills
+
+
+
+            //#10 rc2
+
+
+            // #11 workpart
             var workNavs = $('#workNav a');
             var workCurrentFlag = 1;
             var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
+
+
+
+
 
 
             // 调整titledetail的位置，方便后边动态出现的时候平稳平移
             const title_detail_h = $('#titleDetail').height();
             const title_part_h = $('#titlePart').height();
             const title_detail_w = $('#titleDetail').width();
-            $('#titleDetail').css({margin: (title_part_h - title_detail_h) + "px -" + title_detail_w + "px 0 0"})  // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
+            $('#titleDetail').css({margin: (title_part_h - title_detail_h) + "px -" + title_detail_w + "px 0 0"});  // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
 
 
 
-            // start the trip
+            // 1-6:  start the trip
             startButton.click(function(){
                 if(isDraw){
                     isDraw = false;
-                    $.dyLine_start(ctx_cu, 150, 150, ctx_lc, 225, 0);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
+                    $.dyLine_start(ctx_cu, 150, 150, ctx_lc, 225, 0, ctx_cd, 0, 90);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
                 }
-            })
-           
-            // work part change page
+            });
+
+            
+            // 7: edu part change page
+            eduNavs.click(function(){
+                let pageText_edu = $(this).html(); 
+
+                if(pageText_edu == "«"){
+                    if(eduCurrentFlag > 1){
+                        eduCurrentFlag -= 1
+                        $.changeEduPage(urlPath, eduCurrentFlag)
+                    }
+                }else if(pageText_edu == "»"){
+                    if(eduCurrentFlag < totalEdus){
+                        eduCurrentFlag += 1
+                        $.changeEduPage(urlPath, eduCurrentFlag)
+                    }
+                }else{
+                    eduCurrentFlag = parseInt(pageText_edu)
+                    $.changeEduPage(urlPath, eduCurrentFlag)
+                }
+            });
+
+
+            // 11: work part change page
             workNavs.click(function(){
                 let pageText_work = $(this).html(); 
 
