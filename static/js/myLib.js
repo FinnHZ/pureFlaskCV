@@ -106,7 +106,7 @@
         },
 
 
-        dyLine_start: function(ctx_1, x_1, y_1, ctx_2, x_2, y_2, ctx_3, x_3, y_3){
+        dyLine_start: function(ctx_1, x_1, y_1, ctx_2, x_2, y_2, ctx_3, x_3, y_3, ctx_4, x_4, y_4, ctx_5, x_5, y_5){
             ctx_1.beginPath();
             ctx_1.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
             ctx_1.moveTo(x_1, y_1);  //确定其实作画起点位置
@@ -135,7 +135,7 @@
                         $.drawing(ctx_1, 0, 150);
                         ctx_1.closePath();
                         $('#titleDetail').animate({margin: (title_out_h - title_in_h) + "px 0 0 0"}, 2500, function(){ // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
-                            $.dyLine_lc(ctx_2, x_2, y_2, ctx_3, x_3, y_3);
+                            $.dyLine_lc(ctx_2, x_2, y_2, ctx_3, x_3, y_3, ctx_4, x_4, y_4, ctx_5, x_5, y_5);
                         })  
                         
                     }else{
@@ -145,7 +145,7 @@
             },20)
         },
 
-        dyLine_lc: function(ctx_2, x_2, y_2, ctx_3, x_3, y_3){
+        dyLine_lc: function(ctx_2, x_2, y_2, ctx_3, x_3, y_3, ctx_4, x_4, y_4, ctx_5, x_5, y_5){
             ctx_2.beginPath();
             ctx_2.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
             ctx_2.moveTo(x_2, y_2);  //确定起始作画起点位置
@@ -166,7 +166,7 @@
 
                     // const basicDetail_h = $('#basicDetail').height();
                     $('#basicDetail').animate({margin: "0% 0% 0% 0%"}, 2500, function(){ // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
-                        $.dyLine_cd(ctx_3, x_3, y_3)
+                        $.dyLine_cd(ctx_3, x_3, y_3, ctx_4, x_4, y_4, ctx_5, x_5, y_5)
                     })  
                 }else{
                     $.drawing(ctx_2, x_2, y_2);
@@ -175,7 +175,7 @@
             },20)
         },
 
-        dyLine_cd: function(ctx_3, x_3, y_3){
+        dyLine_cd: function(ctx_3, x_3, y_3, ctx_4, x_4, y_4, ctx_5, x_5, y_5){
             ctx_3.beginPath();
             ctx_3.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
             ctx_3.moveTo(x_3, y_3);  //确定起始作画起点位置
@@ -192,7 +192,6 @@
                     ctx_3.moveTo(298, 150);  //确定轴线起始作画起点位置
                     ctx_3.lineWidth = 1;
                     
-                    
                     const cd_h = $('#line_cd').height();
                     const edu_h = $('#educationShow').height();
                     const cd_ed_ratio = edu_h / cd_h
@@ -202,14 +201,75 @@
 
                     // const basicDetail_h = $('#basicDetail').height();
                     $('#educationShow').animate({margin: "0% 0% 0% 0%"}, 2500, function(){ // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
-                        console.log("waitting for next rc1 line")
+                        $.dyLine_rc2(ctx_4, x_4, y_4, ctx_5, x_5, y_5)
                     })  
                 }else{
                     $.drawing(ctx_3, x_3, y_3);
                 }
-
             },20)
         },
+
+        dyLine_rc2: function(ctx_4, x_4, y_4, ctx_5, x_5, y_5){
+            ctx_4.beginPath();
+            ctx_4.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+            ctx_4.moveTo(x_4, y_4);  //确定起始作画起点位置
+            let timer_rc2 = setInterval(function(){
+                y_4 = y_4 - 1 //- bounds.top;
+                ctx_4.lineWidth = 1;
+                if(y_4 <= 0){
+                    $.drawing(ctx_4, x_4, y_4);
+                    clearInterval(timer_rc2);
+                    console.log("rc2_end");
+                    ctx_4.closePath();
+                    ctx_4.beginPath();
+                    ctx_4.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+                    ctx_4.moveTo(0, 0);  //确定轴线起始作画起点位置
+                    ctx_4.lineWidth = 1;
+
+                    $.drawing(ctx_4, 300, 0);
+                    ctx_4.closePath();
+
+                    $('#skillsBasic').animate({margin: "0% 0% 0% 0%"}, 2500, function(){ // 这里用绝对值定位，因为百分比在这里目前没有搞懂为什么无法精准控制
+                        $.dyLine_rc1(ctx_5, x_5, y_5);
+                    })  
+                }else{
+                    $.drawing(ctx_4, x_4, y_4);
+                }
+
+            },20)
+        
+        },
+
+        dyLine_rc1: function(ctx_5, x_5, y_5){
+            ctx_5.beginPath();
+            ctx_5.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+            ctx_5.moveTo(x_5, y_5);  //确定起始作画起点位置
+            let timer_rc2 = setInterval(function(){
+                y_5 = y_5 - 1 //- bounds.top;
+                ctx_5.lineWidth = 1;
+                if(y_5 <= 0){
+                    $.drawing(ctx_5, x_5, y_5);
+                    clearInterval(timer_rc2);
+                    console.log("rc1_end");
+                    ctx_5.closePath();
+                    ctx_5.beginPath();
+                    ctx_5.translate(0.5, 0.5);   //重新定义画布坐标轴的原点，这里依旧是以画布的左上角为原点，重新定义原点之后，所有坐标都要以新原点为准
+                    ctx_5.moveTo(0, 0);  //确定轴线起始作画起点位置
+                    ctx_5.lineWidth = 1;
+
+                    $.drawing(ctx_5, 300, 0);
+                    ctx_5.closePath();
+
+                    $('#workDetail').animate({margin: "0% 0% 0% 0%"}, 2500)  
+                }else{
+                    $.drawing(ctx_5, x_5, y_5);
+                }
+
+            },20)
+        
+        }
+
+
 
 
 

@@ -12,20 +12,12 @@
     <script type="text/javascript" src="/static/js/echarts.min.js"></script>
     <script type="text/javascript" src="/static/js/myLib.js"></script>
     <title>information page</title>
-    
-    <style>
-      
-
-
-
-    </style>
-
-
 
 </head>
 <body>
     
     <div id="bigInfo">
+
         <!-- #3 -->
         <div id="titlePart">
             <div id="titleDetail">
@@ -44,66 +36,64 @@
 
         <!-- #11 -->
         <div id="workPart">
-            <div id="workDisplay">
-                <table id="workTabel">
-                    <tbody id="workBody">
-                        <tr>
-                            <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
-                        </tr>
-                        <tr>
-                            <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
-                        </tr>
-                        {% for item in workInfo[0]["workDescription"] %}
-                        <tr>
-                            <td colspan="2">{{item}}</td>
-                        </tr>
+            <div id="workDetail">
+                <div id="workDisplay">
+                    <table id="workTabel">
+                        <tbody id="workBody">
+                            <tr>
+                                <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
+                            </tr>
+                            {% for item in workInfo[0]["workDescription"] %}
+                            <tr>
+                                <td colspan="2">{{item}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <nav aria-label="Page navigation example" id="workNav">
+                    <ul class="pagination">
+                        <li class="workOri">
+                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                        </li>
+
+                        {% for item in workInfo %}
+                        <li class="workPageItem">
+                            <a class="page-link" href="#">{{item["id"]}}</a>
+                        </li>
                         {% endfor %}
-                    </tbody>
-                </table>
+                        
+                        <li class="workOri">
+                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav aria-label="Page navigation example" id="workNav">
-                <ul class="pagination">
-                    <li class="workOri">
-                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
-                    </li>
-
-                    {% for item in workInfo %}
-                    <li class="workPageItem">
-                        <a class="page-link" href="#">{{item["id"]}}</a>
-                    </li>
-                    {% endfor %}
-                    
-                    <li class="workOri">
-                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
-                    </li>
-                </ul>
-            </nav>
-
         </div>
 
+        <!-- #10 -->
+        <canvas id = "line_rc1"></canvas>
 
-
-
-        <canvas id = "line_rc1">
-
-        </canvas>
-
-
-
+        
+        <!-- #9 -->
         <div id = "skillPart">
             <div id="skillsBasic">
                 <table id="skillsTable">
-                    {% for item_1 in skillsInfo %}
-                    <tr>
-                        <th>{{item_1[0]}}</th>
-                        <td>
-                        {% for item_2 in item_1[1] %}
-                        {{item_2}}.
+                    <tbody>
+                        {% for item_1 in skillsInfo %}
+                        <tr>
+                            <th>{{item_1[0]}}</th>
+                            <td>
+                            {% for item_2 in item_1[1] %}
+                            {{item_2}}.
+                            {% endfor %}
+                            </td>
+                        </tr>
                         {% endfor %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -117,14 +107,14 @@
 
         <!-- #1 -->
         <div id = "centrePart">
-            <div class = "spinner-grow text-primary" role = "status" id = "startButton"></div>
+            <div class = "spinner-grow text-primary" role = "status" id = "startButton">
+                <span class="sr-only" id="centreText">START</span>
+            </div>
         </div>
 
 
-        
-        <canvas id = "line_rc2">
-
-        </canvas>
+        <!-- #8 -->
+        <canvas id = "line_rc2"></canvas>
 
 
 
@@ -160,8 +150,6 @@
 
         <!-- #6 -->
         <canvas id = "line_cd"></canvas>
-
-
 
 
         <!-- #7 -->
@@ -250,15 +238,21 @@
 
             
 
-            // #8 rc1
-
+            // #8 rc2
+            var line_rc2 = $('#line_rc2');
+            var line_rc2_dom = line_rc2[0];
+            var ctx_rc2 = line_rc2_dom.getContext('2d');
             
 
             // #9 skills
 
 
 
-            //#10 rc2
+            //#10 rc1
+            var line_rc1 = $('#line_rc1');
+            var line_rc1_dom = line_rc1[0];
+            var ctx_rc1 = line_rc1_dom.getContext('2d');
+
 
 
             // #11 workpart
@@ -279,11 +273,11 @@
 
 
 
-            // 1-6:  start the trip
+            // 1-11:  start the trip
             startButton.click(function(){
                 if(isDraw){
                     isDraw = false;
-                    $.dyLine_start(ctx_cu, 150, 150, ctx_lc, 225, 0, ctx_cd, 0, 90);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
+                    $.dyLine_start(ctx_cu, 150, 150, ctx_lc, 225, 0, ctx_cd, 0, 90, ctx_rc2, 150, 150, ctx_rc1, 150, 150);  //如果不重新定义canvas的尺寸大小， 所有canvas默认的像素 宽高都是 300:150，所以这里可以直接按照这个数字去定位
                 }
             });
 
