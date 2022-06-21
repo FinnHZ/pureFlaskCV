@@ -14,42 +14,113 @@ html,body{
 }
 
 
-/********************************* #1 ********************************/
-#centrePart{
-    width: 25%;
-    height: 20%;
-    text-align: center;
-    float: left;
-    margin: 0;
+
+
+#nightBackground{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background: radial-gradient(circle at bottom,  rgb(40, 85, 97, 0.8), rgb(19, 48, 56, 0.8), rgb(0, 0, 0)); */
+    background: linear-gradient(to bottom, rgba(0, 0, 0), rgba(11, 49, 61), rgba(53, 115, 134));
+    z-index: 0;
+    overflow: hidden;
+    /* text-align: center; */
+}
+
+
+@keyframes flashing {
+    from {
+        opacity: 1.0;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+    
+}
+
+@-webkit-keyframes flashing {
+    from {
+        opacity: 1.0;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1.0;
+    }
+    
+}
+
+
+#earth{
+    position: absolute;
+    /* background-color: black; */
+    height: calc(60vh);
+    width: calc(60vh);
     z-index: 100;
+    margin-top: calc(80vh);
+    margin-left: calc(50vw - 30vh);
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218, 0.8), rgb(19, 48, 56, 0.8), rgb(0, 0, 0));
+    box-shadow: 0 0 30px rgb(118, 225, 252) ;
+    /* transform: rotate(50deg);            !!!!!!!!!!!!!!!!important*/
 }
 
-#startButton{
-    width: 100px;
-    height: 100px;
-    margin: 0;
-    text-align: center;
-    line-height: 100px;
-}
-
-#centreText{
-    color: white;
-    font-size: 2em;
-}
-
-
-
-
-/********************************* #2 ********************************/
-#line_cu{
-    width: 25%;
-    height: 40%;
-    float: left;
-    margin: 0;
+/* 
+#yaoGuang{
+    position: absolute;
+    height: 3px;
+    width: 3px;
     background-color: white;
-    z-index: 99;
+    box-shadow: 0 0 3px white;
+    left: 100px;
+    top:100px;
+    border-radius: 50%;
+    animation: flashing 5s infinite;
+    -webkit-animation: flashing 5s infinite;
+} */
 
-}
+/* #night{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to left, rgb(0, 0, 0, 0.9), rgb(35, 108, 131, 0.5), rgb(244, 244, 248, 0.5));
+    z-index: 0;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /********************************* #3 ********************************/
@@ -57,11 +128,10 @@ html,body{
     width: 25%;
     height: 40%;
     background-color: white;
-    float: left;
+    /* float: left; */
     margin: 0%;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 98;
-
 }
 
 
@@ -69,9 +139,11 @@ html,body{
     width:50%;
     background-color: rgb(80, 80, 80, 0.5);
     text-align: center;
-    float:right;
-    margin: 0% -50% 0% 0%;
+    /* float:right; */
+    margin: 0% 0% 0% 0%;
+    border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
@@ -94,15 +166,6 @@ html,body{
 } 
 
 
-/********************************* #4 ********************************/
-#line_lc{
-    width: 25%;
-    height: 20%;
-    float: left;
-    margin: 0;
-    z-index: 97;
-
-}
 
 
 /********************************* #5 ********************************/
@@ -110,11 +173,11 @@ html,body{
     width: 25%;
     height: 40%;
     background-color: white;
-    float: left;
+    /* float: left; */
     margin: 0;
     z-index: 96;
     font-size: 1em;
-    overflow: hidden;
+    /* overflow: hidden; */
 
 }
 
@@ -122,23 +185,17 @@ html,body{
     width: 100%;
     height: 100%;
     background-color: rgb(80, 80, 80, 0.5);
-    float: left;
-    margin: -100% 0% 0% 0%;
+    /* float: left; */
+    margin: 0% 0% 0% 0%;
     padding: 1% 1% 1% 1%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     z-index: 96;
 }
 
-/********************************* #6 ********************************/
-#line_cd{
-    width: 25%;
-    height: 40%;
-    float: left;
-    margin: 0;
-    z-index: 95;
 
-}
 
 
 /********************************* #7 ********************************/
@@ -146,21 +203,23 @@ html,body{
     width: 50%;
     height: 25%;
     background-color: white;
-    float: left;
+    /* float: left; */
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #educationShow{
     background-color: rgb(80, 80, 80, 0.5);
-    float: left;
+    /* float: left; */
     font-size: 1.2em;
     width: 100%;
     height: 100%;
-    margin: 0% 0% 0% -100%;
+    margin: 0% 0% 0% 0%;
     z-index: 94;
-    border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 
 }
 
@@ -170,19 +229,13 @@ html,body{
     height: 40%;
     margin: 3% 0 3% 0;
     background-color: rgb(80, 80, 80, 0.5);
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 
-
-/********************************* #8 ********************************/
-#line_rc2{
-    width: 50%;
-    height: 15%;
-    float: right;
-    margin: 0;
-    z-index: 93;
-}
 
 
 
@@ -191,32 +244,23 @@ html,body{
     width: 50%;
     height: 25%;
     background-color: white;
-    float: right;
+    /* float: right; */
     margin: 0;
-    overflow: hidden;
+
 }
 
 #skillsBasic{
     background-color: rgb(80, 80, 80, 0.5);
-    float: right;
+    /* float: right; */
     font-size: 1.2em;
     width: 100%;
     height: 100%;
-    margin: 25% 0% 0% 0%;
+    margin: 0% 0% 0% 0%;
     z-index: 92;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-}
-
-
-
-/********************************* #10 ********************************/
-#line_rc1{
-    width: 50%;
-    height: 15%;
-    float: right; 
-    margin: 0;
-    z-index: 91;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 
@@ -227,9 +271,8 @@ html,body{
     width: 50%;
     height: 20%;
     background-color: white;
-    float: left;
+    /* float: left; */
     margin: 0;
-    overflow: hidden;
 }
 
 
@@ -238,8 +281,10 @@ html,body{
     height: 100%;
     font-size: 1.2em;
     background-color: rgb(80, 80, 80, 0.5);
-    margin: 25% 0% 0% 0%;
+    margin: 0% 0% 0% 0%;
     z-index: 90;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
