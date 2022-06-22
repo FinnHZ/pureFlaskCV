@@ -100,7 +100,7 @@
         deployStars: function(num, width, height){       
             for(i=0; i<num; i++){
                 let left_x = parseInt(Math.random() * width + 1);
-                let top_y = parseInt(Math.random() * height * 0.7 + 1);
+                let top_y = parseInt(Math.random() * height * 0.8 + 1);
                 let starSize = parseInt(Math.random() * 3 + 1);
                 let flashingTime = parseInt(Math.random() * 5 + 2);
                 star = '<div style="position: absolute; height: ' + starSize + 'px; width: ' + starSize + 'px; background-color: white; box-shadow: 0 0 3px white; border-radius: 50%; left: ' + left_x + 'px; top:' + top_y + 'px; animation: flashing ' + flashingTime + 's infinite; -webkit-animation: flashing ' + flashingTime + 's infinite;"></div>'

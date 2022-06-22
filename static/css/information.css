@@ -21,7 +21,7 @@ html,body{
     height: 100%;
     width: 100%;
     /* background: radial-gradient(circle at bottom,  rgb(40, 85, 97, 0.8), rgb(19, 48, 56, 0.8), rgb(0, 0, 0)); */
-    background: linear-gradient(to bottom, rgba(0, 0, 0), rgba(11, 49, 61), rgba(53, 115, 134));
+    background: linear-gradient(to bottom, rgba(0, 0, 0), rgba(11, 49, 61), rgb(17, 68, 83));
     z-index: 0;
     overflow: hidden;
     /* text-align: center; */
@@ -57,46 +57,167 @@ html,body{
 
 #earth{
     position: absolute;
-    /* background-color: black; */
-    height: calc(60vh);
-    width: calc(60vh);
+    height: calc(100vh);
+    width: calc(100vh);
     z-index: 100;
-    margin-top: calc(80vh);
-    margin-left: calc(50vw - 30vh);
+    top: calc(60vh);
+    left: calc(100vw - 40vh);
     border-top-left-radius: calc(60vh);
     border-top-right-radius: calc(60vh);
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218, 0.8), rgb(19, 48, 56, 0.8), rgb(0, 0, 0));
     box-shadow: 0 0 30px rgb(118, 225, 252) ;
-    /* transform: rotate(50deg);            !!!!!!!!!!!!!!!!important*/
+    z-index: 101;
 }
 
-/* 
-#yaoGuang{
+
+#titleBtn{
     position: absolute;
-    height: 3px;
-    width: 3px;
-    background-color: white;
-    box-shadow: 0 0 3px white;
-    left: 100px;
-    top:100px;
-    border-radius: 50%;
-    animation: flashing 5s infinite;
-    -webkit-animation: flashing 5s infinite;
-} */
+    height: calc(20vh);    /*  !!  */
+    width: calc(20vh);    /*  !!  */
+    top: calc(90vh);    /*  !!  */
+    left: calc(100vw - 95vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 30px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(10vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 3em;    /*  !!  */
+    font-weight: 500;
+    z-index: 100;
+} 
 
-/* #night{
+
+#basicBtn{
     position: absolute;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(to left, rgb(0, 0, 0, 0.9), rgb(35, 108, 131, 0.5), rgb(244, 244, 248, 0.5));
-    z-index: 0;
-} */
+    height: calc(10vh);    /*  !!  */
+    width: calc(10vh);    /*  !!  */
+    top: calc(80vh);    /*  !!  */
+    left: calc(100vw - 75vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 25px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(10vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 2em;    /*  !!  */
+    font-weight: 500;
+    z-index: 99;
+
+}
 
 
+#eduBtn{
+    position: absolute;
+    height: calc(6vh);    /*  !!  */
+    width: calc(6vh);    /*  !!  */
+    top: calc(75vh);    /*  !!  */
+    left: calc(100vw - 60vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 20px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(6vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 1em;    /*  !!  */
+    font-weight: 500;
+    z-index: 98;
+}
 
 
+#skillBtn{
+    position: absolute;
+    height: calc(3vh);    /*  !!  */
+    width: calc(3vh);    /*  !!  */
+    top: calc(73vh);    /*  !!  */
+    left: calc(100vw - 47vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 15px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(3vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 0.5em;    /*  !!  */
+    font-weight: 500;
+    z-index: 97;
+}
+
+
+#workBtn{
+    position: absolute;
+    height: calc(2vh);    /*  !!  */
+    width: calc(2vh);    /*  !!  */
+    top: calc(71.2vh);    /*  !!  */
+    left: calc(100vw - 35vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(2vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 0.3em;    /*  !!  */
+    font-weight: 500;
+    z-index: 96;
+}
+
+
+#allBtn{
+    position: absolute;
+    height: calc(1.5vh);    /*  !!  */
+    width: calc(1.5vh);    /*  !!  */
+    top: calc(70vh);    /*  !!  */
+    left: calc(100vw - 25vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 6px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(1.5vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 0.2em;    /*  !!  */
+    font-weight: 500;
+    z-index: 95;
+}
+
+
+#nothingBtn{
+    position: absolute;
+    height: calc(1vh);    /*  !!  */
+    width: calc(1vh);    /*  !!  */
+    top: calc(69.5vh);    /*  !!  */
+    left: calc(100vw - 15vh);    /*  !!  */
+    border-top-left-radius: calc(60vh);
+    border-top-right-radius: calc(60vh);
+    border-bottom-left-radius: calc(60vh);
+    border-bottom-right-radius: calc(60vh);
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 3px rgb(118, 225, 252) ;    /*  !!  */
+    text-align: center;
+    line-height: calc(1vh);    /*  !!  */
+    color: rgb(255, 245, 245, 0.5);
+    font-size: 0.1em;    /*  !!  */
+    font-weight: 500;
+    z-index: 94;
+}
 
 
 
