@@ -111,6 +111,31 @@
 
         },
 
+        runBall: function(ballPositionDict, time){
+            const targetEle0_id = $('.ball').eq(0).attr("id");
+            const targetEle0_html = $('.ball').eq(0).html();
+            const totalNum_0 = $('.ball').length;
+            for(i=0; i<totalNum_0; i++){
+                let flag = i;
+                if(i == 0 ){
+                    $('.ball').eq(i).animate(ballPositionDict[i], time, function(){
+                        $('.ball').eq(0).remove()
+                    })
+                }else if(i == totalNum_0-1){
+                    $('.ball').eq(i).animate(ballPositionDict[i], time, function(){
+                        $(this).attr("name", flag.toString());                                
+                        newEle = '<div id="'+ targetEle0_id +'" name="7" class="ball">' + targetEle0_html +'</div>';
+                        $(newEle).appendTo('#ballArea');
+                        $('#'+ targetEle0_id.toString()).css(ballPositionDict[7]);
+                    })
+                }else{
+                    $('.ball').eq(i).animate(ballPositionDict[i], time, function(){
+                        $(this).attr("name", flag.toString())
+                    })
+                }
+            };
+        },
+
 
 
 

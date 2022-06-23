@@ -192,11 +192,18 @@
             var urlPath = 'http://127.0.0.1:5000'; 
             var winWidth = $(window).width();
             var winHeight = $(window).height();
-            var isBall = true;
+            var isDraw = true;
 
             $.deployStars(200, winWidth, winHeight)
 
-  
+            var titleBtn = $('#titleBtn');
+            titleBtn.click(function(){
+
+            })
+
+
+
+
             // // #7 educ
             // var eduNavs = $('#eduNav a');
             // var eduCurrentFlag = 1;
@@ -253,7 +260,6 @@
 
 //////////////////////////////***********************************************************************
             var ballArea = $('#ballArea');
-            var runTime = 2500;
 
             // titleBtn
             var height_1 = $('#titleBtn').height();
@@ -300,41 +306,125 @@
             var ballPositionDict = [
                 {"height": height_1*2 + "px", "width": width_1*2 + "px", "top": winHeight + "px", "left": left_1*0.8 + "px", "font-size": "8em", "line-height": height_1*2 + "px"},
                 {"height": height_1 + "px", "width": width_1 + "px", "top": top_1 + "px", "left": left_1 + "px", "font-size": "3em", "line-height": height_1 + "px"},
-                {"height": height_2 + "px", "width": width_2 + "px", "top": top_2 + "px", "left": left_2 + "px", "font-size": "2em", "line-height": height_2 + "px"},
-                {"height": height_3 + "px", "width": width_3 + "px", "top": top_3 + "px", "left": left_3 + "px", "font-size": "1em", "line-height": height_3 + "px"},
-                {"height": height_4 + "px", "width": width_4 + "px", "top": top_4 + "px", "left": left_4 + "px", "font-size": "0.5em", "line-height": height_4 + "px"},
-                {"height": height_5 + "px", "width": width_5 + "px", "top": top_5 + "px", "left": left_5 + "px", "font-size": "0.3em", "line-height": height_5 + "px"},
-                {"height": height_6 + "px", "width": width_6 + "px", "top": top_6 + "px", "left": left_6 + "px", "font-size": "0.2em", "line-height": height_6 + "px"},
-                {"height": height_7 + "px", "width": width_7 + "px", "top": top_7 + "px", "left": left_7 + "px", "font-size": "0.1em", "line-height": height_7 + "px"},         
+                {"height": height_2 + "px", "width": width_2 + "px", "top": top_2 + "px", "left": left_2 + "px", "font-size": "2.5em", "line-height": height_2 + "px"},
+                {"height": height_3 + "px", "width": width_3 + "px", "top": top_3 + "px", "left": left_3 + "px", "font-size": "2em", "line-height": height_3 + "px"},
+                {"height": height_4 + "px", "width": width_4 + "px", "top": top_4 + "px", "left": left_4 + "px", "font-size": "1.5em", "line-height": height_4 + "px"},
+                {"height": height_5 + "px", "width": width_5 + "px", "top": top_5 + "px", "left": left_5 + "px", "font-size": "1em", "line-height": height_5 + "px"},
+                {"height": height_6 + "px", "width": width_6 + "px", "top": top_6 + "px", "left": left_6 + "px", "font-size": "0.5em", "line-height": height_6 + "px"},
+                {"height": height_7 + "px", "width": width_7 + "px", "top": top_7 + "px", "left": left_7 + "px", "font-size": "0.25em", "line-height": height_7 + "px"},         
             ];
 
             ballArea.click(function(e){
-                if(isBall){
-                    isBall = false;
-                    const targetEle_name = parseInt(e.target.getAttribute("name"));
-                    $.runBall(ballPositionDict, runTime);
-                    let runTimeFlag = 0;
-                    if(targetEle_name > 1){
-                        const runTimer = setInterval(function(){
-                            if(runTimeFlag < targetEle_name-2 && targetEle_name-2 >= 0){
-                                $.runBall(ballPositionDict, runTime);
-                                runTimeFlag += 1; 
-                            }else if(runTimeFlag == targetEle_name-2 && targetEle_name-2 >= 0){
-                                $.runBall(ballPositionDict, runTime);
-                                runTimeFlag = 0;
-                                clearInterval(runTimer)
-                                isBall = true;
-                            }
-                        }, runTime+500)
-                    }else{
-                        const runOut = setTimeout(function(){
-                            isBall = true;
-                        }, runTime+500)
-                    }                
-                };
+
+                const targetEle_name = parseInt(e.target.getAttribute("name"));
+                $.runBall(ballPositionDict);
+
+                let runTimeFlag = 0;
+
+                if(targetEle_name > 1){
+                    var runTimer = setInterval(function(){
+                        if(runTimeFlag < targetEle_name-2 && targetEle_name-2 >= 0){
+                            $.runBall(ballPositionDict);
+                            runTimeFlag += 1; 
+                        }else if(runTimeFlag == targetEle_name-2 && targetEle_name-2 >= 0){
+                            $.runBall(ballPositionDict);
+                            runTimeFlag = 0;
+                            clearInterval(runTimer)
+                        }
+                    },3000)
+                }
 
             })
 
+            
+            // ballArea.click(function(e){
+
+            //     const targetEle_name = parseInt(e.target.getAttribute("name"));
+            //     const targetEle0_id = $('.ball').eq(0).attr("id");
+            //     const targetEle0_name = $('.ball').eq(0).attr("name");
+            //     const targetEle0_html = $('.ball').eq(0).html();
+            //     const totalNum_0 = $('.ball').length;
+            //     for(i=0; i<totalNum_0; i++){
+            //         let flag = i;
+            //         if(i == 0 ){
+            //             $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                 $('.ball').eq(0).remove()
+            //             })
+            //         }else if(i == totalNum_0-1){
+            //             $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                 $(this).attr("name", flag.toString());                                
+            //                 newEle = '<div id="'+ targetEle0_id +'" name="7" class="ball">' + targetEle0_html +'</div>';
+            //                 $(newEle).appendTo('#ballArea');
+            //                 $('#'+ targetEle0_id.toString()).css(ballPositionDict[7]);
+            //             })
+            //         }else{
+            //             $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                 $(this).attr("name", flag.toString())
+            //             })
+            //         }
+            //     };
+
+            //     let runTimeFlag = 0;
+
+            //     if(targetEle_name > 1){
+            //         var runTimer = setInterval(function(){
+            //             if(runTimeFlag < targetEle_name-2 && targetEle_name-2 >= 0){
+            //                 const targetEle0_id = $('.ball').eq(0).attr("id");
+            //                 const targetEle0_name = $('.ball').eq(0).attr("name");
+            //                 const targetEle0_html = $('.ball').eq(0).html();
+            //                 const totalNum_0 = $('.ball').length;
+            //                 for(i=0; i<totalNum_0; i++){
+            //                     let flag = i;
+            //                     if(i == 0 ){
+            //                         $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                             $('.ball').eq(0).remove()
+            //                         })
+            //                     }else if(i == totalNum_0-1){
+            //                         $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                             $(this).attr("name", flag.toString())                                    
+            //                             newEle = '<div id="'+ targetEle0_id +'" name="7" class="ball">' + targetEle0_html +'</div>'
+            //                             $(newEle).appendTo('#ballArea')
+            //                             $('#'+ targetEle0_id.toString()).css(ballPositionDict[7])
+            //                         })
+            //                     }else{
+            //                         $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                             $(this).attr("name", flag.toString())                                    
+            //                         })
+            //                     }
+            //                 }
+            //                 runTimeFlag += 1; 
+                            
+            //             }else if(runTimeFlag == targetEle_name-2 && targetEle_name-2 >= 0){
+            //                 const targetEle0_id = $('.ball').eq(0).attr("id");
+            //                 const targetEle0_name = $('.ball').eq(0).attr("name");
+            //                 const targetEle0_html = $('.ball').eq(0).html();
+            //                 const totalNum_0 = $('.ball').length;
+            //                 for(i=0; i<totalNum_0; i++){
+            //                     let flag = i
+            //                     if(i == 0 ){
+            //                         $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                             $('.ball').eq(0).remove()
+            //                         })
+            //                     }else if(i == totalNum_0-1){
+            //                         $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                             $(this).attr("name", flag.toString())                                    
+            //                             newEle = '<div id="'+ targetEle0_id +'" name="7" class="ball">' + targetEle0_html +'</div>'
+            //                             $(newEle).appendTo('#ballArea')
+            //                             $('#'+ targetEle0_id.toString()).css(ballPositionDict[7])
+            //                         })
+            //                     }else{
+            //                         $('.ball').eq(i).animate(ballPositionDict[i], 2500, function(){
+            //                             $(this).attr("name", flag.toString())                                    
+            //                         })
+            //                     }
+            //                 }
+            //                 runTimeFlag = 0;
+            //                 clearInterval(runTimer)
+            //             }
+            //         },3000)
+            //     }
+
+            // })
 
 
 //////////////////*************************************************************************************************
