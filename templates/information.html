@@ -19,15 +19,78 @@
     <div id="bigInfo">
         
         <div id = "nightBackground">
-            <!-- <div id = "nothingBtn">N</div>
-            <div id = "allBtn">A</div>
-            <div id = "workBtn">W</div>
-            <div id = "skillBtn">S</div>
-            <div id = "eduBtn">E</div>
-            <div id = "basicBtn">B</div>
-            <div id = "titleBtn">T</div>
-            <div id = "earth"></div> -->
-            <div id = "earth" ></div>
+
+            <div id="titleDetail">
+                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
+                <hr class="seperate_title"/>
+                <span id="position_basic">{{job_basic[0]}} </span><br/>
+                <span id="job_basic">{{job_basic[1]}} </span>
+            </div>
+
+
+            <div id="workDetail">
+                <div id="workDisplay">
+                    <table id="workTabel">
+                        <tbody id="workBody">
+                            <tr>
+                                <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
+                            </tr>
+                            {% for item in workInfo[0]["workDescription"] %}
+                            <tr>
+                                <td colspan="2">{{item}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <nav aria-label="Page navigation example" id="workNav">
+                    <ul class="pagination">
+                        <li class="workOri">
+                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                        </li>
+
+                        {% for item in workInfo %}
+                        <li class="workPageItem">
+                            <a class="page-link" href="#">{{item["id"]}}</a>
+                        </li>
+                        {% endfor %}
+                        
+                        <li class="workOri">
+                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            <div id="basicDetail">
+                <h5>Basic Information</h5>
+                <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
+                <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>               
+                <div id="textPart">
+                    <table >
+                        {% for item_t in text_basic %}
+                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
+                        {% endfor%}
+                    </table>
+                </div>
+                
+                <hr class = "seperate_title"/>
+                
+                <div id="summaryPart">
+                    <h5>Summary</h5>
+                    <ul>
+                        {% for item_s in summary_basic %}
+                        <li>{{item_s[1]}}</li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
+
+
         </div>
 
 
@@ -39,8 +102,11 @@
             <div id = "workBtn" name="5" class="ball">W</div>
             <div id = "allBtn" name="6" class="ball">A</div>
             <div id = "nothingBtn" name="7" class="ball">N</div>
+            <div id = "earth" ></div>
         </div>
 
+
+<!-- ****************************************************************************************************************** -->
 
         <!-- <div id="titlePart">
             <div id="titleDetail">
@@ -251,9 +317,10 @@
             //     }
             // });
 
-//////////////////////////////***********************************************************************
+//ball area ***********************************************************************
             var ballArea = $('#ballArea');
-            var runTime = 2500;
+            var runTime = 1500;
+            var runPause = 200;
 
             // titleBtn
             var height_1 = $('#titleBtn').height();
@@ -298,18 +365,20 @@
             var left_7 = $('#nothingBtn').offset().left;
 
             var ballPositionDict = [
-                {"height": height_1*2 + "px", "width": width_1*2 + "px", "top": winHeight + "px", "left": left_1*0.8 + "px", "font-size": "8em", "line-height": height_1*2 + "px"},
-                {"height": height_1 + "px", "width": width_1 + "px", "top": top_1 + "px", "left": left_1 + "px", "font-size": "3em", "line-height": height_1 + "px"},
-                {"height": height_2 + "px", "width": width_2 + "px", "top": top_2 + "px", "left": left_2 + "px", "font-size": "2em", "line-height": height_2 + "px"},
-                {"height": height_3 + "px", "width": width_3 + "px", "top": top_3 + "px", "left": left_3 + "px", "font-size": "1em", "line-height": height_3 + "px"},
-                {"height": height_4 + "px", "width": width_4 + "px", "top": top_4 + "px", "left": left_4 + "px", "font-size": "0.5em", "line-height": height_4 + "px"},
-                {"height": height_5 + "px", "width": width_5 + "px", "top": top_5 + "px", "left": left_5 + "px", "font-size": "0.3em", "line-height": height_5 + "px"},
-                {"height": height_6 + "px", "width": width_6 + "px", "top": top_6 + "px", "left": left_6 + "px", "font-size": "0.2em", "line-height": height_6 + "px"},
+                {"height": height_1*2 + "px", "width": width_1*2 + "px", "top": winHeight + "px", "left": left_1*0.8 + "px", "font-size": "10em", "line-height": height_1*2 + "px"},
+                {"height": height_1 + "px", "width": width_1 + "px", "top": top_1 + "px", "left": left_1 + "px", "font-size": "5em", "line-height": height_1 + "px"},
+                {"height": height_2 + "px", "width": width_2 + "px", "top": top_2 + "px", "left": left_2 + "px", "font-size": "3em", "line-height": height_2 + "px"},
+                {"height": height_3 + "px", "width": width_3 + "px", "top": top_3 + "px", "left": left_3 + "px", "font-size": "2em", "line-height": height_3 + "px"},
+                {"height": height_4 + "px", "width": width_4 + "px", "top": top_4 + "px", "left": left_4 + "px", "font-size": "1em", "line-height": height_4 + "px"},
+                {"height": height_5 + "px", "width": width_5 + "px", "top": top_5 + "px", "left": left_5 + "px", "font-size": "0.5em", "line-height": height_5 + "px"},
+                {"height": height_6 + "px", "width": width_6 + "px", "top": top_6 + "px", "left": left_6 + "px", "font-size": "0.3em", "line-height": height_6 + "px"},
                 {"height": height_7 + "px", "width": width_7 + "px", "top": top_7 + "px", "left": left_7 + "px", "font-size": "0.1em", "line-height": height_7 + "px"},         
             ];
 
             ballArea.click(function(e){
-                if(isBall){
+                let clickTarget = e.target.getAttribute("name")
+                if(isBall && clickTarget){
+                    console.log("1")
                     isBall = false;
                     const targetEle_name = parseInt(e.target.getAttribute("name"));
                     $.runBall(ballPositionDict, runTime);
@@ -325,11 +394,11 @@
                                 clearInterval(runTimer)
                                 isBall = true;
                             }
-                        }, runTime+500)
+                        }, runTime+runPause)
                     }else{
                         const runOut = setTimeout(function(){
                             isBall = true;
-                        }, runTime+500)
+                        }, runTime+runPause)
                     }                
                 };
 
@@ -337,7 +406,7 @@
 
 
 
-//////////////////*************************************************************************************************
+//*********************************************************************** ball area
 
         })
     </script>

@@ -14,8 +14,7 @@ html,body{
 }
 
 
-
-
+/********************************************************** Background Setting ********************************************************************/
 #nightBackground{
     position: absolute;
     height: 100%;
@@ -24,7 +23,6 @@ html,body{
     background: linear-gradient(to bottom, rgba(0, 0, 0), rgba(11, 49, 61), rgb(17, 68, 83));
     z-index: 0;
     overflow: hidden;
-    /* text-align: center; */
 }
 
 
@@ -55,6 +53,85 @@ html,body{
 }
 
 
+/********************************************************** Display Area ********************************************************************/
+
+/* title part */
+#titleDetail{
+    position: absolute;
+    width:12%;
+    /* height: 40%; */
+    background-color: rgb(80, 80, 80, 0.5);
+    text-align: center;
+    /* margin: 0% 0% 0% 0%; */
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    left: calc(10vw);
+    top: calc(55vh);
+}
+
+#developerImg{
+    border-radius: 50%;
+    height: 60%;
+    width:60%;
+    margin:10% 0 10% 0;
+}
+
+#position_basic{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#job_basic{
+    font-size: 1.2em;
+    font-weight: 500;
+} 
+
+/* work part */
+#workDetail{
+    position: absolute;
+    width: 50%;
+    /* height: 25%; */
+    font-size: 1.2em;
+    background-color: rgb(80, 80, 80, 0.5);
+    margin: 0% 0% 0% 0%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    top: calc(5vh);
+    left: calc(45vw);
+}
+
+/* basic part */
+#basicDetail{
+    position: absolute;
+    width: 30%;
+    /* height: 100%; */
+    background-color: rgb(80, 80, 80, 0.5);
+    margin: 0% 0% 0% 0%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color:aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    left: calc(10vw);
+    top: calc(5vh);
+}
+
+
+
+
+/********************************************************** Nav area ********************************************************************/
 #ballArea{
     position: absolute;
     height: 100%;
@@ -75,9 +152,10 @@ html,body{
     border-top-right-radius: calc(60vh);
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
-    background: radial-gradient(circle at center,  rgba(195, 213, 218, 0.8), rgb(19, 48, 56, 0.8), rgb(0, 0, 0));
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 30px rgb(118, 225, 252) ;
     z-index: 101;
+    font-family:cursive;
 }
 
 
@@ -92,13 +170,14 @@ html,body{
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
-    box-shadow: 0 0 30px rgb(118, 225, 252) ;    /*  !!  */
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
-    line-height: calc(10vh);    /*  !!  */
+    line-height: calc(20vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
-    font-size: 3em;    /*  !!  */
+    font-size: 5em;    /*  !!  */
     font-weight: 500;
     z-index: 100;
+    font-family:cursive;
 } 
 
 
@@ -113,14 +192,14 @@ html,body{
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
-    box-shadow: 0 0 25px rgb(118, 225, 252) ;    /*  !!  */
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
     line-height: calc(10vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
-    font-size: 2em;    /*  !!  */
+    font-size: 3em;    /*  !!  */
     font-weight: 500;
     z-index: 99;
-
+    font-family:cursive;
 }
 
 
@@ -135,13 +214,14 @@ html,body{
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
-    box-shadow: 0 0 20px rgb(118, 225, 252) ;    /*  !!  */
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
     line-height: calc(6vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
-    font-size: 1em;    /*  !!  */
+    font-size: 2em;    /*  !!  */
     font-weight: 500;
     z-index: 98;
+    font-family:cursive;
 }
 
 
@@ -156,13 +236,14 @@ html,body{
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
-    box-shadow: 0 0 15px rgb(118, 225, 252) ;    /*  !!  */
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
     line-height: calc(3vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
-    font-size: 0.5em;    /*  !!  */
+    font-size: 1em;    /*  !!  */
     font-weight: 500;
     z-index: 97;
+    font-family:cursive;
 }
 
 
@@ -181,9 +262,10 @@ html,body{
     text-align: center;
     line-height: calc(2vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
-    font-size: 0.3em;    /*  !!  */
+    font-size: 0.5em;    /*  !!  */
     font-weight: 500;
     z-index: 96;
+    font-family:cursive;
 }
 
 
@@ -198,13 +280,14 @@ html,body{
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
-    box-shadow: 0 0 6px rgb(118, 225, 252) ;    /*  !!  */
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
     line-height: calc(1.5vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
-    font-size: 0.2em;    /*  !!  */
+    font-size: 0.3em;    /*  !!  */
     font-weight: 500;
     z-index: 95;
+    font-family:cursive;
 }
 
 
@@ -219,65 +302,39 @@ html,body{
     border-bottom-left-radius: calc(60vh);
     border-bottom-right-radius: calc(60vh);
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
-    box-shadow: 0 0 3px rgb(118, 225, 252) ;    /*  !!  */
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
     line-height: calc(1vh);    /*  !!  */
     color: rgb(255, 245, 245, 0.5);
     font-size: 0.1em;    /*  !!  */
     font-weight: 500;
     z-index: 94;
+    font-family:cursive;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/********************************* #3 ********************************/
-#titlePart{
+/********************************************************** Nav area ********************************************************************/
+/* #titlePart{
     width: 25%;
     height: 40%;
     background-color: white;
-    /* float: left; */
     margin: 0%;
-    /* overflow: hidden; */
     z-index: 98;
-}
+} */
 
 
-#titleDetail{
-    width:50%;
+/* #titleDetail{
     background-color: rgb(80, 80, 80, 0.5);
     text-align: center;
-    /* float:right; */
     margin: 0% 0% 0% 0%;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-}
+} */
 
-#developerImg{
+/* #developerImg{
     border-radius: 50%;
     height: 60%;
     width:60%;
@@ -293,29 +350,26 @@ html,body{
 #job_basic{
     font-size: 1.2em;
     font-weight: 500;
-} 
+}  */
 
 
 
 
 /********************************* #5 ********************************/
-#basicPart{
+/* #basicPart{
     width: 25%;
     height: 40%;
     background-color: white;
-    /* float: left; */
     margin: 0;
     z-index: 96;
     font-size: 1em;
-    /* overflow: hidden; */
 
-}
+} */
 
-#basicDetail{
+/* #basicDetail{
     width: 100%;
     height: 100%;
     background-color: rgb(80, 80, 80, 0.5);
-    /* float: left; */
     margin: 0% 0% 0% 0%;
     padding: 1% 1% 1% 1%;
     border-top-right-radius: 10px;
@@ -323,7 +377,7 @@ html,body{
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     z-index: 96;
-}
+} */
 
 
 
@@ -397,11 +451,10 @@ html,body{
 
 
 /********************************* #11 ********************************/
-#workPart{
+/* #workPart{
     width: 50%;
     height: 20%;
     background-color: white;
-    /* float: left; */
     margin: 0;
 }
 
@@ -417,4 +470,4 @@ html,body{
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-}
+} */
