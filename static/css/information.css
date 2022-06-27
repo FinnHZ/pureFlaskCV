@@ -54,15 +54,57 @@ html,body{
 
 
 /********************************************************** Display Area ********************************************************************/
-
-/* title part */
-#titleDetail{
+/* basic part */
+#basicDetail{
     position: absolute;
-    width:12%;
-    /* height: 40%; */
+    width: 30%;
     background-color: rgb(80, 80, 80, 0.5);
-    text-align: center;
-    /* margin: 0% 0% 0% 0%; */
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color:aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    left: calc(10vw);
+    top: calc(5vh);
+}
+
+
+
+
+
+/* education */
+#educationShow{
+    position: absolute;
+    width: 50%;
+    background-color: rgb(80, 80, 80, 0.5);
+    font-size: 1.2em;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color:aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    top: calc(5vh);
+    left: calc(45vw);
+}
+
+
+#eduTable{
+    width: 100%;
+}
+
+
+
+/* work part */
+#workDetail{
+    position: absolute;
+    width: 40%;
+    /* height: 25%; */
+    font-size: 1.2em;
+    background-color: rgb(80, 80, 80, 0.5);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -70,7 +112,51 @@ html,body{
     color: aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
-    left: calc(10vw);
+    top: calc(30vh);
+    left: calc(45vw);
+}
+
+#workTabel{
+    width: 100%;
+}
+
+
+
+/* skills part */
+#skillsBasic{
+    position: absolute;
+    background-color: rgb(80, 80, 80, 0.5);
+    font-size: 1.2em;
+    width: 30%;
+    z-index: 92;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color:aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    top: calc(52vh);
+    left: calc(45vw);
+
+}
+
+
+
+/* title part */
+#titleDetail{
+    position: absolute;
+    width:12%;
+    background-color: rgb(80, 80, 80, 0.5);
+    text-align: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: aliceblue;
+    font-family:cursive;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+    left: calc(20vw);
     top: calc(55vh);
 }
 
@@ -90,44 +176,6 @@ html,body{
     font-size: 1.2em;
     font-weight: 500;
 } 
-
-/* work part */
-#workDetail{
-    position: absolute;
-    width: 50%;
-    /* height: 25%; */
-    font-size: 1.2em;
-    background-color: rgb(80, 80, 80, 0.5);
-    margin: 0% 0% 0% 0%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    color: aliceblue;
-    font-family:cursive;
-    padding: 0.5% 0.5% 0.5% 0.5%;
-    top: calc(5vh);
-    left: calc(45vw);
-}
-
-/* basic part */
-#basicDetail{
-    position: absolute;
-    width: 30%;
-    /* height: 100%; */
-    background-color: rgb(80, 80, 80, 0.5);
-    margin: 0% 0% 0% 0%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    color:aliceblue;
-    font-family:cursive;
-    padding: 0.5% 0.5% 0.5% 0.5%;
-    left: calc(10vw);
-    top: calc(5vh);
-}
-
 
 
 
@@ -312,162 +360,3 @@ html,body{
     font-family:cursive;
 }
 
-
-
-/********************************************************** Nav area ********************************************************************/
-/* #titlePart{
-    width: 25%;
-    height: 40%;
-    background-color: white;
-    margin: 0%;
-    z-index: 98;
-} */
-
-
-/* #titleDetail{
-    background-color: rgb(80, 80, 80, 0.5);
-    text-align: center;
-    margin: 0% 0% 0% 0%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-} */
-
-/* #developerImg{
-    border-radius: 50%;
-    height: 60%;
-    width:60%;
-    margin:10% 0 10% 0;
-}
-
-
-#position_basic{
-    font-size: 1.2em;
-    font-weight: 500;
-}
-
-#job_basic{
-    font-size: 1.2em;
-    font-weight: 500;
-}  */
-
-
-
-
-/********************************* #5 ********************************/
-/* #basicPart{
-    width: 25%;
-    height: 40%;
-    background-color: white;
-    margin: 0;
-    z-index: 96;
-    font-size: 1em;
-
-} */
-
-/* #basicDetail{
-    width: 100%;
-    height: 100%;
-    background-color: rgb(80, 80, 80, 0.5);
-    margin: 0% 0% 0% 0%;
-    padding: 1% 1% 1% 1%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    z-index: 96;
-} */
-
-
-
-
-/********************************* #7 ********************************/
-#eduPart{
-    width: 50%;
-    height: 25%;
-    background-color: white;
-    /* float: left; */
-    margin: 0;
-    /* overflow: hidden; */
-}
-
-#educationShow{
-    background-color: rgb(80, 80, 80, 0.5);
-    /* float: left; */
-    font-size: 1.2em;
-    width: 100%;
-    height: 100%;
-    margin: 0% 0% 0% 0%;
-    z-index: 94;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-
-}
-
-
-#edTable{
-    width: 100%;
-    height: 40%;
-    margin: 3% 0 3% 0;
-    background-color: rgb(80, 80, 80, 0.5);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-
-
-
-
-/********************************* #9 ********************************/
-#skillPart{
-    width: 50%;
-    height: 25%;
-    background-color: white;
-    /* float: right; */
-    margin: 0;
-
-}
-
-#skillsBasic{
-    background-color: rgb(80, 80, 80, 0.5);
-    /* float: right; */
-    font-size: 1.2em;
-    width: 100%;
-    height: 100%;
-    margin: 0% 0% 0% 0%;
-    z-index: 92;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-
-
-
-/********************************* #11 ********************************/
-/* #workPart{
-    width: 50%;
-    height: 20%;
-    background-color: white;
-    margin: 0;
-}
-
-
-#workDetail{
-    width: 100%;
-    height: 100%;
-    font-size: 1.2em;
-    background-color: rgb(80, 80, 80, 0.5);
-    margin: 0% 0% 0% 0%;
-    z-index: 90;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-} */

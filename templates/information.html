@@ -20,52 +20,6 @@
         
         <div id = "nightBackground">
 
-            <div id="titleDetail">
-                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
-                <hr class="seperate_title"/>
-                <span id="position_basic">{{job_basic[0]}} </span><br/>
-                <span id="job_basic">{{job_basic[1]}} </span>
-            </div>
-
-
-            <div id="workDetail">
-                <div id="workDisplay">
-                    <table id="workTabel">
-                        <tbody id="workBody">
-                            <tr>
-                                <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
-                            </tr>
-                            <tr>
-                                <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
-                            </tr>
-                            {% for item in workInfo[0]["workDescription"] %}
-                            <tr>
-                                <td colspan="2">{{item}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <nav aria-label="Page navigation example" id="workNav">
-                    <ul class="pagination">
-                        <li class="workOri">
-                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
-                        </li>
-
-                        {% for item in workInfo %}
-                        <li class="workPageItem">
-                            <a class="page-link" href="#">{{item["id"]}}</a>
-                        </li>
-                        {% endfor %}
-                        
-                        <li class="workOri">
-                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-
-
             <div id="basicDetail">
                 <h5>Basic Information</h5>
                 <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
@@ -91,131 +45,12 @@
             </div>
 
 
-        </div>
-
-
-        <div id="ballArea">
-            <div id = "titleBtn" name="1" class="ball">T</div>
-            <div id = "basicBtn" name="2" class="ball">B</div>
-            <div id = "eduBtn" name="3" class="ball">E</div>
-            <div id = "skillBtn" name="4" class="ball">S</div>
-            <div id = "workBtn" name="5" class="ball">W</div>
-            <div id = "allBtn" name="6" class="ball">A</div>
-            <div id = "nothingBtn" name="7" class="ball">N</div>
-            <div id = "earth" ></div>
-        </div>
-
-
-<!-- ****************************************************************************************************************** -->
-
-        <!-- <div id="titlePart">
-            <div id="titleDetail">
-                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
-                <hr class="seperate_title"/>
-                <span id="position_basic">{{job_basic[0]}} </span><br/>
-                <span id="job_basic">{{job_basic[1]}} </span>
-            </div>
-        </div>
-
-
-        <div id="workPart">
-            <div id="workDetail">
-                <div id="workDisplay">
-                    <table id="workTabel">
-                        <tbody id="workBody">
-                            <tr>
-                                <th>{{workInfo[0]["workCompany"]}}</th><th>{{workInfo[0]["workDate"]}}</th>
-                            </tr>
-                            <tr>
-                                <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
-                            </tr>
-                            {% for item in workInfo[0]["workDescription"] %}
-                            <tr>
-                                <td colspan="2">{{item}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <nav aria-label="Page navigation example" id="workNav">
-                    <ul class="pagination">
-                        <li class="workOri">
-                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
-                        </li>
-
-                        {% for item in workInfo %}
-                        <li class="workPageItem">
-                            <a class="page-link" href="#">{{item["id"]}}</a>
-                        </li>
-                        {% endfor %}
-                        
-                        <li class="workOri">
-                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-
-        
-        <div id = "skillPart">
-            <div id="skillsBasic">
-                <table id="skillsTable">
-                    <tbody>
-                        {% for item_1 in skillsInfo %}
-                        <tr>
-                            <th>{{item_1[0]}}</th>
-                            <td>
-                            {% for item_2 in item_1[1] %}
-                            {{item_2}}.
-                            {% endfor %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-
-        <div id = "basicPart">
-            <div id="basicDetail">
-                <h5>Basic Information</h5>
-                <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
-                <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>               
-                <div id="textPart">
-                    <table >
-                        {% for item_t in text_basic %}
-                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
-                        {% endfor%}
-                    </table>
-                </div>
-                
-                <hr class = "seperate_title"/>
-                
-                <div id="summaryPart">
-                    <h5>Summary</h5>
-                    <ul>
-                        {% for item_s in summary_basic %}
-                        <li>{{item_s[1]}}</li>
-                        {% endfor%}
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-
-
-        <div id="eduPart">
             <div id="educationShow">
                 <table id="eduTable">
                     <tbody id="eduBody">
                         <tr>
-                            <th><h3>{{educationDicList[0]["uni"]}}</h3></th>
-                            <th style="text-align: right;"><h3>{{educationDicList[0]["date"]}}</h3></th>
+                            <th>{{educationDicList[0]["uni"]}}</th>
+                            <th style="text-align: right;">{{educationDicList[0]["date"]}}</th>
                         </tr>
                         <tr>
                             <td colSpan="2">{{educationDicList[0]["degree"]}}</td>
@@ -245,7 +80,86 @@
                 </nav>
             </div>
 
-        </div> -->
+
+            <div id="workDetail">
+                <div id="workDisplay">
+                    <table id="workTabel">
+                        <tbody id="workBody">
+                            <tr>
+                                <th>{{workInfo[0]["workCompany"]}}</th><th style="text-align: right;">{{workInfo[0]["workDate"]}}</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
+                            </tr>
+                            {% for item in workInfo[0]["workDescription"] %}
+                            <tr>
+                                <td colspan="2">{{item}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <nav aria-label="Page navigation example" id="workNav">
+                    <ul class="pagination">
+                        <li class="workOri">
+                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                        </li>
+
+                        {% for item in workInfo %}
+                        <li class="workPageItem">
+                            <a class="page-link" href="#">{{item["id"]}}</a>
+                        </li>
+                        {% endfor %}
+                        
+                        <li class="workOri">
+                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+
+            <div id="skillsBasic">
+                <table id="skillsTable">
+                    <tbody>
+                        {% for item_1 in skillsInfo %}
+                        <tr>
+                            <th>{{item_1[0]}}</th>
+                            <td>
+                            {% for item_2 in item_1[1] %}
+                            {{item_2}}.
+                            {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div id="titleDetail">
+                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
+                <hr class="seperate_title"/>
+                <span id="position_basic">{{job_basic[0]}} </span><br/>
+                <span id="job_basic">{{job_basic[1]}} </span>
+            </div>
+
+        </div>
+
+
+        <div id="ballArea">
+            <div id = "titleBtn" name="1" class="ball">T</div>
+            <div id = "basicBtn" name="2" class="ball">B</div>
+            <div id = "eduBtn" name="3" class="ball">E</div>
+            <div id = "skillBtn" name="4" class="ball">S</div>
+            <div id = "workBtn" name="5" class="ball">W</div>
+            <div id = "allBtn" name="6" class="ball">A</div>
+            <div id = "nothingBtn" name="7" class="ball">N</div>
+            <div id = "earth" ></div>
+        </div>
+
 
 
     </div>
@@ -263,59 +177,59 @@
             $.deployStars(200, winWidth, winHeight)
 
   
-            // // #7 educ
-            // var eduNavs = $('#eduNav a');
-            // var eduCurrentFlag = 1;
-            // var totalEdus = parseInt($('.eduPageItem').children().eq(-1).html());
+            // education part
+            var eduNavs = $('#eduNav a');
+            var eduCurrentFlag = 1;
+            var totalEdus = parseInt($('.eduPageItem').children().eq(-1).html());
+
+            // edu change page
+            eduNavs.click(function(){
+                let pageText_edu = $(this).html(); 
+
+                if(pageText_edu == "«"){
+                    if(eduCurrentFlag > 1){
+                        eduCurrentFlag -= 1
+                        $.changeEduPage(urlPath, eduCurrentFlag)
+                    }
+                }else if(pageText_edu == "»"){
+                    if(eduCurrentFlag < totalEdus){
+                        eduCurrentFlag += 1
+                        $.changeEduPage(urlPath, eduCurrentFlag)
+                    }
+                }else{
+                    eduCurrentFlag = parseInt(pageText_edu)
+                    $.changeEduPage(urlPath, eduCurrentFlag)
+                }
+            });
 
 
-            // // #11 workpart
-            // var workNavs = $('#workNav a');
-            // var workCurrentFlag = 1;
-            // var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
 
 
+            // workpart
+            var workNavs = $('#workNav a');
+            var workCurrentFlag = 1;
+            var totalWorks = parseInt($('.workPageItem').children().eq(-1).html());
 
+            // work change page
+            workNavs.click(function(){
+                let pageText_work = $(this).html(); 
 
-            // eduNavs.click(function(){
-            //     let pageText_edu = $(this).html(); 
+                if(pageText_work == "«"){
+                    if(workCurrentFlag > 1){
+                        workCurrentFlag -= 1
+                        $.changeWorkPage(urlPath, workCurrentFlag)
+                    }
+                }else if(pageText_work == "»"){
+                    if(workCurrentFlag < totalWorks){
+                        workCurrentFlag += 1
+                        $.changeWorkPage(urlPath, workCurrentFlag)
+                    }
+                }else{
+                    workCurrentFlag = parseInt(pageText_work)
+                    $.changeWorkPage(urlPath, workCurrentFlag)
+                }
+            });
 
-            //     if(pageText_edu == "«"){
-            //         if(eduCurrentFlag > 1){
-            //             eduCurrentFlag -= 1
-            //             $.changeEduPage(urlPath, eduCurrentFlag)
-            //         }
-            //     }else if(pageText_edu == "»"){
-            //         if(eduCurrentFlag < totalEdus){
-            //             eduCurrentFlag += 1
-            //             $.changeEduPage(urlPath, eduCurrentFlag)
-            //         }
-            //     }else{
-            //         eduCurrentFlag = parseInt(pageText_edu)
-            //         $.changeEduPage(urlPath, eduCurrentFlag)
-            //     }
-            // });
-
-
-            // // 11: work part change page
-            // workNavs.click(function(){
-            //     let pageText_work = $(this).html(); 
-
-            //     if(pageText_work == "«"){
-            //         if(workCurrentFlag > 1){
-            //             workCurrentFlag -= 1
-            //             $.changeWorkPage(urlPath, workCurrentFlag)
-            //         }
-            //     }else if(pageText_work == "»"){
-            //         if(workCurrentFlag < totalWorks){
-            //             workCurrentFlag += 1
-            //             $.changeWorkPage(urlPath, workCurrentFlag)
-            //         }
-            //     }else{
-            //         workCurrentFlag = parseInt(pageText_work)
-            //         $.changeWorkPage(urlPath, workCurrentFlag)
-            //     }
-            // });
 
 //ball area ***********************************************************************
             var ballArea = $('#ballArea');
@@ -376,9 +290,8 @@
             ];
 
             ballArea.click(function(e){
-                let clickTarget = e.target.getAttribute("name")
+                let clickTarget = e.target.getAttribute("id");
                 if(isBall && clickTarget){
-                    console.log("1")
                     isBall = false;
                     const targetEle_name = parseInt(e.target.getAttribute("name"));
                     $.runBall(ballPositionDict, runTime);
