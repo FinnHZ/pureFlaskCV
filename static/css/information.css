@@ -68,6 +68,7 @@ html,body{
     padding: 0.5% 0.5% 0.5% 0.5%;
     left: calc(10vw);
     top: calc(5vh);
+    opacity: 0;
 }
 
 
@@ -89,6 +90,7 @@ html,body{
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(5vh);
     left: calc(45vw);
+    opacity: 0;
 }
 
 
@@ -114,6 +116,7 @@ html,body{
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(30vh);
     left: calc(45vw);
+    opacity: 0;
 }
 
 #workTabel{
@@ -138,7 +141,7 @@ html,body{
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(52vh);
     left: calc(45vw);
-
+    opacity: 0;
 }
 
 
@@ -158,6 +161,7 @@ html,body{
     padding: 0.5% 0.5% 0.5% 0.5%;
     left: calc(20vw);
     top: calc(55vh);
+    opacity: 0;
 }
 
 #developerImg{
@@ -193,7 +197,6 @@ html,body{
     position: absolute;
     height: calc(100vh);
     width: calc(100vh);
-    z-index: 100;
     top: calc(60vh);
     left: calc(100vw - 40vh);
     border-top-left-radius: calc(60vh);
@@ -206,6 +209,18 @@ html,body{
     font-family:cursive;
 }
 
+#currentName{
+    position: absolute;
+    height: calc(10vh);
+    width: calc(30vh);
+    top: calc(90vh);
+    left: calc(100vw - 30vh);
+    z-index: 101;
+    font-family:cursive;
+    color: aliceblue;
+    font-size: 2em;
+    opacity: 0;
+}
 
 #titleBtn{
     position: absolute;

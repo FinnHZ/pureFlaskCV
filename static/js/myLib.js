@@ -111,10 +111,11 @@
 
         },
 
-        runBall: function(ballPositionDict, time){
+        runBall: function(ballPositionDict, time, eId, eName, idShowDict){
             const targetEle0_id = $('.ball').eq(0).attr("id");
             const targetEle0_html = $('.ball').eq(0).html();
             const totalNum_0 = $('.ball').length;
+            const animateTime = 2000;
             for(i=0; i<totalNum_0; i++){
                 let flag = i;
                 if(i == 0 ){
@@ -127,6 +128,37 @@
                         newEle = '<div id="'+ targetEle0_id +'" name="7" class="ball">' + targetEle0_html +'</div>';
                         $(newEle).appendTo('#ballArea');
                         $('#'+ targetEle0_id.toString()).css(ballPositionDict[7]);
+                        if(eName == 1){
+                            const btnList = Object.keys(idShowDict);
+                            if(eId == "allBtn"){
+                                for(let j=0; j<btnList.length; j++){
+                                    $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"1"}, animateTime);
+                                };
+                                $('#currentName').animate({"opacity":"0"}, animateTime/2, function(){
+                                    $('#currentName').html("All");
+                                    $('#currentName').animate({"opacity":"1"}, animateTime/2);
+                                });
+                            }else if(eId == "nothingBtn"){
+                                for(let j=0; j<btnList.length; j++){
+                                    $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"0"}, animateTime);
+                                };
+                                $('#currentName').animate({"opacity":"0"}, animateTime/2, function(){
+                                    $('#currentName').html("");
+                                });                                
+                            }else{
+                                for(let j=0; j<btnList.length; j++){
+                                    if(btnList[j] == eId){
+                                        $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"1"}, animateTime);
+                                        $('#currentName').animate({"opacity":"0"}, animateTime/2, function(){
+                                            $('#currentName').html(idShowDict[btnList[j]][1]);
+                                            $('#currentName').animate({"opacity":"1"}, animateTime/2);
+                                        });        
+                                    }else{
+                                        $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"0"}, animateTime)
+                                    }
+                                };
+                            }
+                        }
                     })
                 }else{
                     $('.ball').eq(i).animate(ballPositionDict[i], time, function(){
