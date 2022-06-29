@@ -23,9 +23,10 @@ html,body{
     background: linear-gradient(to bottom, rgba(0, 0, 0), rgba(11, 49, 61), rgb(17, 68, 83));
     z-index: 0;
     overflow: hidden;
+    border: none;
 }
 
-
+/* star */
 @keyframes flashing {
     from {
         opacity: 1.0;
@@ -53,22 +54,90 @@ html,body{
 }
 
 
+/* pointer */
+@keyframes circling {
+    from {
+        opacity: 1.0;
+        width: calc(0.1vh);
+        height: calc(0.1vh);
+    }
+    20% {
+        opacity: 0.8;
+        width: calc(0.2vh);
+        height: calc(0.2vh);
+    }
+    40% {
+        opacity: 0.6;
+        width: calc(0.4vh);
+        height: calc(0.4vh);
+    }
+    60% {
+        opacity: 0.4;
+        width: calc(0.8vh);
+        height: calc(0.8vh);
+    }
+    80% {
+        opacity: 0.2;
+        width: calc(1.6vh);
+        height: calc(1.6vh);
+    }
+    to {
+        opacity: 0;
+        width: calc(0vh);
+        height: calc(0vh);
+    }
+    
+}
+
+@-webkit-keyframes circling {
+    from {
+        opacity: 1.0;
+        width: calc(0.1vh);
+        height: calc(0.1vh);
+    }
+    20% {
+        opacity: 0.8;
+        width: calc(0.2vh);
+        height: calc(0.2vh);
+    }
+    40% {
+        opacity: 0.6;
+        width: calc(0.4vh);
+        height: calc(0.4vh);
+    }
+    60% {
+        opacity: 0.4;
+        width: calc(0.8vh);
+        height: calc(0.8vh);
+    }
+    80% {
+        opacity: 0.2;
+        width: calc(1.6vh);
+        height: calc(1.6vh);
+    }
+    to {
+        opacity: 0;
+        width: calc(0vh);
+        height: calc(0vh);
+    }
+    
+}
+
+
 /********************************************************** Display Area ********************************************************************/
 /* basic part */
 #basicDetail{
     position: absolute;
     width: 30%;
     background-color: rgb(80, 80, 80, 0.5);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     color:aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
     left: calc(10vw);
     top: calc(5vh);
     opacity: 0;
+    border: none;
 }
 
 
@@ -81,21 +150,20 @@ html,body{
     width: 50%;
     background-color: rgb(80, 80, 80, 0.5);
     font-size: 1.2em;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     color:aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(5vh);
     left: calc(45vw);
-    opacity: 0;
+    /* opacity: 0; */
+    border: none;
 }
 
 
 #eduTable{
     width: 100%;
+    border: none;
 }
 
 
@@ -107,20 +175,19 @@ html,body{
     /* height: 25%; */
     font-size: 1.2em;
     background-color: rgb(80, 80, 80, 0.5);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     color: aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(30vh);
     left: calc(45vw);
     opacity: 0;
+    border: none;
 }
 
 #workTabel{
     width: 100%;
+    border: none;
 }
 
 
@@ -132,16 +199,14 @@ html,body{
     font-size: 1.2em;
     width: 30%;
     z-index: 92;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     color:aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(52vh);
     left: calc(45vw);
     opacity: 0;
+    border: none;
 }
 
 
@@ -152,16 +217,14 @@ html,body{
     width:12%;
     background-color: rgb(80, 80, 80, 0.5);
     text-align: center;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     color: aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
     left: calc(20vw);
     top: calc(55vh);
     opacity: 0;
+    border: none;
 }
 
 #developerImg{
@@ -169,21 +232,31 @@ html,body{
     height: 60%;
     width:60%;
     margin:10% 0 10% 0;
+    border: none;
 }
 
 #position_basic{
     font-size: 1.2em;
     font-weight: 500;
+    border: none;
 }
 
 #job_basic{
     font-size: 1.2em;
     font-weight: 500;
+    border: none;
 } 
 
 
 
 /********************************************************** Nav area ********************************************************************/
+.ball{
+    cursor:pointer;
+    border: none;
+}
+
+
+
 #ballArea{
     position: absolute;
     height: 100%;
@@ -199,10 +272,7 @@ html,body{
     width: calc(100vh);
     top: calc(60vh);
     left: calc(100vw - 40vh);
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 30px rgb(118, 225, 252) ;
     z-index: 101;
@@ -228,10 +298,7 @@ html,body{
     width: calc(20vh);    /*  !!  */
     top: calc(90vh);    /*  !!  */
     left: calc(100vw - 95vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -250,10 +317,7 @@ html,body{
     width: calc(10vh);    /*  !!  */
     top: calc(80vh);    /*  !!  */
     left: calc(100vw - 75vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -272,10 +336,7 @@ html,body{
     width: calc(6vh);    /*  !!  */
     top: calc(75vh);    /*  !!  */
     left: calc(100vw - 60vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -294,10 +355,7 @@ html,body{
     width: calc(3vh);    /*  !!  */
     top: calc(73vh);    /*  !!  */
     left: calc(100vw - 47vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -316,10 +374,7 @@ html,body{
     width: calc(2vh);    /*  !!  */
     top: calc(71.2vh);    /*  !!  */
     left: calc(100vw - 35vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -338,10 +393,7 @@ html,body{
     width: calc(1.5vh);    /*  !!  */
     top: calc(70vh);    /*  !!  */
     left: calc(100vw - 25vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -360,10 +412,7 @@ html,body{
     width: calc(1vh);    /*  !!  */
     top: calc(69.5vh);    /*  !!  */
     left: calc(100vw - 15vh);    /*  !!  */
-    border-top-left-radius: calc(60vh);
-    border-top-right-radius: calc(60vh);
-    border-bottom-left-radius: calc(60vh);
-    border-bottom-right-radius: calc(60vh);
+    border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;    /*  !!  */
     text-align: center;
@@ -375,3 +424,41 @@ html,body{
     font-family:cursive;
 }
 
+
+
+/********************************************************** Return Button ********************************************************************/
+#returnBtn{
+    position: absolute;
+    height: calc(2.5vh);    
+    width: calc(2.5vh);    
+    top: calc(2.5vh);  
+    left: calc(97.5vw);
+    border-radius: 50%;
+    background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgb(118, 225, 252) ;
+    z-index: 1;
+    animation: spin 20s infinite linear;
+    -webkit-animation: spin 20s infinite linear;
+    transform-origin: center;
+    /* animation-play-state: paused;
+    animation-delay: -1s; */
+    border: none;
+}
+
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}

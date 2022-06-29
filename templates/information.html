@@ -158,10 +158,14 @@
             <div id = "allBtn" name="6" class="ball">A</div>
             <div id = "nothingBtn" name="7" class="ball">N</div>
             <div id = "earth" ></div>
-            <span id="currentName"></span>  <!-- don't put it into earth div because that will cause the currentName inherit the parent's css(especially width and height) -->
+            <!-- don't put it into earth div because that will cause the currentName inherit the parent's css(especially width and height) -->
+            <span id="currentName"></span>  
         </div>
 
 
+        <a href="/home" id="returnLink">
+            <img id="returnBtn" src="/static/img/blackhole2.png"/>
+        </a>
 
     </div>
 
@@ -174,9 +178,29 @@
             var winWidth = $(window).width();
             var winHeight = $(window).height();
             var isBall = true;
-            var btnShowMatchDict = {"titleBtn":["titleDetail","Title"], "basicBtn":["basicDetail","Basic Information"], "eduBtn":["educationShow","Education"], "skillBtn":["skillsBasic","Skills"], "workBtn":["workDetail","Experience"]}
+            var btnShowMatchDict = {"titleBtn":["titleDetail","Title"], "basicBtn":["basicDetail","Basic Information"], "eduBtn":["educationShow","Education"], "skillBtn":["skillsBasic","Skills"], "workBtn":["workDetail","Experience"]};
+            var returnBtn = $('#returnBtn');
+
+            // ??????????????????????????????????
+            // var titleBtn = $('#titleBtn')
+
+
+            // titleBtn.mouseover(function(e){
+            //     $.mouseEnterAction(e.pageX, e.pageY)
+            // })
+
+
 
             $.deployStars(200, winWidth, winHeight)
+
+            // returnBtn
+            returnBtn.mouseenter(function(){
+                returnBtn.css({"animation": "spin 1s infinite linear", "-webkit-animation": "spin 1s infinite linear"})
+            });
+
+            returnBtn.mouseleave(function(){
+                returnBtn.css({"animation": "spin 20s infinite linear", "-webkit-animation": "spin 20s infinite linear"})
+            });
 
   
             // education part
@@ -317,8 +341,6 @@
                         }, runTime+runPause)
                     }                
                 };
-
-
             })
 
 
