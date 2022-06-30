@@ -18,134 +18,133 @@
     
     <div id="bigInfo">
         
-        <div id = "nightBackground">
+        <div id = "nightBackground"></div>
 
-            <div id="basicDetail">
-                <h5>Basic Information</h5>
-                <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
-                <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>               
-                <div id="textPart">
-                    <table >
-                        {% for item_t in text_basic %}
-                        <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
-                        {% endfor%}
-                    </table>
-                </div>
-                
-                <hr class = "seperate_title"/>
-                
-                <div id="summaryPart">
-                    <h5>Summary</h5>
-                    <ul>
-                        {% for item_s in summary_basic %}
-                        <li>{{item_s[1]}}</li>
-                        {% endfor%}
-                    </ul>
-                </div>
-            </div>
-
-
-            <div id="educationShow">
-                <table id="eduTable">
-                    <tbody id="eduBody">
-                        <tr>
-                            <th>{{educationDicList[0]["uni"]}}</th>
-                            <th style="text-align: right;">{{educationDicList[0]["date"]}}</th>
-                        </tr>
-                        <tr>
-                            <td colSpan="2">{{educationDicList[0]["degree"]}}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan="2">{{educationDicList[0]["major"]}}</td>
-                        </tr>
-                    </tbody>
+        
+        <div id="basicDetail">
+            <h5>Basic Information</h5>
+            <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
+            <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>               
+            <div id="textPart">
+                <table >
+                    {% for item_t in text_basic %}
+                    <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
+                    {% endfor%}
                 </table>
-                
-                <nav aria-label="Page navigation example" id="eduNav">
-                    <ul class="pagination">
-                        <li class="eduOri">
-                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
-                        </li>
-
-                        {% for item in educationDicList %}
-                        <li class="eduPageItem">
-                            <a class="page-link" href="#">{{item["id"]}}</a>
-                        </li>
-                        {% endfor %}
-                        
-                        <li class="eduOri">
-                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
-
-
-            <div id="workDetail">
-                <div id="workDisplay">
-                    <table id="workTabel">
-                        <tbody id="workBody">
-                            <tr>
-                                <th>{{workInfo[0]["workCompany"]}}</th><th style="text-align: right;">{{workInfo[0]["workDate"]}}</th>
-                            </tr>
-                            <tr>
-                                <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
-                            </tr>
-                            {% for item in workInfo[0]["workDescription"] %}
-                            <tr>
-                                <td colspan="2">{{item}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <nav aria-label="Page navigation example" id="workNav">
-                    <ul class="pagination">
-                        <li class="workOri">
-                            <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
-                        </li>
-
-                        {% for item in workInfo %}
-                        <li class="workPageItem">
-                            <a class="page-link" href="#">{{item["id"]}}</a>
-                        </li>
-                        {% endfor %}
-                        
-                        <li class="workOri">
-                            <a class="page-link" href="#" aria-label="Next">&raquo;</a>
-                        </li>
-                    </ul>
-                </nav>
+            
+            <hr class = "seperate_title"/>
+            
+            <div id="summaryPart">
+                <h5>Summary</h5>
+                <ul>
+                    {% for item_s in summary_basic %}
+                    <li>{{item_s[1]}}</li>
+                    {% endfor%}
+                </ul>
             </div>
+        </div>
 
 
+        <div id="educationShow">
+            <table id="eduTable">
+                <tbody id="eduBody">
+                    <tr>
+                        <th>{{educationDicList[0]["uni"]}}</th>
+                        <th style="text-align: right;">{{educationDicList[0]["date"]}}</th>
+                    </tr>
+                    <tr>
+                        <td colSpan="2">{{educationDicList[0]["degree"]}}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan="2">{{educationDicList[0]["major"]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <nav aria-label="Page navigation example" id="eduNav">
+                <ul class="pagination">
+                    <li class="eduOri">
+                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                    </li>
 
-            <div id="skillsBasic">
-                <table id="skillsTable">
-                    <tbody>
-                        {% for item_1 in skillsInfo %}
+                    {% for item in educationDicList %}
+                    <li class="eduPageItem">
+                        <a class="page-link" href="#">{{item["id"]}}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    <li class="eduOri">
+                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div id="workDetail">
+            <div id="workDisplay">
+                <table id="workTabel">
+                    <tbody id="workBody">
                         <tr>
-                            <th>{{item_1[0]}}</th>
-                            <td>
-                            {% for item_2 in item_1[1] %}
-                            {{item_2}}.
-                            {% endfor %}
-                            </td>
+                            <th>{{workInfo[0]["workCompany"]}}</th><th style="text-align: right;">{{workInfo[0]["workDate"]}}</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
+                        </tr>
+                        {% for item in workInfo[0]["workDescription"] %}
+                        <tr>
+                            <td colspan="2">{{item}}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
+            <nav aria-label="Page navigation example" id="workNav">
+                <ul class="pagination">
+                    <li class="workOri">
+                        <a class="page-link" href="#" aria-label="Previous">&laquo;</a>
+                    </li>
+
+                    {% for item in workInfo %}
+                    <li class="workPageItem">
+                        <a class="page-link" href="#">{{item["id"]}}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    <li class="workOri">
+                        <a class="page-link" href="#" aria-label="Next">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
 
 
-            <div id="titleDetail">
-                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
-                <hr class="seperate_title"/>
-                <span id="position_basic">{{job_basic[0]}} </span><br/>
-                <span id="job_basic">{{job_basic[1]}} </span>
-            </div>
+        <div id="skillsBasic">
+            <table id="skillsTable">
+                <tbody>
+                    {% for item_1 in skillsInfo %}
+                    <tr>
+                        <th>{{item_1[0]}}</th>
+                        <td>
+                        {% for item_2 in item_1[1] %}
+                        {{item_2}}.
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
+
+
+        <div id="titleDetail">
+            <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
+            <hr class="seperate_title"/>
+            <span id="position_basic">{{job_basic[0]}} </span><br/>
+            <span id="job_basic">{{job_basic[1]}} </span>
         </div>
 
 
@@ -159,12 +158,12 @@
             <div id = "nothingBtn" name="7" class="ball">N</div>
             <div id = "earth" ></div>
             <!-- don't put it into earth div because that will cause the currentName inherit the parent's css(especially width and height) -->
-            <span id="currentName"></span>  
+            <span id = "currentName"></span>  
         </div>
 
 
-        <a href="/home" id="returnLink">
-            <img id="returnBtn" src="/static/img/blackhole2.png"/>
+        <a href = "/home" id = "returnLink">
+            <img id = "returnBtn" src = "/static/img/blackhole2.png"/>
         </a>
 
     </div>
@@ -317,7 +316,7 @@
 
             ballArea.click(function(e){
                 const clickTarget = e.target.getAttribute("id");
-                if(isBall && clickTarget){
+                if(isBall && clickTarget != "ballArea" && clickTarget != "currentName" && clickTarget != "earth"){
                     isBall = false;  // to prevent double click 
                     const targetEle_name = parseInt(e.target.getAttribute("name"));
                     $.runBall(ballPositionDict, runTime, clickTarget, targetEle_name, btnShowMatchDict);

@@ -132,6 +132,7 @@
                             const btnList = Object.keys(idShowDict);
                             if(eId == "allBtn"){
                                 for(let j=0; j<btnList.length; j++){
+                                    $('#' + idShowDict[btnList[j]][0]).css({"z-index":"2"});
                                     $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"1"}, animateTime);
                                 };
                                 $('#currentName').animate({"opacity":"0"}, animateTime/2, function(){
@@ -141,6 +142,7 @@
                             }else if(eId == "nothingBtn"){
                                 for(let j=0; j<btnList.length; j++){
                                     $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"0"}, animateTime);
+                                    $('#' + idShowDict[btnList[j]][0]).css({"z-index":"0"});
                                 };
                                 $('#currentName').animate({"opacity":"0"}, animateTime/2, function(){
                                     $('#currentName').html("");
@@ -148,13 +150,15 @@
                             }else{
                                 for(let j=0; j<btnList.length; j++){
                                     if(btnList[j] == eId){
+                                        $('#' + idShowDict[btnList[j]][0]).css({"z-index":"2"});
                                         $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"1"}, animateTime);
                                         $('#currentName').animate({"opacity":"0"}, animateTime/2, function(){
                                             $('#currentName').html(idShowDict[btnList[j]][1]);
                                             $('#currentName').animate({"opacity":"1"}, animateTime/2);
                                         });        
                                     }else{
-                                        $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"0"}, animateTime)
+                                        $('#' + idShowDict[btnList[j]][0]).animate({"opacity":"0"}, animateTime);
+                                        $('#' + idShowDict[btnList[j]][0]).css({"z-index":"0"});
                                     }
                                 };
                             }

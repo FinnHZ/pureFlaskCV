@@ -138,6 +138,7 @@ html,body{
     top: calc(5vh);
     opacity: 0;
     border: none;
+    z-index: 0;
 }
 
 
@@ -156,8 +157,9 @@ html,body{
     padding: 0.5% 0.5% 0.5% 0.5%;
     top: calc(5vh);
     left: calc(45vw);
-    /* opacity: 0; */
+    opacity: 0;
     border: none;
+    z-index: 0;
 }
 
 
@@ -183,6 +185,7 @@ html,body{
     left: calc(45vw);
     opacity: 0;
     border: none;
+    z-index: 0;
 }
 
 #workTabel{
@@ -207,6 +210,7 @@ html,body{
     left: calc(45vw);
     opacity: 0;
     border: none;
+    z-index: 0;
 }
 
 
@@ -225,6 +229,7 @@ html,body{
     top: calc(55vh);
     opacity: 0;
     border: none;
+    z-index: 0;
 }
 
 #developerImg{
@@ -436,7 +441,7 @@ html,body{
     border-radius: 50%;
     background: radial-gradient(circle at center,  rgba(195, 213, 218), rgb(19, 48, 56), rgb(0, 0, 0));
     box-shadow: 0 0 10px rgb(118, 225, 252) ;
-    z-index: 1;
+    z-index: 2;
     animation: spin 20s infinite linear;
     -webkit-animation: spin 20s infinite linear;
     transform-origin: center;
