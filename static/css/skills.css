@@ -1,22 +1,109 @@
 html,body{
-    height:100%;
+    height: 100%;
     width: 100%;
     margin: 0;
 }
 
 #bigSkills{
     height: 100%;
-    width:100%;
+    width: 100%;
 }
 
+/* skill basic information */
 #skillsInfo{
+    position: absolute;
+    padding: 0;
+    width: calc(50vw);
+    height: calc(50vh);
+    background-color: red;
+}
+
+/* skill collection */
+#skillsCollection{
+    position: absolute;
+    padding: 0;
+    width: calc(50vw);
+    height: calc(50vh);
+    background-color: blue;
+    left:calc(50vw);
+}
+
+#colTable{
+    position: absolute;
+    text-align: center;
+    width: calc(50vw);
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+#colTr{
+    position: absolute;
+    box-sizing: border-box;
+    table-layout: fixed;
+    display: table;
+    width: calc(48vw);  
+    height: calc(2vh);  
+}
+
+#colTBody{
+    position: absolute;
+    display: block;
+    width: calc(50vw); /* calc(100%+8px)    这里的8px是滚动条的宽度*/
+    height: calc(48vh);   /* vh 等于 1% 的 视窗高度， vw 等于 1% 的 视窗宽度， 注意这里的运算符前后都必须要有空格！！！*/
+    top:calc(2vh);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    text-align: center;
+    scrollbar-width: calc(2vw);    
+}
+
+
+
+
+
+/* skill circle distribution */
+#skillsDistirbution{
+    position: absolute;
+    padding: 0;
+    width: calc(50vw);
+    height: calc(50vh);
+    background-color: green;
+    top:calc(50vh);
+}
+
+
+/* skill bar detail distribution */
+#skillsDetail{
+    position: absolute;
+    padding: 0;
+    width: calc(50vw);
+    height: calc(50vh);
+    background-color: yellow;
+    left:calc(50vw);
+    top:calc(50vh);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #skillsInfo{
     padding: 0;
     margin: 0;
     width: 100%;
     height: 50%;
     background-color: red;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
+}
+
+#skillsCollection{
+    
 }
 
 #skillsDistirbution{
@@ -25,7 +112,6 @@ html,body{
     width: 50%;
     height: 50%;
     background-color: green;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
 }
 
@@ -35,6 +121,5 @@ html,body{
     width: 50%;
     height: 50%;
     background-color: yellow;
-    /* box-shadow: 2px 0 5px 5px #ddd; */
     float:left;
-}
+} */
