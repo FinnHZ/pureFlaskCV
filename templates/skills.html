@@ -60,26 +60,26 @@
                 </ul>
             </nav>
         </div>
-<!-- ????????????????????????????????????????????????????????? how to solve the head can't match the body problem-->
+
         <div id="skillsCollection">
-            <table id="colTable">
+            <table class="colTable">
                 <thead>
-                    <tr id="colTr"><th style="width:calc(5vw); text-align: center;">No.</th><th style="width:calc(24vw); text-align: center;">Description</th><th style="width:calc(14vw)">Location</th><th style="width:calc(4vw)">Type</th></tr>
+                    <tr class="colTr"><th>No.</th><th>Description</th><th>Location</th><th>Type</th></tr>
                 </thead>
-                <tbody id="colTBody">
+                <tbody class="colTBody">
                     {% for item in colKnowledges %}
-                        <tr><td style="position:relative; width:calc(5vw); text-align: center; overflow: hidden;">{{item[0]}}</td><td style="position:relative; width:calc(25vw); text-align: center; overflow: hidden">{{item[1]}}</td><td style="position:relative; width:calc(15vw); text-align: center; overflow: hidden">{{item[2]}}</td><td style="position:relative; width:calc(5vw); text-align: center; overflow-x: hidden">{{item[3]}}</td></tr>
+                        <tr class="colTr"><td>{{item[0]}}</td><td style="overflow-x: scroll;">{{item[1]}}</td><td style="overflow-x: scroll;">{{item[2]}}</td><td style="overflow-x: scroll;">{{item[3]}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-<!-- ????????????????????????????????????????????????????????? --> 
+
         <div id="skillsDistirbution">
-            <div id="distribution" style="width:calc(48vw); height: calc(48vh);"></div>
+            <div id="distribution" style="width:calc(48vw); height: calc(45vh);"></div>
         </div>
 
         <div id="skillsDetail">
-            <div id="detailChart" style="width:calc(48vw); height: calc(48vh);"></div>
+            <div id="detailChart" style="width:calc(48vw); height: calc(45vh);"></div>
             <script type="text/javascript">            
                 //！！！！ 下面两句是将flask端传过来的JSON数据转化为js可以使用的数据类型的两种不同方式，为了方便复习，这里针对同一个效果运用了两种不同的方式！！！！！！！！
                 const detailChartInfo = eval('(' + '{{skillsDetail|safe}}' + ')');   //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后eval（'(' + JSON字符串 + ')'） 可以将JSON字符串转回它原本的形式（object、array....）
@@ -89,6 +89,8 @@
                 distributionDetailMap(detailChartInfo["Language"]);
             </script>
         </div>
+
+        <button id="returnBtn_skill">Return To Home Page</button>
 
     </div>
 
