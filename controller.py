@@ -264,7 +264,7 @@ def skills():
                 { "value": 4, "name": 'Tools' }
             ]
 
-    colKnowledges = [["1", "knowledge brief description", "type", "knowledge location"], ["2", "content1", "content2", "content3ssssssssssssssssssssssssssssssss"],
+    colKnowledges = [["1", "know ledg exx xxxx xxx xxx xxxx xxxxx xxxxx xxxxx xxxxx xxxx xxxxx xxxxxx xxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxx", "type", "knowledge location"], ["2", "content1", "content2", "content3ssssssssssssssssssssssssssssssss"],
     ["q1", "knowledge brief description", "type", "knowledge location"], ["q2", "content1", "content2", "content3"],
     ["w1", "knowledge brief description", "type", "knowledge location"], ["w2", "content1", "content2", "content3"],
     ["e1", "knowledge brief description", "type", "knowledge location"], ["e2", "content1", "content2", "content3"],

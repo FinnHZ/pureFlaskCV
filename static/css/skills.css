@@ -1,36 +1,47 @@
-html,body{
+/* html,body{
     height: 100%;
     width: 100%;
     margin: 0;
-}
+} */
 
 #bigSkills{
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
+    height: calc(100vh);
+    width: calc(100vw);
 }
 
 /* skill basic information */
 #skillsInfo{
     position: absolute;
-    padding: 0;
-    width: calc(50vw);
-    height: calc(50vh);
-    /* background-color: red; */
+    padding: 5px;
+    width: calc(40vw);
+    height: calc(40vh);
+    left:calc(5vw);
+    top:calc(5vh);
+    border: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 10px;
 }
 
 /* skill collection */
 #skillsCollection{
     position: absolute;
     padding: 0;
-    width: calc(50vw);
-    height: calc(50vh);
-    /* background-color: gray; */
-    left:calc(50vw);
+    width: calc(40vw);
+    height: calc(40vh);
+    left:calc(52vw);
+    top:calc(5vh);
+    border: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .colTable{
     text-align: center;
-    width: calc(50vw);
+    width: calc(40vw);
+    height: calc(40vh);
     border-spacing: 0px;
     border-collapse: collapse;
 }
@@ -39,14 +50,16 @@ html,body{
     box-sizing: border-box;
     table-layout: fixed;
     display: table;
-    width: calc(48vw);    
+    width: calc(38vw);   
+    height: calc(2vh); 
+    /* ?????????????????????????????????????????????????????????????????????????????? */
 }
 
 
 .colTBody{
     display: block;
-    width: calc(50vw); /* calc(100%+8px)    这里的8px是滚动条的宽度*/
-    height: calc(48vh);   /* vh 等于 1% 的 视窗高度， vw 等于 1% 的 视窗宽度， 注意这里的运算符前后都必须要有空格！！！*/
+    width: calc(40vw); /* calc(100%+8px)    这里的8px是滚动条的宽度*/
+    height: calc(38vh);   /* vh 等于 1% 的 视窗高度， vw 等于 1% 的 视窗宽度， 注意这里的运算符前后都必须要有空格！！！*/
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     text-align: center;
@@ -60,76 +73,42 @@ html,body{
 /* skill circle distribution */
 #skillsDistirbution{
     position: absolute;
-    padding: 0;
-    width: calc(50vw);
-    height: calc(45vh);
-    /* background-color: green; */
-    top:calc(50vh);
+    padding: 5px;
+    width: calc(40vw);
+    height: calc(40vh);
+    left: calc(5vw);
+    top:calc(55vh);
+    border: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 10px;
 }
 
 
 /* skill bar detail distribution */
 #skillsDetail{
     position: absolute;
-    padding: 0;
-    width: calc(50vw);
-    height: calc(45vh);
+    padding: 5px;
+    width: calc(40vw);
+    height: calc(40vh);
     /* background-color: yellow; */
-    left:calc(50vw);
-    top:calc(50vh);
+    left:calc(52vw);
+    top:calc(55vh);
+    border: none;
+    box-shadow: 0px 0px 5px gray;
+    border-radius: 10px;
+
 }
 
 
 /* returnBtn_skill */
-#returnBtn_skill{
+#returnHome{
     position: absolute;
-    padding: 0;
-    width: calc(100vw);
-    height: calc(5vh);
-    background-color: cyan;
-    top:calc(95vh);
+    width: calc(3vw);
+    height: calc(4vh);
+    left:calc(95vw);
+    top:calc(2vh);
     border: none;
-    font-weight: 600;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent 50%, rgba(255,255,255, 0.3));
+    cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-
-
-/* #skillsInfo{
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 50%;
-    background-color: red;
-    float:left;
-}
-
-#skillsCollection{
-    
-}
-
-#skillsDistirbution{
-    padding: 0;
-    margin: 0;
-    width: 50%;
-    height: 50%;
-    background-color: green;
-    float:left;
-}
-
-#skillsDetail{
-    padding: 0;
-    margin: 0;
-    width: 50%;
-    height: 50%;
-    background-color: yellow;
-    float:left;
-} */

@@ -5,8 +5,8 @@ function distributionMap(dataArr_dis, detailDataArr){
         let resizeWorldMapContainer1 = function () {
           // dom1.style.width = (window.innerWidth/2) +'px';
           // dom1.style.height = (window.innerHeight/2)+'px';
-          dom1.style.width = ((window.innerWidth-50)/2) +'px';
-          dom1.style.height =((window.innerHeight-50)/2) +'px';
+          dom1.style.width = (window.innerWidth*0.4) +'px';
+          dom1.style.height =(window.innerHeight*0.4) +'px';
     
         };
         //设置容器高宽
@@ -70,9 +70,9 @@ function distributionDetailMap(dataDetailArr){
     var dom2 = document.getElementById("detailChart");
     //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
     var resizeWorldMapContainer2 = function () {
-      dom2.style.width = ((window.innerWidth-50)/2) +'px';
-      dom2.style.height =((window.innerHeight-50)/2) +'px';
-    };
+      dom2.style.width = (window.innerWidth*0.4) +'px';
+      dom2.style.height =(window.innerHeight*0.4) +'px';
+};
     //设置容器高宽
     resizeWorldMapContainer2();
 

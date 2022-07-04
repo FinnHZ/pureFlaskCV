@@ -68,18 +68,22 @@
                 </thead>
                 <tbody class="colTBody">
                     {% for item in colKnowledges %}
-                        <tr class="colTr"><td>{{item[0]}}</td><td style="overflow-x: scroll;">{{item[1]}}</td><td style="overflow-x: scroll;">{{item[2]}}</td><td style="overflow-x: scroll;">{{item[3]}}</td></tr>
+                        <tr class="colTr"><td>{{item[0]}}</td><td style="overflow-x: scroll; ">{{item[1]}}</td><td style="overflow-x: scroll;">{{item[2]}}</td><td style="overflow-x: scroll;">{{item[3]}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
 
         <div id="skillsDistirbution">
-            <div id="distribution" style="width:calc(48vw); height: calc(45vh);"></div>
+            <!-- <div id="distribution" style="width:calc(48vw); height: calc(45vh);"></div> -->
+            <div id="distribution"></div>
+
         </div>
 
         <div id="skillsDetail">
-            <div id="detailChart" style="width:calc(48vw); height: calc(45vh);"></div>
+            <!-- <div id="detailChart" style="width:calc(48vw); height: calc(45vh);"></div> -->
+            <div id="detailChart"></div>
+
             <script type="text/javascript">            
                 //！！！！ 下面两句是将flask端传过来的JSON数据转化为js可以使用的数据类型的两种不同方式，为了方便复习，这里针对同一个效果运用了两种不同的方式！！！！！！！！
                 const detailChartInfo = eval('(' + '{{skillsDetail|safe}}' + ')');   //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后eval（'(' + JSON字符串 + ')'） 可以将JSON字符串转回它原本的形式（object、array....）
@@ -90,7 +94,9 @@
             </script>
         </div>
 
-        <button id="returnBtn_skill">Return To Home Page</button>
+        <a href="/home">
+            <img src="/static/img/returnHomeBtn_Finn.png" id="returnHome"/>
+        </a>
 
     </div>
 
