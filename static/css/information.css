@@ -162,12 +162,35 @@ html,body{
     z-index: 0;
 }
 
+#eduDisplay{
+    width: 100%;
+    height: 60%;
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
+}
+
 
 #eduTable{
     width: 100%;
     border: none;
 }
 
+#eduDate{
+    text-align: right;
+}
+
+#eduNav{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.page-link{
+    background-color: rgb(128, 125, 125, 0.5);
+    color: aliceblue;
+}
 
 
 /* work part */
@@ -188,12 +211,30 @@ html,body{
     z-index: 0;
 }
 
+#workDisplay{
+    width: 100%;
+    height: 70%;
+    border-bottom: 1px solid gray;
+    margin-bottom: 5px;
+}
+
+
 #workTabel{
     width: 100%;
     border: none;
 }
 
+#wkDate{
+    text-align: right;
+}
 
+#workNav{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
 
 /* skills part */
 #skillsBasic{
@@ -206,7 +247,7 @@ html,body{
     color:aliceblue;
     font-family:cursive;
     padding: 0.5% 0.5% 0.5% 0.5%;
-    top: calc(52vh);
+    top: calc(55vh);
     left: calc(45vw);
     opacity: 0;
     border: none;

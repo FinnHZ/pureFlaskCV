@@ -22,7 +22,7 @@
                     $('#eduBody').empty();
 
                     let updateContent = ''
-                    updateContent = updateContent + '<tr><th>' + pageInfo["uni"] + '</th><th>' + pageInfo["date"] + '</th></tr><tr><td colspan="2">' + pageInfo["degree"] + '</td></tr><tr><td colspan="2">' + pageInfo["major"] + '</td></tr>'
+                    updateContent = updateContent + '<tr><th>' + pageInfo["uni"] + '</th><th id="eduDate">' + pageInfo["date"] + '</th></tr><tr><td colspan="2">' + pageInfo["degree"] + '</td></tr><tr><td colspan="2"><li>' + pageInfo["major"] + '</li></td></tr>'
        
                     $(updateContent).appendTo('#eduBody')
                 },
@@ -52,9 +52,9 @@
                     $('#workBody').empty();
 
                     let updateContent = ''
-                    updateContent = updateContent + '<tr><th>' + pageInfo["workCompany"] + '</th><th>' + pageInfo["workDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["workPosition"] + '</td></tr>'
+                    updateContent = updateContent + '<tr><th>' + pageInfo["workCompany"] + '</th><th id="wkDate">' + pageInfo["workDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["workPosition"] + '</td></tr>'
                     for(var i=0; i<pageInfo["workDescription"].length; i++){
-                        updateContent = updateContent + '<tr><td colspan="2">' + pageInfo["workDescription"][i] + '</td></tr>'
+                        updateContent = updateContent + '<tr><td colspan="2"><li>' + pageInfo["workDescription"][i] + '</li></td></tr>'
                     }
                     $(updateContent).appendTo('#workBody')
                 },
@@ -84,9 +84,9 @@
                     $('#expBody').empty();
 
                     let updateContent = ''
-                    updateContent = updateContent + '<tr><th>' + pageInfo["expCompany"] + '</th><th>' + pageInfo["expDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["expPosition"] + '</td></tr>' + '<tr><td colspan="2">' + pageInfo["expSkills"] + '</td></tr>'+ '<tr><td colspan="2">' + pageInfo["expTitle"] + '</td></tr>'
+                    updateContent = updateContent + '<tr><th>' + pageInfo["expCompany"] + '</th><th id="expDate">' + pageInfo["expDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["expPosition"] + '</td></tr>' + '<tr><td colspan="2">' + pageInfo["expSkills"] + '</td></tr>'+ '<tr><td colspan="2">' + pageInfo["expTitle"] + '</td></tr>'
                     for(var i=0; i<pageInfo["expDescription"].length; i++){
-                        updateContent = updateContent + '<tr><td colspan="2">' + pageInfo["expDescription"][i] + '</td></tr>'
+                        updateContent = updateContent + '<tr><td colspan="2"><li>' + pageInfo["expDescription"][i] + '</li></td></tr>'
                     }
                     $(updateContent).appendTo('#expBody')
                 },

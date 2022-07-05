@@ -47,21 +47,23 @@
 
 
         <div id="educationShow">
-            <table id="eduTable">
-                <tbody id="eduBody">
-                    <tr>
-                        <th>{{educationDicList[0]["uni"]}}</th>
-                        <th style="text-align: right;">{{educationDicList[0]["date"]}}</th>
-                    </tr>
-                    <tr>
-                        <td colSpan="2">{{educationDicList[0]["degree"]}}</td>
-                    </tr>
-                    <tr>
-                        <td colSpan="2">{{educationDicList[0]["major"]}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            
+            <div id="eduDisplay">
+                <table id="eduTable">
+                    <tbody id="eduBody">
+                        <tr>
+                            <th>{{educationDicList[0]["uni"]}}</th>
+                            <th id="eduDate">{{educationDicList[0]["date"]}}</th>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">{{educationDicList[0]["degree"]}}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2"><li>{{educationDicList[0]["major"]}}</li></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <nav aria-label="Page navigation example" id="eduNav">
                 <ul class="pagination">
                     <li class="eduOri">
@@ -87,14 +89,14 @@
                 <table id="workTabel">
                     <tbody id="workBody">
                         <tr>
-                            <th>{{workInfo[0]["workCompany"]}}</th><th style="text-align: right;">{{workInfo[0]["workDate"]}}</th>
+                            <th>{{workInfo[0]["workCompany"]}}</th><th id="wkDate">{{workInfo[0]["workDate"]}}</th>
                         </tr>
                         <tr>
                             <td colspan="2">{{workInfo[0]["workPosition"]}}</td>
                         </tr>
                         {% for item in workInfo[0]["workDescription"] %}
                         <tr>
-                            <td colspan="2">{{item}}</td>
+                            <td colspan="2"><li>{{item}}</li></td>
                         </tr>
                         {% endfor %}
                     </tbody>
