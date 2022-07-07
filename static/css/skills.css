@@ -23,7 +23,9 @@ html,body{
     box-shadow: 0px 0px 5px gray;
     border-radius: 10px;
     /* overflow-y: scroll; */
-    background-image: url('/static/img/background_1.png');
+    /* background-image: url('/static/img/background_2.png');
+    background-repeat: no-repeat;
+    background-size: cover;     */
 }
 
 #expDisplay{
@@ -31,7 +33,9 @@ html,body{
     width: 100%;
     border-bottom: 1px solid gray;
     box-shadow: 0 2px 2px gray;
-    /* background-color: blueviolet; */
+    background-color: rgba(213, 219, 221, 0.2);
+    padding: 2px;
+    border-radius: 2px;
 
 }
 
@@ -44,7 +48,7 @@ html,body{
     width: 100%;
     /* background-color: aqua; */
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
 }
 
@@ -71,7 +75,9 @@ html,body{
     box-shadow: 0px 0px 5px gray;
     border-radius: 10px;
     overflow: hidden;
-    background-image: url('/static/img/background_2.png');
+    /* background-image: url('/static/img/background_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;   */
 }
 
 .colTable{
@@ -102,7 +108,14 @@ html,body{
     scrollbar-width: calc(2vw);    
 }
 
+/* .tableMain{
+    background-color: rgba(167, 214, 236, 0.2);
+} */
 
+.tableNo{
+    background-color: rgba(213, 219, 221, 0.2);
+    box-shadow: -2px 0 2px gray inset;
+}
 
 
 

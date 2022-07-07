@@ -29,7 +29,7 @@
                             <td colspan="2">{{expInfo[0]["expPosition"]}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{{expInfo[0]["expSkills"]}}</td>
+                            <td colspan="2" style="border-bottom: 2px solid rgb(170, 127, 116, 0.5);">{{expInfo[0]["expSkills"]}}</td>
                         </tr>
                         <tr>
                             <td colspan="2">{{expInfo[0]["expTitle"]}}</td>
@@ -64,11 +64,11 @@
         <div id="skillsCollection">
             <table class="colTable">
                 <thead>
-                    <tr class="colTr"><th style="box-shadow: -2px 0 2px gray inset">No.</th><th>Description</th><th>Location</th><th>Type</th></tr>
+                    <tr class="colTr"><th class="tableNo">No.</th><th class="tableMain">Description</th><th class="tableMain">Location</th><th class="tableMain">Type</th></tr>
                 </thead>
                 <tbody class="colTBody">
                     {% for item in colKnowledges %}
-                        <tr class="colTr"><td style="box-shadow: -2px 0 2px gray inset">{{item[0]}}</td><td style="overflow-x: scroll; height: 10px">{{item[1]}}</td><td style="overflow-x: scroll; height: 10px">{{item[2]}}</td><td style="overflow-x: scroll; height: 10px">{{item[3]}}</td></tr>
+                        <tr class="colTr"><td class="tableNo">{{item[0]}}</td><td style="overflow-x: scroll; height: 10px" class="tableMain">{{item[1]}}</td><td style="overflow-x: scroll; height: 10px" class="tableMain">{{item[2]}}</td><td style="overflow-x: scroll; height: 10px" class="tableMain">{{item[3]}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>

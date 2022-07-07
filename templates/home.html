@@ -15,6 +15,10 @@
 
 <body>
 
+    <div id="welcome">
+        <span id="welcomeWords">&nbsp Welcome to Finn's World! &nbsp</span>
+    </div>
+
     <a href="/information">
         <div id="info">
             <img id="paintingFrame" src="../static/img/paintingFrame.png" />
@@ -34,13 +38,13 @@
         </div>
     </a>
  
-    <div id="collections">
-        
-    </div>
   
 
     <script type="text/javascript">
         $(function(){
+            var welcome = $("#welcome");
+
+            
             // for info logo----------------------------------------------------------------------------------------------------------
             var info = $("#info");
             var paintingFrame = $("#paintingFrame");
@@ -49,6 +53,7 @@
             var viewCover = $("#viewCover");
             var viewCover_small = $("#viewCover_small");
             var brush = $("#brush");
+            var welcome = $("#welcome");
             var borderTop = hiddenBorder.offset().top;
             var borderLeft = hiddenBorder.offset().left;
             var borderHeight = hiddenBorder.height();
@@ -58,8 +63,25 @@
             var topMove = 0;
             var shakeFlag = 0;
 
+            // for skills logo--------------------------------------------------------------------------------------------------------------
+            var skills = $('#skills');
+            var marginOrigin = 600; //  must equal tp the corresponding number of css file
+            var shadowDistance = -5; // must equal tp the corresponding number of css file(next to 'below')
+            var shadowArea = 0; // must equal tp the corresponding number of css file(next to 'transparent')
+            var shadowConcentration = 0.9; // must equal tp the corresponding number of css file(in the rgb bracket)
+            var breathNum = 0; // for control the breath direction
+            var breathEndshakeInterval_b = null;
 
+            // main part
             paintingFrame.css({"left": (borderLeft-8) + "px", "top": (borderTop-10) +"px"});
+
+
+
+
+            welcome.animate({"opacity":"1"}, 2000)
+
+
+
 
             info.mouseenter(function(){
                 const stepConstant = 10;
@@ -127,14 +149,7 @@
             })
 
 
-            // for skills logo--------------------------------------------------------------------------------------------------------------
-            var skills = $('#skills');
-            var marginOrigin = 600; //  must equal tp the corresponding number of css file
-            var shadowDistance = -5; // must equal tp the corresponding number of css file(next to 'below')
-            var shadowArea = 0; // must equal tp the corresponding number of css file(next to 'transparent')
-            var shadowConcentration = 0.9; // must equal tp the corresponding number of css file(in the rgb bracket)
-            var breathNum = 0; // for control the breath direction
-            var breathEndshakeInterval_b = null;
+            
             
 
             // breath version===================================================

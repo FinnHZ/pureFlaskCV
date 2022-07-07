@@ -84,7 +84,7 @@
                     $('#expBody').empty();
 
                     let updateContent = ''
-                    updateContent = updateContent + '<tr><th>' + pageInfo["expCompany"] + '</th><th id="expDate">' + pageInfo["expDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["expPosition"] + '</td></tr>' + '<tr><td colspan="2">' + pageInfo["expSkills"] + '</td></tr>'+ '<tr><td colspan="2">' + pageInfo["expTitle"] + '</td></tr>'
+                    updateContent = updateContent + '<tr><th>' + pageInfo["expCompany"] + '</th><th id="expDate">' + pageInfo["expDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["expPosition"] + '</td></tr>' + '<tr><td colspan="2" style="border-bottom: 2px solid rgb(170, 127, 116, 0.5);">' + pageInfo["expSkills"] + '</td></tr>'+ '<tr><td colspan="2">' + pageInfo["expTitle"] + '</td></tr>'
                     for(var i=0; i<pageInfo["expDescription"].length; i++){
                         updateContent = updateContent + '<tr><td colspan="2"><li>' + pageInfo["expDescription"][i] + '</li></td></tr>'
                     }

@@ -1,17 +1,34 @@
 body{
     background: url('./static/img/homepage/finnSignature_fingers.jpg');
     background-size: 100% 100%;
+    
 }
+
+
+#welcome{
+    font-size: 5em;
+    float: left;
+    width: 100%;
+    margin-top: 10%;
+    text-align: center;
+    opacity: 0;
+}
+
+#welcomeWords{
+    box-shadow: 0 0 20px gray;
+    border-radius: 10px;
+    font-family: cursive;
+}
+
 
 
 /* for front-end logo */
 #info{
     width: 200px;
     height: 200px;
-    margin: 20% 0 0 15%;
+    margin: 10% 0 0 25%;
     -webkit-box-reflect: below 0 -webkit-linear-gradient(transparent 50%, rgba(255,255,255, 0.3));
     float: left;
-
 
 }
 
@@ -61,12 +78,15 @@ body{
 #skills{
     width: 200px;
     height: 200px;
-    background-color: red;
-    margin:600px 0 0 200px;
+    /* background-color: red; */
+    background-image: url('/static/img/heart.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     -webkit-box-reflect: below -5px -webkit-linear-gradient(transparent 0%, rgba(255,255,255, 0.9));
     opacity: 1;
-    margin: 20% 0 0 15%;
-    float: left;
+    margin: 10% 25% 0 0;
+    float: right;
+
 }
 
 /* for 'other' logo (from google)*/
