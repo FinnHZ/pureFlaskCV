@@ -1,7 +1,20 @@
-body{
-    background: url('./static/img/homepage/finnSignature_fingers.jpg');
-    background-size: 100% 100%;
-    
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+#backgroundDiv{
+    position: absolute;
+    width:calc(100vw);
+    height: calc(100vh);
+    background-image: url('/static/img/finnSignature_fingers.jpg');
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
 }
 
 
