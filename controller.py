@@ -1,23 +1,17 @@
 from flask import Blueprint
-from flask import render_template, jsonify, request
+from flask import render_template, jsonify, request, current_app
 import json
 from flask_mail import Mail, Message
+from modules import mailFunc
+# from app import app
+
 
 
 cv_controller = Blueprint('cv_controller', __name__, template_folder='templates')
 
+# emailllll = mailFunc.EmailFunc(current_app)
 
-cv_controller.config['MAIL_DEBUG'] = True
-cv_controller.config['MAIL_SUPPRESS_SEND'] = False
-cv_controller.config['TESTING'] = False
-cv_controller.config['MAIL_SERVER'] = 'smtp.gmail.com'
-cv_controller.config['MAIL_PORT'] = 465
-cv_controller.config['MAIL_USE_TLS'] = False
-cv_controller.config['MAIL_USE_SSL'] = True
-cv_controller.config['MAIL_USERNAME'] = 'finn.he0102@gmail.com'
-cv_controller.config['MAIL_PASSWORD'] = 'xxxxxxxxxx'   # if you want to use it, please change the less security setting in google account
-
-mail = Mail(cv_controller)
+# emailllll.initialSetting()
 
 
 
