@@ -1,25 +1,31 @@
-from flask import Blueprint
+from flask import Blueprint, flash
 from flask import render_template, jsonify, request, current_app
 import json
 from flask_mail import Mail, Message
-from modules import mailFunc
-# from app import app
 
 
 
 cv_controller = Blueprint('cv_controller', __name__, template_folder='templates')
 
-# emailllll = mailFunc.EmailFunc(current_app)
-
-# emailllll.initialSetting()
 
 
+# @cv_controller.route('/')
+# def login():
+#     message = Message(subject='Member expiration reminder',sender = 'chiyuhe903@gmail.com', recipients=["finn.he0102@gmail.com"],body='Hi,%s. Please use verification code %s to log in my website, it is valid within 5 minutes!' % ("visitorName", "vertification"))    
 
-@cv_controller.route('/')
-def login():
-    return render_template('login.html')
+#     with current_app.app_context():
+#         mail = Mail()
+#         try:        
+#             print("sssssss")
 
-@cv_controller.route('/home')
+#             mail.send(message)        
+#             flash('Successfully! I have sent the vertification code to your e-mail, please check that!')
+#         except:        
+#             flash('Sorry! The vertification code sent unsuccessfully! Please try again later')
+
+#     return render_template('login.html')
+
+@cv_controller.route('/')  #/home
 def home():
     return render_template('home.html')
 

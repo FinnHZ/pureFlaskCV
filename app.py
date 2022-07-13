@@ -3,11 +3,11 @@ import controller
 
 
 app = Flask(__name__)
-
-# ctx = app.app_context()
-# ctx.push()
+app.secret_key = 'My_CV'
 
 app.register_blueprint(controller.cv_controller)
+
+
 
 
 if __name__ == '__main__':

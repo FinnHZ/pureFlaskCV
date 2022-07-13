@@ -1,24 +1,38 @@
 from flask_mail import Mail, Message
+from flask import flash, current_app
+
+class EmailFunc:
+    def __init__(self, controller) -> None:
+        # self.controller = controller
+        self.controller = current_app.app_context()
+        self.mail = Mail(self.controller)
+
+    def initialSetting(self):
+        user = './static/document/user.txt'
+        with open(user, encoding='utf-8') as file:
+            content = file.readlines()
+            print(type(content), content)
 
 
-@app.route("/payment_reminder", methods = ['GET','POST'])  # this part is email function for remind member "your membership is going to expire"
-def payment_reminder():
-    if request.method == 'POST':
-        memberid_reminder = request.form.get('paymentmemberid')
-        print(memberid_reminder)
-        name_reminder = request.form.get('paymentmembername')
-        duedate_reminder = request.form.get('paymentduedate')
-        cur = getCursor()
-        cur.execute("SELECT email_address FROM member WHERE user_id = %s;",(memberid_reminder,))
-        email_select = cur.fetchall()
-        email_listtype = [j for i in email_select for j in i]
-        email_receive = email_listtype[0]
-        print(email_receive)
-        message = Message(subject='Member expiration reminder',sender = 'chiyuhe903@gmail.com', recipients=[email_receive],body='Hi,%s. Your membership will expire at %s !' % (name_reminder,duedate_reminder,))    
-        try:        
-            mail.send(message)        
-            flash('Successfully! You have sent reminder email to  %s !' % (name_reminder,))
-            return redirect(url_for('membership_list_manager' ))     
-        except Exception as e:        
-            flash('Sorry! The reminder email to  %s unsuccessfully!' % (name_reminder,))
-            return redirect(url_for('membership_list_manager' )) 
+        self.controller.config['MAIL_DEBUG'] = True
+        self.controller.config['MAIL_SUPPRESS_SEND'] = False
+        self.controller.config['TESTING'] = False
+        self.controller.config['MAIL_SERVER'] = 'smtp.gmail.com'
+        self.controller.config['MAIL_PORT'] = 465
+        self.controller.config['MAIL_USE_TLS'] = False
+        self.controller.config['MAIL_USE_SSL'] = True
+        self.controller.config['MAIL_USERNAME'] = 'finn.he0102@gmail.com'
+        self.controller.config['MAIL_PASSWORD'] = 'xxxxxxxxxx'   # if you want to use it, please change the less security setting in google account
+
+
+    # def sendValidate(self, visitorEmail, visitorName):
+        
+
+
+
+        # message = Message(subject='Member expiration reminder',sender = 'chiyuhe903@gmail.com', recipients=[visitorEmail],body='Hi,%s. Please use verification code %s to log in my website, it is valid within 5 minutes!' % (visitorName, vertification))    
+        # try:        
+        #     self.mail.send(message)        
+        #     flash('Successfully! I have sent the vertification code to your e-mail, please check that!')
+        # except:        
+        #     flash('Sorry! The vertification code sent unsuccessfully! Please try again later')
