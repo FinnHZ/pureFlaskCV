@@ -1,7 +1,9 @@
-from flask import Blueprint, flash
-from flask import render_template, jsonify, request, current_app
+import re
+from flask import Blueprint, flash, redirect
+from flask import render_template, jsonify, request, current_app, url_for
 import json
 from flask_mail import Mail, Message
+import csv
 
 
 
@@ -9,27 +11,36 @@ cv_controller = Blueprint('cv_controller', __name__, template_folder='templates'
 
 
 
-# @cv_controller.route('/')
-# def login():
-#     message = Message(subject='Member expiration reminder',sender = 'chiyuhe903@gmail.com', recipients=["finn.he0102@gmail.com"],body='Hi,%s. Please use verification code %s to log in my website, it is valid within 5 minutes!' % ("visitorName", "vertification"))    
+@cv_controller.route('/', methods = ['GET','POST'])
+def login():
 
-#     with current_app.app_context():
-#         mail = Mail()
-#         try:        
-#             print("sssssss")
+    return render_template('login.html')
 
-#             mail.send(message)        
-#             flash('Successfully! I have sent the vertification code to your e-mail, please check that!')
-#         except:        
-#             flash('Sorry! The vertification code sent unsuccessfully! Please try again later')
 
-#     return render_template('login.html')
+@cv_controller.route('/loginValidate', methods = ['GET','POST'])
+def loginValidate():
+    if request.method == "POST":
+        userName = request.form.get("username")
+        password = request.form.get("password")
+        loginData = [userName,password]
+        loginContent = None
+        file = open ("./static/document/access.csv")
+        loginContent = csv.reader(file)
+            
+        if loginData in loginContent:
+            file.close()
+            return render_template("home.html")
+        else:
+            flash("Sorry, please enter the valid username/password or contact with me!")
+            return redirect(url_for('cv_controller.login' ))
 
-@cv_controller.route('/')  #/home
+
+
+@cv_controller.route('/home', methods = ['GET','POST'])  #/home
 def home():
     return render_template('home.html')
 
-@cv_controller.route('/information')
+@cv_controller.route('/information', methods = ['GET','POST'])
 def information():
 
     #  the data below should be from excel/ csv or database  (method should be written in the modules folder)
@@ -186,7 +197,7 @@ def changeEduPage():
 
 ###############################################
 
-@cv_controller.route('/skills')
+@cv_controller.route('/skills', methods = ['GET','POST'])
 def skills():
   
     expInfo = [
@@ -410,3 +421,26 @@ def changeExpPage():
         delivery_expPage_json = json.dumps(delivery_expPage)
 
         return delivery_expPage_json
+
+@cv_controller.route("/settings", methods=['GET','POST'])
+def settings():   
+     return render_template('settings.html')
+
+
+
+
+@cv_controller.route("/settingsValidate", methods=['GET','POST'])
+def settingsValidate():
+    if request.method == "POST":
+        validateInfo = request.get_json()
+        infoList = validateInfo["setting_json"]
+        delivery_validate = {}
+        if infoList[0] == "Finn" and infoList[1] == "1234567890!@#$%^&*()":
+            delivery_validate['result'] = "1"
+        else:
+            delivery_validate['result'] = "0"
+
+        delivery_validate_json = json.dumps(delivery_validate)
+        
+        return delivery_validate_json
+
