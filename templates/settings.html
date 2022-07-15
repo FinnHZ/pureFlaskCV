@@ -14,9 +14,40 @@
 </head>
 <body>
     <div class="settingRoot">
-        settings!!!!!!!!!!!!!!!!!!!
-        <form action="/loginValidate", method="POST">
-        </form>
+        
+        <table>
+            <thead>
+                <tr style="text-align:center">
+                    <th>User</th><th>Password</th><th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="urBody">
+                {% for item in accessList %}
+                    <tr id={{item[2]}} style="text-align:center">
+                        <td>
+                            <input value={{item[0]}} class="ur" />
+                        </td>
+                        <td>
+                            <input value={{item[1]}} class="pd" />
+                        </td>
+                        <td style="text-align:right">
+                            <button class="del" name={{item[2]}} onclick="">-</button>
+                        </td>
+                    </tr>
+                {% endfor %} 
+                <tr>
+                    <td colspan="3" style="text-align:right">
+                        <button id="add">+</button>
+                    </td>
+                </tr>   
+                <tr>
+                    <td colspan="3" style="text-align:center">
+                        <button id="submit" style="width: 100%;">Submit</button>
+                    </td>
+                </tr>        
+            </tbody>
+
+        </table>
 
 
 
@@ -29,11 +60,19 @@
 
     <script type="text/javascript">
         $(function(){
-            // var urlPath = 'http://127.0.0.1:5000'; 
+            var urlPath = 'http://127.0.0.1:5000'; 
+            var add = $('#add');
 
+            // use on to monitor the page, if ther is new item with class "del" come in, bind the click event to the new element automatically.
+            $('#urBody').on('click', '.del', function(){
+                console.log(this.name)
+            })
 
-
-
+            add.click(function(){
+                let itemNum = $('.del').length;
+                let newItem = '<tr id='+ (itemNum+1).toString() +' style="text-align:center"><td><input class="ur" /></td><td><input class="pd" /></td><td style="text-align:right"><button class="del" name='+ (itemNum+1).toString() +'>-</button></td></tr>';
+                $(newItem).appendTo('#urBody');
+            })
 
         })
     </script>

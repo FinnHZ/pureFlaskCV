@@ -23,7 +23,7 @@ def loginValidate():
         userName = request.form.get("username")
         password = request.form.get("password")
         loginData = [userName,password]
-        loginContent = None
+        # loginContent = None
         file = open ("./static/document/access.csv")
         loginContent = csv.reader(file)
             
@@ -423,9 +423,22 @@ def changeExpPage():
         return delivery_expPage_json
 
 @cv_controller.route("/settings", methods=['GET','POST'])
-def settings():   
-     return render_template('settings.html')
+def settings():
+    file = open ("./static/document/access.csv")
+    accessContent = list(csv.reader(file))
+    
+    for i in range(0, len(accessContent)):
+        accessContent[i].append(i+1)
+        
+    return render_template('settings.html', accessList = accessContent)
 
+
+@cv_controller.route("/settingsChange", methods=['GET','POST'])
+def settingsChange():
+    if request.method == "POST":
+        pass
+        
+    return render_template('settings.html')
 
 
 

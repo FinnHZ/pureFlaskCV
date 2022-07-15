@@ -316,14 +316,14 @@
                     let runTimeFlag = 0;
                     if(targetEle_name > 1){
                         const runTimer = setInterval(function(){
-                            let finalFlag = targetEle_name - 1 - runTimeFlag
+                            let finalFlag = targetEle_name - 1 - runTimeFlag;
                             if(runTimeFlag < targetEle_name-2 && targetEle_name-2 >= 0){
                                 $.runBall(ballPositionDict, runTime, clickTarget, finalFlag, btnShowMatchDict);
                                 runTimeFlag += 1; 
                             }else if(runTimeFlag == targetEle_name-2 && targetEle_name-2 >= 0){
                                 $.runBall(ballPositionDict, runTime, clickTarget, finalFlag, btnShowMatchDict);
                                 runTimeFlag = 0;
-                                clearInterval(runTimer)
+                                clearInterval(runTimer);
                                 isBall = true;
                             }
                         }, runTime+runPause)
