@@ -27,7 +27,7 @@
                     $(updateContent).appendTo('#eduBody')
                 },
                 error: function(){
-                    alert('There is somer error with your connect, please check your internet!')
+                    alert('There is some error with your connect, please check your internet!')
                 },
                 headers:{a:100, b:200}
             })
@@ -53,13 +53,13 @@
 
                     let updateContent = ''
                     updateContent = updateContent + '<tr><th>' + pageInfo["workCompany"] + '</th><th id="wkDate">' + pageInfo["workDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["workPosition"] + '</td></tr>'
-                    for(var i=0; i<pageInfo["workDescription"].length; i++){
+                    for(let i=0; i<pageInfo["workDescription"].length; i++){
                         updateContent = updateContent + '<tr><td colspan="2"><li>' + pageInfo["workDescription"][i] + '</li></td></tr>'
                     }
                     $(updateContent).appendTo('#workBody')
                 },
                 error: function(){
-                    alert('There is somer error with your connect, please check your internet!')
+                    alert('There is some error with your connect, please check your internet!')
                 },
                 headers:{a:100, b:200}
             })
@@ -85,13 +85,13 @@
 
                     let updateContent = ''
                     updateContent = updateContent + '<tr><th>' + pageInfo["expCompany"] + '</th><th id="expDate">' + pageInfo["expDate"] + '</th></tr><tr><td colspan="2">' + pageInfo["expPosition"] + '</td></tr>' + '<tr><td colspan="2" style="border-bottom: 2px solid rgb(170, 127, 116, 0.5);">' + pageInfo["expSkills"] + '</td></tr>'+ '<tr><td colspan="2">' + pageInfo["expTitle"] + '</td></tr>'
-                    for(var i=0; i<pageInfo["expDescription"].length; i++){
+                    for(let i=0; i<pageInfo["expDescription"].length; i++){
                         updateContent = updateContent + '<tr><td colspan="2"><li>' + pageInfo["expDescription"][i] + '</li></td></tr>'
                     }
                     $(updateContent).appendTo('#expBody')
                 },
                 error: function(){
-                    alert('There is somer error with your connect, please check your internet!')
+                    alert('There is some error with your connect, please check your internet!')
                 },
                 headers:{a:100, b:200}
             })
@@ -179,7 +179,7 @@
             dict_validate['setting_json'] = [username, password];
             let dict_json = JSON.stringify(dict_validate);
             $.ajax({
-                async:true,
+                async: true,
                 url: urlPath + '/settingsValidate',
                 type:'POST',
                 // data:{pageNum_json: pageNum_json},           
@@ -193,11 +193,37 @@
                     }
                 },
                 error: function(){
-                    alert('There is somer error with your connect, please check your internet!')
+                    alert('There is some error with your connect, please check your internet!')
                 },
                 headers:{a:100, b:200}
             })
         },
+
+        changeAccess: function(urlPath, usersData){
+            let usersDict = {};
+            usersDict['users_json'] = usersData;
+            let dict_json = JSON.stringify(usersDict);
+            $.ajax({
+                async: true,
+                url: urlPath + '/settingsChange',
+                type: 'POST',
+                data: dict_json,
+                dataType: 'json',
+                contentType: 'application/json; charset=UTF-8',
+                success: function(data){
+                    if(data['result'] == 1){
+                        alert('Successfully! Access update completed!')
+                    }else{
+                        alert('Unsuccessfully! Please check your source code or internet!')
+                    }
+                },
+                error: function(){
+                    alert('There is some error with your connect, please check your internet!')
+                },
+                headers:{a:100, b:200}
+
+            })
+        }
 
 
 

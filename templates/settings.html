@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/setting.css')}}" />
     <script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/static/js/myLib.js"></script>
+
     <title>Setting page</title>
 </head>
 <body>
@@ -23,7 +25,7 @@
             </thead>
             <tbody id="urBody">
                 {% for item in accessList %}
-                    <tr id={{item[2]}} style="text-align:center">
+                    <tr id=i{{item[2]}} style="text-align:center">
                         <td>
                             <input value={{item[0]}} class="ur" />
                         </td>
@@ -50,6 +52,11 @@
         </table>
 
 
+        <a href = "/" id = "returnFirst">   <!-- "/home" -->
+            <Button id = "cancelBtn"> Cancel </Button>
+        </a>
+
+
 
 
  
@@ -62,16 +69,42 @@
         $(function(){
             var urlPath = 'http://127.0.0.1:5000'; 
             var add = $('#add');
+            var submit = $('#submit');
 
             // use on to monitor the page, if ther is new item with class "del" come in, bind the click event to the new element automatically.
             $('#urBody').on('click', '.del', function(){
-                console.log(this.name)
-            })
+                $("#i"+this.name).remove()
+            });
 
             add.click(function(){
                 let itemNum = $('.del').length;
-                let newItem = '<tr id='+ (itemNum+1).toString() +' style="text-align:center"><td><input class="ur" /></td><td><input class="pd" /></td><td style="text-align:right"><button class="del" name='+ (itemNum+1).toString() +'>-</button></td></tr>';
+                let newItem = '<tr id=i'+ (itemNum+1).toString() +' style="text-align:center"><td><input class="ur" /></td><td><input class="pd" /></td><td style="text-align:right"><button class="del" name='+ (itemNum+1).toString() +'>-</button></td></tr>';
                 $(newItem).appendTo('#urBody');
+            });
+
+            submit.click(function(){
+                let usersList = [];
+                let passwordList = [];
+                let usersData = [];
+                let itemNums = $('.ur').length;
+                for(let i=0; i<itemNums; i++){
+                    let urVal = $('.ur').eq(i).val();
+                    let pdVal = $('.pd').eq(i).val();
+                    if(urVal != "" && pdVal != ""){
+                        usersList.push(urVal);
+                        passwordList.push(pdVal);
+                    }else{
+                        alert("Item " + i + " is not completed, please double-check that!");
+                    }
+                };
+
+                if(usersList.length == itemNums){
+                    usersData = $.map(usersList, function(x, i){
+                        return ([[x, passwordList[i]]]);   // jquery map will connect all results together with "+" method, so there is double bracket [[]]
+                    });
+                    $.changeAccess(urlPath, usersData);
+                };
+ 
             })
 
         })

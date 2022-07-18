@@ -1,9 +1,11 @@
 import re
 from flask import Blueprint, flash, redirect
-from flask import render_template, jsonify, request, current_app, url_for
+from flask import render_template, jsonify, request, url_for
 import json
 from flask_mail import Mail, Message
 import csv
+from modules.constantStore import accessDocument
+import os
 
 
 
@@ -24,7 +26,7 @@ def loginValidate():
         password = request.form.get("password")
         loginData = [userName,password]
         # loginContent = None
-        file = open ("./static/document/access.csv")
+        file = open (accessDocument)
         loginContent = csv.reader(file)
             
         if loginData in loginContent:
@@ -424,7 +426,7 @@ def changeExpPage():
 
 @cv_controller.route("/settings", methods=['GET','POST'])
 def settings():
-    file = open ("./static/document/access.csv")
+    file = open (accessDocument)
     accessContent = list(csv.reader(file))
     
     for i in range(0, len(accessContent)):
@@ -436,10 +438,21 @@ def settings():
 @cv_controller.route("/settingsChange", methods=['GET','POST'])
 def settingsChange():
     if request.method == "POST":
-        pass
+        usersData = request.get_json()
+        usersList = usersData['users_json']
+        updateResult = 0
+        if os.path.exists(accessDocument):
+            os.remove(accessDocument)
         
-    return render_template('settings.html')
-
+        with open(accessDocument, "w", encoding="utf8", newline="") as f:
+            newFile = csv.writer(f)
+            newFile.writerows(usersList)
+        
+        updateResult = 1
+        delivery_updateResult = {}
+        delivery_updateResult['result'] = updateResult
+        delivery_updateResult_json = json.dumps(delivery_updateResult)
+        return delivery_updateResult_json
 
 
 @cv_controller.route("/settingsValidate", methods=['GET','POST'])
