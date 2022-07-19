@@ -1,17 +1,22 @@
+from multiprocessing.sharedctypes import RawValue
 import re
 from flask import Blueprint, flash, redirect
 from flask import render_template, jsonify, request, url_for
 import json
 from flask_mail import Mail, Message
 import csv
-from modules.constantStore import accessDocument
+from modules.constantStore import accessDocument, experiencePath, basicInfoPath, summaryInfoPath
+from modules.readData import ReadData
 import os
 
 
 
 cv_controller = Blueprint('cv_controller', __name__, template_folder='templates')
 
-
+docContents = ReadData(experiencePath, basicInfoPath, summaryInfoPath)
+experienceInfo = docContents.expRead()
+basicInfo = docContents.basicRead()
+summaryInfo = docContents.sumRead()
 
 @cv_controller.route('/', methods = ['GET','POST'])
 def login():
@@ -45,11 +50,12 @@ def home():
 @cv_controller.route('/information', methods = ['GET','POST'])
 def information():
 
-    #  the data below should be from excel/ csv or database  (method should be written in the modules folder)
-    job_basic = ["Graduate", "Software Developer & Website full-stack Developer"]
-    link_basic = ["https://www.linkedin.com/in/chiyu-he-3b1695232/","https://github.com/FinnHZ"]
-    text_basic = [["Full Name:", "Chiyu He"], ["Prefer Name:", "Finn"], ["Address:", "35 Buffon St, Waltham, Christchurch, 8023"], ["E-mail:", "finn.he0102@gmail.com"]]
-    summary_basic = [["sum1", "Over 50/% /of courses arrive A grade (4/6)."], ["sum2", "3 web projects development experience - full-stack developer."], ["sum3", "1 desk application development experience - software developer (tkinter )."], ["sum4", "1 C# .NET Framework solution improvement experience."], ["sum5", "Over half year internship experience."]]
+    job_basic = basicInfo["jobList"]
+    link_basic = basicInfo["linkList"]
+    text_basic = basicInfo["textList"]
+    summary_basic = summaryInfo
+
+
     educationDicList = [
         {
           "id": "1",
@@ -201,84 +207,9 @@ def changeEduPage():
 
 @cv_controller.route('/skills', methods = ['GET','POST'])
 def skills():
-  
-    expInfo = [
-      {
-        "id":"1",
-        "expCompany":"Lincoln University , Canterbury", 
-        "expDate":"Mar 2021- Apr 2021", 
-        "expPosition":"Full-stack developer",
-        "expSkills":"Python, Flask, PostgreSQL, HTML, CSS, Jira, Git/GitHub",
-        "expTitle": "A simulation web project for Lincoln University gym management system.",
-        "expDescription":["Get the requirements from simulation customer's interview document.",
-                        "Create an information management system with a different access level.",
-                        "Features Include class booking, class management, finance management, member information management, and background service(e-mail and notification).", 
-                        "Visualize the static data of the CSV file."
-                      ]
-      },
-      {
-        "id":"2",
-        "expCompany":"Lincoln University , Canterbury", 
-        "expDate":"May 2021 - Jun 2021", 
-        "expPosition":"Full-stack except database", 
-        "expSkills":"Python, Flask, PostgreSQL, HTML, CSS, eChart, JavaScript",
-        "expTitle": "A data visualization web project for agriculture data.",
-        "expDescription":["Organize the agriculture data and analyze it.",
-                        "Visualize the agriculture data from a database.(line chart / bar chart).",
-                      ]
-      },
-      {
-        "id":"3",
-        "expCompany":"AuCom Electronics Ltd , Canterbury", 
-        "expDate":"Jul 2021 - Oct 2021", 
-        "expPosition":"Full-stack developer", 
-        "expSkills":"Python, Flask, Microsoft SQL server, HTML, CSS, jQuery, eChart, Apache",
-        "expTitle": "Be responsible for hotel product development and assist over 100 hotels in analyzing hotel operational data and operating hotels.",
-        "expDescription":["A data upload and management web system project.",
-                        "Features for analyzing the data of a special type file and uploading it into the database.",
-                        "Features for monitoring the process of upload and pass rate of the data in the database.",
-                        "Features for exporting the data as CSV file.",
-                        "Features for analyzing and visualizing the data.",
-                        "Deploy the website on the server through Apache."
-                        ]
-      },
-      {
-        "id":"4",
-        "expCompany":"AuCom Electronics Ltd , Canterbury", 
-        "expDate":"Nov 2021 - Feb 2022", 
-        "expPosition":" Software developer", 
-        "expSkills":"Python, Tkinter, Matplsotlib",
-        "expTitle": "A data upload and visualization desk application(software based on Matplsotlib) project.",
-        "expDescription":["Features for analyzing the data and uploading it.",
-                        "Features for monitoring and comparing the dynamic temperature data."
-                      ]
-      },
-      {
-        "id":"5",
-        "expCompany":"AuCom Electronics Ltd , Canterbury", 
-        "expDate":"Feb 2022 - present", 
-        "expPosition":" Software developer", 
-        "expSkills":" - C# .NET Framework",
-        "expTitle": "The features extension for a hardware test software(based on .Net Framework).",
-        "expDescription":["Fix older Bugs.",
-                        "Make the process of machine work become automatic from manual."
-                      ]
-      },
-      {
-        "id":"6",
-        "expCompany":"Self-employee , Canterbury", 
-        "expDate":"Mar 2022 - present", 
-        "expPosition":" Full-stack developer", 
-        "expSkills":"Python, Flask, HTML, CSS, react, eChart, Git/GitHub",
-        "expTitle": "Self CV Website",
-        "expDescription":["Back-end data process",
-                        "react front-end build",
-                        "Dynamic validation features",
-                        "Dynamic charts",
-                        "Background management channel"
-                      ]
-      }
-    ]
+     
+    expInfo = experienceInfo
+
 
     skills_1 = {  
                 "Language": ["Language", ["Python", "HTML", "CSS", "JavaScript", "C#"], [1,2,3,4,5]],
@@ -337,84 +268,9 @@ def changeExpPage():
         data_ajax = request.get_json()
         pageNum = str(data_ajax['pageNum_json'])
 
-        expInfo = [
-          {
-            "id":"1",
-            "expCompany":"Lincoln University , Canterbury", 
-            "expDate":"Mar 2021- Apr 2021", 
-            "expPosition":"Full-stack developer",
-            "expSkills":"Python, Flask, PostgreSQL, HTML, CSS, Jira, Git/GitHub",
-            "expTitle": "A simulation web project for Lincoln University gym management system.",
-            "expDescription":["Get the requirements from simulation customer's interview document.",
-                            "Create an information management system with a different access level.",
-                            "Features Include class booking, class management, finance management, member information management, and background service(e-mail and notification).", 
-                            "Visualize the static data of the CSV file."
-                          ]
-          },
-          {
-            "id":"2",
-            "expCompany":"Lincoln University , Canterbury", 
-            "expDate":"May 2021 - Jun 2021", 
-            "expPosition":"Full-stack except database", 
-            "expSkills":"Python, Flask, PostgreSQL, HTML, CSS, eChart, JavaScript",
-            "expTitle": "A data visualization web project for agriculture data.",
-            "expDescription":["Organize the agriculture data and analyze it.",
-                            "Visualize the agriculture data from a database.(line chart / bar chart).",
-                          ]
-          },
-          {
-            "id":"3",
-            "expCompany":"AuCom Electronics Ltd , Canterbury", 
-            "expDate":"Jul 2021 - Oct 2021", 
-            "expPosition":"Full-stack developer", 
-            "expSkills":"Python, Flask, Microsoft SQL server, HTML, CSS, jQuery, eChart, Apache",
-            "expTitle": "Be responsible for hotel product development and assist over 100 hotels in analyzing hotel operational data and operating hotels.",
-            "expDescription":["A data upload and management web system project.",
-                            "Features for analyzing the data of a special type file and uploading it into the database.",
-                            "Features for monitoring the process of upload and pass rate of the data in the database.",
-                            "Features for exporting the data as CSV file.",
-                            "Features for analyzing and visualizing the data.",
-                            "Deploy the website on the server through Apache."
-                            ]
-          },
-          {
-            "id":"4",
-            "expCompany":"AuCom Electronics Ltd , Canterbury", 
-            "expDate":"Nov 2021 - Feb 2022", 
-            "expPosition":" Software developer", 
-            "expSkills":"Python, Tkinter, Matplsotlib",
-            "expTitle": "A data upload and visualization desk application(software based on Matplsotlib) project.",
-            "expDescription":["Features for analyzing the data and uploading it.",
-                            "Features for monitoring and comparing the dynamic temperature data."
-                          ]
-          },
-          {
-            "id":"5",
-            "expCompany":"AuCom Electronics Ltd , Canterbury", 
-            "expDate":"Feb 2022 - present", 
-            "expPosition":" Software developer", 
-            "expSkills":" - C# .NET Framework",
-            "expTitle": "The features extension for a hardware test software(based on .Net Framework).",
-            "expDescription":["Fix older Bugs.",
-                            "Make the process of machine work become automatic from manual."
-                          ]
-          },
-          {
-            "id":"6",
-            "expCompany":"Self-employee , Canterbury", 
-            "expDate":"Mar 2022 - present", 
-            "expPosition":" Full-stack developer", 
-            "expSkills":"Python, Flask, HTML, CSS, react, eChart, Git/GitHub",
-            "expTitle": "Self CV Website",
-            "expDescription":["Back-end data process",
-                            "react front-end build",
-                            "Dynamic validation features",
-                            "Dynamic charts",
-                            "Background management channel"
-                          ]
-          }
-        ]
-        
+        expInfo = experienceInfo
+
+
         currentExpInfo = expInfo[int(pageNum)-1]
         
         delivery_expPage = {}
