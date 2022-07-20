@@ -5,7 +5,7 @@ from flask import render_template, jsonify, request, url_for
 import json
 from flask_mail import Mail, Message
 import csv
-from modules.constantStore import accessDocument, experiencePath, basicInfoPath, summaryInfoPath
+from modules.constantStore import accessDocument, experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath
 from modules.readData import ReadData
 import os
 
@@ -13,10 +13,13 @@ import os
 
 cv_controller = Blueprint('cv_controller', __name__, template_folder='templates')
 
-docContents = ReadData(experiencePath, basicInfoPath, summaryInfoPath)
+docContents = ReadData(experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath)
 experienceInfo = docContents.expRead()
 basicInfo = docContents.basicRead()
 summaryInfo = docContents.sumRead()
+educationInfo = docContents.eduRead()
+workDetailInfo = docContents.workRead()
+skillsDataSetInfo = docContents.skillRead()
 
 @cv_controller.route('/', methods = ['GET','POST'])
 def login():
@@ -55,62 +58,11 @@ def information():
     text_basic = basicInfo["textList"]
     summary_basic = summaryInfo
 
+    educationDicList = educationInfo
 
-    educationDicList = [
-        {
-          "id": "1",
-          "uni": "Lincoln University", "date":"Nov 2020 - Feb 2022", 
-          "degree":"Master of Computer Applications - MCA", 
-          "major":"Advanced Programming, Arc GIS, Industry Project, Software Development, Studio Project, Business Analysis"
-        },
-        {
-          "id": "2",
-          "uni": "Xihua University", 
-          "date":"Sep 2009 - Jun 2013  ", 
-          "degree":"Bachelor of Engineering (Automation Engineer Technology/Technician)", 
-          "major":"Advanced Mathematics, Neural Networks(basic), PLC, C++(basic), VB(basic ), Analog electronic circuit, Digital electronic circuit, Circuit principle"
-        },
-    ]
+    workInfo = workDetailInfo
 
-    workInfo = [ 
-      {
-        "id": "1",
-        "workCompany": "Hongfujin Precision Electronics(Chengdu)Co.,Ltd , China", 
-        "workDate": "Oct 2013 - July 2014", 
-        "workPosition": "Automatic Engineer", 
-        "workDescription": ["Be responsible for maintenance for the iPad production line."]
-      },
-      {
-        "id": "2",
-        "workCompany": "China National Tobacco Corporation , China", 
-        "workDate": "Aug 2014 - Feb 2018", 
-        "workPosition": " Management Staff", 
-        "workDescription": ["Be responsible for tobacco product sales work and sales data analysis."]
-      },
-      {
-        "id": "3",
-        "workCompany": "Trip.com Group , China", 
-        "workDate": "Mar 2018 - Oct 2019", 
-        "workPosition": "Product Manager", 
-        "workDescription": ["Be responsible for hotel product development and assist over 100 hotels in analyzing hotel operational data and operating hotels."]
-      },
-      {
-        "id": "4",
-        "workCompany": "AuCom electronics Ltd , Canterbury", 
-        "workDate": "July 2021- present", 
-        "workPosition": "Intern -> Graduate", 
-        "workDescription": ["Be responsible for data upload and background management system developments and machine process system improvement work."]
-      }
-    ]
-
-
-    skillsInfo =  [
-        ["Language", ["Python", "HTML", "CSS", "JavaScript", "C#"]],
-        ["Frameworks/libraries", ["Flask", "jQuery", "react", "Tkinter", "eChart", "Matplotlib"]],
-        ["Database", ["PostgreSQL", "Microsoft SQL server"]],
-        ["Tools", ["Jira", "Git/GitHub", "ArcGIS", "Apache"]]
-    ]
-
+    skillsInfo = skillsDataSetInfo[0]
 
     return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
                                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
@@ -124,37 +76,9 @@ def changeWorkPage():
         data_ajax = request.get_json()
         pageNum = str(data_ajax['pageNum_json'])
 
-        workInfo = [ 
-          {
-            "id": "1",
-            "workCompany": "Hongfujin Precision Electronics(Chengdu)Co.,Ltd , China", 
-            "workDate": "Oct 2013 - July 2014", 
-            "workPosition": "Automatic Engineer", 
-            "workDescription": ["Be responsible for maintenance for the iPad production line."]
-          },
-          {
-            "id": "2",
-            "workCompany": "China National Tobacco Corporation , China", 
-            "workDate": "Aug 2014 - Feb 2018", 
-            "workPosition": " Management Staff", 
-            "workDescription": ["Be responsible for tobacco product sales work and sales data analysis."]
-          },
-          {
-            "id": "3",
-            "workCompany": "Trip.com Group , China", 
-            "workDate": "Mar 2018 - Oct 2019", 
-            "workPosition": "Product Manager", 
-            "workDescription": ["Be responsible for hotel product development and assist over 100 hotels in analyzing hotel operational data and operating hotels."]
-          },
-          {
-            "id": "4",
-            "workCompany": "AuCom electronics Ltd , Canterbury", 
-            "workDate": "July 2021- present", 
-            "workPosition": "Intern -> Graduate", 
-            "workDescription": ["Be responsible for data upload and background management system developments and machine process system improvement work."]
-          }
-        ]
-        
+
+        workInfo = workDetailInfo
+
         currentWorkInfo = workInfo[int(pageNum)-1]
         
         delivery_workPage = {}
@@ -172,21 +96,7 @@ def changeEduPage():
         data_ajax = request.get_json()
         pageNum = str(data_ajax['pageNum_json'])
 
-        educationDicList = [
-            {
-              "id": "1",
-              "uni": "Lincoln University", "date":"Nov 2020 - Feb 2022", 
-              "degree":"Master of Computer Applications - MCA", 
-              "major":"Advanced Programming, Arc GIS, Industry Project, Software Development, Studio Project, Business Analysis"
-            },
-            {
-              "id": "2",
-              "uni": "Xihua University", 
-              "date":"Sep 2009 - Jun 2013  ", 
-              "degree":"Bachelor of Engineering (Automation Engineer Technology/Technician)", 
-              "major":"Advanced Mathematics, Neural Networks(basic), PLC, C++(basic), VB(basic ), Analog electronic circuit, Digital electronic circuit, Circuit principle"
-            },
-        ]
+        educationDicList = educationInfo
         
         currentEduInfo = educationDicList[int(pageNum)-1]
         
@@ -210,20 +120,9 @@ def skills():
      
     expInfo = experienceInfo
 
+    skills_1 = skillsDataSetInfo[1]
+    skills_2 = skillsDataSetInfo[2]
 
-    skills_1 = {  
-                "Language": ["Language", ["Python", "HTML", "CSS", "JavaScript", "C#"], [1,2,3,4,5]],
-                "Frameworks/libraries": ["Frameworks/libraries", ["Flask", "jQuery", "react", "Tkinter", "eChart", "Matplotlib"],[1,2,3,4,5,6]],
-                "Database": ["Database", ["PostgreSQL", "Microsoft SQL server"],[1,2]],
-                "Tools": ["Tools", ["Jira", "Git/GitHub", "ArcGIS", "Apache"],[1,2,3,4]]
-              }
-    
-    skills_2 = [   
-                { "value": 5, "name": 'Language' },
-                { "value": 6, "name": 'Frameworks/libraries' },
-                { "value": 2, "name": 'Database' },
-                { "value": 4, "name": 'Tools' }
-            ]
 
     colKnowledges = [["1", "know ledg exx xxxx xxx xxx xxxx xxxxx xxxxx xxxxx xxxxx xxxx xxxxx xxxxxx xxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxx", "type", "knowledge location"], ["2", "content1", "content2", "content3ssssssssssssssssssssssssssssssss"],
     ["q1", "knowledge brief description", "type", "knowledge location"], ["q2", "content1", "content2", "content3"],
