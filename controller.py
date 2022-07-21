@@ -5,7 +5,7 @@ from flask import render_template, jsonify, request, url_for
 import json
 from flask_mail import Mail, Message
 import csv
-from modules.constantStore import accessDocument, experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath
+from modules.constantStore import accessDocument, experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath, collectionPath
 from modules.readData import ReadData
 import os
 
@@ -13,13 +13,14 @@ import os
 
 cv_controller = Blueprint('cv_controller', __name__, template_folder='templates')
 
-docContents = ReadData(experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath)
+docContents = ReadData(experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath, collectionPath)
 experienceInfo = docContents.expRead()
 basicInfo = docContents.basicRead()
 summaryInfo = docContents.sumRead()
 educationInfo = docContents.eduRead()
 workDetailInfo = docContents.workRead()
 skillsDataSetInfo = docContents.skillRead()
+collectionsDataInfo = docContents.collectionRead()
 
 @cv_controller.route('/', methods = ['GET','POST'])
 def login():
@@ -113,47 +114,16 @@ def changeEduPage():
 
 
 
-###############################################
+#skill           ##############################################
 
 @cv_controller.route('/skills', methods = ['GET','POST'])
 def skills():
-     
     expInfo = experienceInfo
 
     skills_1 = skillsDataSetInfo[1]
     skills_2 = skillsDataSetInfo[2]
-
-
-    colKnowledges = [["1", "know ledg exx xxxx xxx xxx xxxx xxxxx xxxxx xxxxx xxxxx xxxx xxxxx xxxxxx xxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxx", "type", "knowledge location"], ["2", "content1", "content2", "content3ssssssssssssssssssssssssssssssss"],
-    ["q1", "knowledge brief description", "type", "knowledge location"], ["q2", "content1", "content2", "content3"],
-    ["w1", "knowledge brief description", "type", "knowledge location"], ["w2", "content1", "content2", "content3"],
-    ["e1", "knowledge brief description", "type", "knowledge location"], ["e2", "content1", "content2", "content3"],
-    ["r1", "knowledge brief description", "type", "knowledge location"], ["r2", "content1", "content2", "content3"],
-    ["t1", "knowledge brief description", "type", "knowledge location"], ["t2", "content1", "content2", "content3"],
-    ["y1", "knowledge brief description", "type", "knowledge location"], ["y2", "content1", "content2", "content3"],
-    ["u1", "knowledge brief description", "type", "knowledge location"], ["u2", "content1", "content2", "content3"],
-    ["i1", "knowledge brief description", "type", "knowledge location"], ["i2", "content1", "content2", "content3"],
-    ["o1", "knowledge brief description", "type", "knowledge location"], ["o2", "content1", "content2", "content3"],
-    ["p1", "knowledge brief description", "type", "knowledge location"], ["p2", "content1", "content2", "content3"],
-    ["a1", "knowledge brief description", "type", "knowledge location"], ["a2", "content1", "content2", "content3"],
-    ["s1", "knowledge brief description", "type", "knowledge location"], ["s2", "content1", "content2", "content3"],
-    ["d1", "knowledge brief description", "type", "knowledge location"], ["d2", "content1", "content2", "content3"],
-    ["f1", "knowledge brief description", "type", "knowledge location"], ["f2", "content1", "content2", "content3"],
-    ["g1", "knowledge brief description", "type", "knowledge location"], ["g2", "content1", "content2", "content3"],
-    ["h1", "knowledge brief description", "type", "knowledge location"], ["h2", "content1", "content2", "content3"],
-    ["j1", "knowledge brief description", "type", "knowledge location"], ["j2", "content1", "content2", "content3"],
-    ["k1", "knowledge brief description", "type", "knowledge location"], ["k2", "content1", "content2", "content3"],
-    ["l1", "knowledge brief description", "type", "knowledge location"], ["l2", "content1", "content2", "content3"],
-    ["z1", "knowledge brief description", "type", "knowledge location"], ["z2", "content1", "content2", "content3"],
-    ["x1", "knowledge brief description", "type", "knowledge location"], ["x2", "content1", "content2", "content3"],
-    ["c1", "knowledge brief description", "type", "knowledge location"], ["c2", "content1", "content2", "content3"],
-    ["v1", "knowledge brief description", "type", "knowledge location"], ["v2", "content1", "content2", "content3"],
-    ["b1", "knowledge brief description", "type", "knowledge location"], ["b2", "content1", "content2", "content3"],
-    ["n1", "knowledge brief description", "type", "knowledge location"], ["n2", "content1", "content2", "content3"],
-    ["m1", "knowledge brief description", "type", "knowledge location"], ["m2", "content1", "content2", "content3"],
-    ["*1", "knowledge brief description", "type", "knowledge location"], ["*2", "content1", "content2", "content3"]
-  ] 
-
+    
+    colKnowledges = collectionsDataInfo
 
     # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！！
     return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
@@ -169,7 +139,6 @@ def changeExpPage():
 
         expInfo = experienceInfo
 
-
         currentExpInfo = expInfo[int(pageNum)-1]
         
         delivery_expPage = {}
@@ -179,6 +148,12 @@ def changeExpPage():
 
         return delivery_expPage_json
 
+
+
+
+
+
+#settings           ##############################################
 @cv_controller.route("/settings", methods=['GET','POST'])
 def settings():
     file = open (accessDocument)

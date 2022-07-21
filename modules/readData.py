@@ -2,13 +2,14 @@ import pandas as pd
 
 
 class ReadData:
-    def __init__(self, expPath, basicPath, sumPath, eduPath, workPath, skillPath) -> None:
+    def __init__(self, expPath, basicPath, sumPath, eduPath, workPath, skillPath, colPath) -> None:
         self.expPath = expPath
         self.basicPath = basicPath
         self.sumPath = sumPath
         self.eduPath = eduPath
         self.workPath = workPath
         self.skillPath = skillPath
+        self.colPath = colPath
 
     def expRead(self):
         df_exp = pd.read_excel(self.expPath)
@@ -156,3 +157,10 @@ class ReadData:
             skills_2.append(sk2Dict)
 
         return [skills_0,skills_1,skills_2]
+
+    def collectionRead(self):
+        df_col = pd.read_excel(self.colPath)
+        colDataContent = (df_col.values).tolist()
+        return colDataContent
+
+            

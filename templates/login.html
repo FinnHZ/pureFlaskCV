@@ -14,31 +14,36 @@
     <title>login page</title>
 </head>
 <body>
-    <div class="root">
+    <div id="loginroot">
        
-        <form action="/loginValidate", method="POST">
-            <div id="user">
-                <label>Name:</label><input id="name_in" name="username"/>
-            </div>
-            <div id="user">
-                <label>Password:</label><input type="password" id="pd_in" name="password"/>
-            </div>
+        <form action="/loginValidate", method="POST" id="loginForm">
 
-            <button type="submit">Log In</button>
+            <table id="loginTable">
+                <tbody>
+                    <tr class="inputRow">
+                        <th>Name:</th><td><input id="name_in" name="username" class="inputbox"/></td>
+                    </tr>
+                    <tr>
+                        <th>Password:</th><td><input type="password" id="pd_in" name="password" class="inputbox"/></td>
+                    </tr>
+                </tbody>
+            </table>
 
-            {% for message in get_flashed_messages() %}
-                <div class=flash>{{ message }}</div>
-            {% endfor %}
-            
+
+            <button type="submit" id="loginSubmit">Log In</button>
         </form>
+        {% for message in get_flashed_messages() %}
+                <div class=flash style="color: red;" id="loginflash">{{ message }}</div>
+        {% endfor %}
 
-
-
-
-        <button id="settings">Setting</button>
-
+        
 
     </div>
+    
+
+    <button id="settings"></button>
+
+    <div id="backgroundDiv"></div>
 
 
     <script type="text/javascript">
@@ -47,12 +52,20 @@
             var settings = $('#settings');
             var name_in = $("#name_in");
             var pd_in = $("#pd_in");
-
+            var loginSubmit = $("#loginSubmit");
 
 
             settings.click(function(){
                 $.settingValidate(urlPath, name_in.val(), pd_in.val())
-            })
+            });
+
+            loginSubmit.mouseenter(function(){
+                loginSubmit.css({"background":"rgb(60, 135, 170)", "color": "aliceblue"})
+            });
+
+            loginSubmit.mouseleave(function(){
+                loginSubmit.css({"background":"radial-gradient(circle at center,  rgb(147, 182, 194), rgb(156, 140, 140,0.5))", "color": "black"})
+            });
 
 
 
