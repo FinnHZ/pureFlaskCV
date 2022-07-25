@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/home.css')}}" />
     <script type="text/javascript" src="../static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/static/js/myLib.js"></script>
+
     <title>home page</title>
 </head>
 
@@ -38,14 +40,18 @@
 
         </div>
     </a>
+
+    <button id="logout_login">Log Out</button>
     
     <div id="backgroundDiv"></div>
   
 
     <script type="text/javascript">
         $(function(){
-            var welcome = $("#welcome");
+            var urlPath = 'http://127.0.0.1:5000'; 
 
+            var welcome = $("#welcome");
+            var logout_home = $('#logout_home');
             
             // for info logo----------------------------------------------------------------------------------------------------------
             var info = $("#info");
@@ -74,15 +80,24 @@
             var breathNum = 0; // for control the breath direction
             var breathEndshakeInterval_b = null;
 
+
+// ??????????????????????????????? window close event??????????????????????????
+
+            $(window).on("beforeunload", function() { 
+                // alert("ssssssss")
+                // $.closeWin(urlPath, "logout")
+                return confirm("sure?")
+            })
+
+
+
+
             // main part
             paintingFrame.css({"left": (borderLeft-8) + "px", "top": (borderTop-10) +"px"});
 
 
 
-
             welcome.animate({"opacity":"1"}, 2000)
-
-
 
 
             info.mouseenter(function(){
@@ -234,6 +249,13 @@
                 
             });
             
+            
+            logout_login.click(function(){
+                $.logoutCommand(urlPath, "logout")
+            });
+
+
+
         })
 
     </script>

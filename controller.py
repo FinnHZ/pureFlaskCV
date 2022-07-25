@@ -1,7 +1,7 @@
 from multiprocessing.sharedctypes import RawValue
 import re
 from flask import Blueprint, flash, redirect
-from flask import render_template, jsonify, request, url_for
+from flask import render_template, jsonify, request, url_for, session
 import json
 from flask_mail import Mail, Message
 import csv
@@ -24,7 +24,6 @@ collectionsDataInfo = docContents.collectionRead()
 
 @cv_controller.route('/', methods = ['GET','POST'])
 def login():
-
     return render_template('login.html')
 
 
@@ -33,23 +32,44 @@ def loginValidate():
     if request.method == "POST":
         userName = request.form.get("username")
         password = request.form.get("password")
-        loginData = [userName,password]
+        loginData = [userName, password]
         # loginContent = None
         file = open (accessDocument)
         loginContent = csv.reader(file)
             
         if loginData in loginContent:
             file.close()
+            session['username'] = loginData[0]
             return render_template("home.html")
         else:
             flash("Sorry, please enter the valid username/password or contact with me!")
             return redirect(url_for('cv_controller.login' ))
 
 
+@cv_controller.route('/logout', methods = ['GET','POST'])
+def logout():
+        data_ajax = request.get_json()
+        logoutCmd = str(data_ajax['logout_json'])
+        if logoutCmd == "logout":
+            session.pop('username')
+            delivery_logout = {}
+            delivery_logout['cmd'] = "logout"
+
+            ddelivery_logout_json = json.dumps(delivery_logout)
+
+            return ddelivery_logout_json
+
+
+
+
 
 @cv_controller.route('/home', methods = ['GET','POST'])  #/home
 def home():
-    return render_template('home.html')
+    
+    if session['username'] == None:
+        return redirect(url_for('cv_controller.login' ))
+    else:
+        return render_template('home.html')
 
 @cv_controller.route('/information', methods = ['GET','POST'])
 def information():
@@ -64,8 +84,11 @@ def information():
     workInfo = workDetailInfo
 
     skillsInfo = skillsDataSetInfo[0]
-
-    return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
+    
+    if session['username'] == None:
+        return redirect(url_for('cv_controller.login' ))
+    else:
+        return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
                                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
 
 
@@ -125,8 +148,11 @@ def skills():
     
     colKnowledges = collectionsDataInfo
 
-    # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！！
-    return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
+    if session['username'] == None:
+        return redirect(url_for('cv_controller.login' ))
+    else:
+        # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！！
+        return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
 
 
 
@@ -161,8 +187,10 @@ def settings():
     
     for i in range(0, len(accessContent)):
         accessContent[i].append(i+1)
-        
-    return render_template('settings.html', accessList = accessContent)
+    if session['username'] == None:
+        return redirect(url_for('cv_controller.login' ))
+    else:    
+        return render_template('settings.html', accessList = accessContent)
 
 
 @cv_controller.route("/settingsChange", methods=['GET','POST'])

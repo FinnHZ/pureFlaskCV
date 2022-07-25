@@ -113,3 +113,14 @@ html,body{
     border-style: solid dashed dashed dashed;
     border-width: 20px;
 }
+
+
+#logout_login{
+    position:absolute;
+    right: calc(2vh);
+    top: calc(2vh);
+    border: none;
+    background: none;
+    font-family: cursive;
+
+}
