@@ -51,7 +51,7 @@
             var urlPath = 'http://127.0.0.1:5000'; 
 
             var welcome = $("#welcome");
-            var logout_home = $('#logout_home');
+            var logout_login = $('#logout_login');
             
             // for info logo----------------------------------------------------------------------------------------------------------
             var info = $("#info");
@@ -81,13 +81,10 @@
             var breathEndshakeInterval_b = null;
 
 
-// ??????????????????????????????? window close event??????????????????????????
 
-            $(window).on("beforeunload", function() { 
-                // alert("ssssssss")
-                // $.closeWin(urlPath, "logout")
-                return confirm("sure?")
-            })
+            // $(window).on("unload", function() { 
+            //     $.closeWin(urlPath, "logout")
+            // })
 
 
 
@@ -251,6 +248,7 @@
             
             
             logout_login.click(function(){
+                console.log("ssss")
                 $.logoutCommand(urlPath, "logout")
             });
 

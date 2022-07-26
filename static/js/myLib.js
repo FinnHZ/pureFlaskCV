@@ -247,28 +247,28 @@
             })
         },
 
-        closeWin: function(urlPath, cmd){
-            let logDict = {};
-            logDict['logout_json'] = cmd;
-            let dict_json = JSON.stringify(logDict);
-            $.ajax({
-                async: false,
-                url: urlPath + '/logout',
-                type: 'POST',
-                data: dict_json,
-                dataType: 'json',
-                contentType: 'application/json; charset=UTF-8',
-                success: function(data){
-                    alert(data)
-                    window.close()
-                },
-                error: function(){
-                    alert('There is some error with your connect, please check your internet!')
-                },
-                headers:{a:100, b:200}
+        // closeWin: function(urlPath, cmd){
+        //     let logDict = {};
+        //     logDict['logout_json'] = cmd;
+        //     let dict_json = JSON.stringify(logDict);
+        //     $.ajax({
+        //         async: false,
+        //         url: urlPath + '/logout',
+        //         type: 'POST',
+        //         data: dict_json,
+        //         dataType: 'json',
+        //         contentType: 'application/json; charset=UTF-8',
+        //         success: function(data){
+        //             alert(data)
+        //             window.close()
+        //         },
+        //         error: function(){
+        //             alert('There is some error with your connect, please check your internet!')
+        //         },
+        //         headers:{a:100, b:200}
 
-            })
-        },
+        //     })
+        // },
 
 
 
