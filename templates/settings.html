@@ -57,11 +57,6 @@
         </a>
 
 
-
-
- 
-
-
     </div>
 
 
@@ -70,6 +65,7 @@
             var urlPath = 'http://127.0.0.1:5000'; 
             var add = $('#add');
             var submit = $('#submit');
+            var cancelBtn = $('#cancelBtn');
 
 
             // use on to monitor the page, if ther is new item with class "del" come in, bind the click event to the new element automatically.
@@ -105,7 +101,12 @@
                     });
                     $.changeAccess(urlPath, usersData);
                 };
- 
+                $.logoutCommand(urlPath, "logout")
+
+            });
+
+            cancelBtn.click(function(){
+                $.logoutCommand(urlPath, "logout")
             })
 
         })

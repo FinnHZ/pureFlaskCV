@@ -1,9 +1,6 @@
-from multiprocessing.sharedctypes import RawValue
-import re
 from flask import Blueprint, flash, redirect
-from flask import render_template, jsonify, request, url_for, session
+from flask import render_template, request, url_for, session
 import json
-from flask_mail import Mail, Message
 import csv
 from modules.constantStore import accessDocument, experiencePath, basicInfoPath, summaryInfoPath, educationInfoPath, workInfoPath, skillsPath, collectionPath
 from modules.readData import ReadData
@@ -65,11 +62,12 @@ def logout():
 
 @cv_controller.route('/home', methods = ['GET','POST'])  #/home
 def home():
-    
-    if session['username'] == None:
+
+    try:
+        if session['username'] != None:
+            return render_template('home.html')
+    except:
         return redirect(url_for('cv_controller.login' ))
-    else:
-        return render_template('home.html')
 
 @cv_controller.route('/information', methods = ['GET','POST'])
 def information():
@@ -84,12 +82,16 @@ def information():
     workInfo = workDetailInfo
 
     skillsInfo = skillsDataSetInfo[0]
-    
-    if session['username'] == None:
+
+    try:
+        if session['username'] != None:
+            return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
+                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
+    except:
         return redirect(url_for('cv_controller.login' ))
-    else:
-        return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
-                                               educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
+    
+    
+
 
 
 
@@ -147,12 +149,12 @@ def skills():
     skills_2 = skillsDataSetInfo[2]
     
     colKnowledges = collectionsDataInfo
-
-    if session['username'] == None:
+    try:
+        if session['username'] != None:
+            # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！
+            return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
+    except:
         return redirect(url_for('cv_controller.login' ))
-    else:
-        # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！！
-        return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
 
 
 
@@ -177,8 +179,6 @@ def changeExpPage():
 
 
 
-
-
 #settings           ##############################################
 @cv_controller.route("/settings", methods=['GET','POST'])
 def settings():
@@ -187,10 +187,12 @@ def settings():
     
     for i in range(0, len(accessContent)):
         accessContent[i].append(i+1)
-    if session['username'] == None:
+
+    try:
+        if session['username'] == 'Finn':
+            return render_template('settings.html', accessList = accessContent)
+    except:
         return redirect(url_for('cv_controller.login' ))
-    else:    
-        return render_template('settings.html', accessList = accessContent)
 
 
 @cv_controller.route("/settingsChange", methods=['GET','POST'])
@@ -221,6 +223,7 @@ def settingsValidate():
         delivery_validate = {}
         if infoList[0] == "Finn" and infoList[1] == "1234567890!@#$%^&*()":
             delivery_validate['result'] = "1"
+            session['username'] = 'Finn'
         else:
             delivery_validate['result'] = "0"
 
