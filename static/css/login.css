@@ -46,6 +46,7 @@ html,body{
     border-radius: 10px;
     border: none;
     outline: none;
+    width: 100%;
 }
 
 .inputbox:focus{
@@ -68,8 +69,7 @@ html,body{
     background: radial-gradient(circle at center,  rgb(147, 182, 194), rgb(156, 140, 140,0.5));
     font-family: cursive;
     font-size: large;
-    /* color:aliceblue */
-
+    height: 10%;
 }
 
 

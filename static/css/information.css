@@ -4,6 +4,7 @@ html,body{
     margin: 0;
     margin: 0;
     padding: 0;
+    /* font-size: 100%; */
 }
 
 #bigInfo{
@@ -142,9 +143,6 @@ html,body{
 }
 
 
-
-
-
 /* education */
 #educationShow{
     position: absolute;
@@ -160,6 +158,7 @@ html,body{
     opacity: 0;
     border: none;
     z-index: 0;
+    font-size: 2em;
 }
 
 #eduDisplay{
