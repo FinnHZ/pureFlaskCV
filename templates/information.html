@@ -22,10 +22,12 @@
 
         
         <div id="basicDetail">
-            <h5>Basic Information</h5>
-            <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
-            <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>               
+            
             <div id="textPart">
+                <Span class="basicTitle">Basic Information</Span><br/>
+                <a href={{link_basic[0]}} target="_blank"><span id = "linkedin">LinkedIn</span></a>           
+                <a href={{link_basic[0]}} target="_blank"><span id = "github">GitHub</span></a>               
+    
                 <table >
                     {% for item_t in text_basic %}
                     <tr><th>{{item_t[0]}}</th><td>{{item_t[1]}}</td></tr>
@@ -33,10 +35,10 @@
                 </table>
             </div>
             
-            <hr class = "seperate_title"/>
+            <!-- <hr class = "seperate_title"/> -->
             
             <div id="summaryPart">
-                <h5>Summary</h5>
+                <Span class="basicTitle">Summary</Span>
                 <ul>
                     {% for item_s in summary_basic %}
                     <li>{{item_s[1]}}</li>
@@ -143,10 +145,13 @@
 
 
         <div id="titleDetail">
-            <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
-            <hr class="seperate_title"/>
-            <span id="position_basic">{{job_basic[0]}} </span><br/>
-            <span id="job_basic">{{job_basic[1]}} </span>
+            <div id="titleImg">
+                <img id="developerImg" src="../static/img/developerImage.jpg" alt="Developer"/>
+            </div>
+            <div id="titleText">
+                <span id="position_basic">{{job_basic[0]}} </span><br/>
+                <span id="job_basic">{{job_basic[1]}} </span>
+            </div>
         </div>
 
 
