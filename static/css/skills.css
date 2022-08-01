@@ -26,6 +26,7 @@ html,body{
     /* background-image: url('/static/img/background_2.png');
     background-repeat: no-repeat;
     background-size: cover;     */
+    font-size: 1.5vh;
 }
 
 #expDisplay{
@@ -53,6 +54,11 @@ html,body{
 }
 
 
+.pagination{
+    height: 60%;
+    margin-bottom: 2%;
+}
+
 
 #expDate{
     text-align: right;
@@ -61,7 +67,17 @@ html,body{
 
 .page-link{
     background-color: rgb(128, 125, 125, 0.5);
+    height: 100%;
 }
+
+.expOri{
+    height: 100%;
+}
+
+.expPageItem{
+    height: 100%;
+}
+
 
 /* skill collection */
 #skillsCollection{
@@ -120,7 +136,7 @@ html,body{
 
 
 /* skill circle distribution */
-#skillsDistirbution{
+#skillsDistribution{
     position: absolute;
     padding: 5px;
     width: calc(40vw);

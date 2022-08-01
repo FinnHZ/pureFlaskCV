@@ -74,7 +74,7 @@
             </table>
         </div>
 
-        <div id="skillsDistirbution">
+        <div id="skillsDistribution">
             <!-- <div id="distribution" style="width:calc(48vw); height: calc(45vh);"></div> -->
             <div id="distribution"></div>
 
@@ -83,22 +83,25 @@
         <div id="skillsDetail">
             <!-- <div id="detailChart" style="width:calc(48vw); height: calc(45vh);"></div> -->
             <div id="detailChart"></div>
-
-            <script type="text/javascript">            
-                //！！！！ 下面两句是将flask端传过来的JSON数据转化为js可以使用的数据类型的两种不同方式，为了方便复习，这里针对同一个效果运用了两种不同的方式！！！！！！！！
-                const detailChartInfo = eval('(' + '{{skillsDetail|safe}}' + ')');   //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后eval（'(' + JSON字符串 + ')'） 可以将JSON字符串转回它原本的形式（object、array....）
-                const skillsDistribution =  JSON.parse('{{skillsDis|safe}}');  //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后 JSON.parse(JSON字符串）同上述方法效果一样， 可以将JSON字符串转回它原本的形式（object、array....）
-
-                distributionMap(skillsDistribution, detailChartInfo);
-                distributionDetailMap(detailChartInfo["Language"]);
-            </script>
         </div>
+
+        <script type="text/javascript">         
+            //！！！！ 下面两句是将flask端传过来的JSON数据转化为js可以使用的数据类型的两种不同方式，为了方便复习，这里针对同一个效果运用了两种不同的方式！！！！！！！！
+            const detailChartInfo = eval('(' + '{{skillsDetail|safe}}' + ')');   //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后eval（'(' + JSON字符串 + ')'） 可以将JSON字符串转回它原本的形式（object、array....）
+            const skillsDistribution =  JSON.parse('{{skillsDis|safe}}');  //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后 JSON.parse(JSON字符串）同上述方法效果一样， 可以将JSON字符串转回它原本的形式（object、array....）
+
+            distributionMap(skillsDistribution, detailChartInfo);
+            distributionDetailMap(detailChartInfo["Language"]);
+
+        </script>
 
         <a href="/home">   <!-- "/home" -->
             <img src="/static/img/backHome.png" id="returnHome"/>  <!-- returnHomeBtn_Finn -->
         </a>
 
+
     </div>
+
 
     <script type="text/javascript">
         $(function(){
@@ -109,6 +112,44 @@
             var totalExps = parseInt($('.expPageItem').children().eq(-1).html());
 
 
+            var distribution = $('#distribution');
+            var distribution_Width = distribution.width();
+            var distribution_Height = distribution.height();
+
+            var detailChart = $('#detailChart');
+            var detailChart_Width = detailChart.width();
+            var detailChart_Height = detailChart.height();
+
+            var screenWidth =  $(window).width();
+            var screenHeight =  $(window).height();
+
+
+
+            $(window).resize(function(){
+                let width_scr = $(window).width();
+                let height_scr = $(window).height();
+
+                let widthPre = width_scr / screenWidth;
+                let heightPre = height_scr / screenHeight;
+
+
+
+                distribution.width((distribution_Width * widthPre).toString() + "px");
+                distribution.height((distribution_Height * heightPre).toString() + "px");
+
+                detailChart.width((detailChart_Width * widthPre).toString() + "px");
+                detailChart.height((detailChart_Height * heightPre).toString() + "px");
+
+
+                // console.log("11ee", distribution.width())
+                // console.log("22ee",distribution.height())
+                // console.log("33ee",detailChart.width())
+                // console.log("44ee",detailChart.height())
+
+            })
+
+
+            
             expNavs.click(function(){
                 let pageText_exp = $(this).html();
 
