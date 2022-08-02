@@ -49,6 +49,7 @@ def logout():
         logoutCmd = str(data_ajax['logout_json'])
         if logoutCmd == "logout":
             session.pop('username')
+            print("enter in !!!!!!!!!!!!!")
             delivery_logout = {}
             delivery_logout['cmd'] = "logout"
 

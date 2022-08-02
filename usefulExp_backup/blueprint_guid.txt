@@ -1,0 +1,47 @@
+1. 正常搭建flask项目框架（虚拟环境, app.py, templates文件夹， static文件夹, js文件夹, modules文件夹, controllers文件夹）
+
+2. templates 文件夹用于存放所有的静态页面
+
+3. static 文件夹用于存放所有的css静态资源文件
+
+4. js 文件夹用于存方所有的js动态资源文件
+
+5. modules 文件夹用于存放面向对象编程的 各种 类
+
+6. controllers 文件夹中用于存放 一个 或 多个 controller, 我们可以将不同的静态页面按照板块的不同，划分成不同的组别，一个组别的静态页面 或 路由 通过 同一个controller 提取出来
+   每个controller里的编写形式示例如下：
+
+   *********示例
+
+    from flask import Blueprint
+    from flask import render_template
+
+    controller名字 = Blueprint('controller名字', __name__, template_folder='templates')
+
+    @controller名字.route('/')
+    def home():
+        return render_template('home.html')
+
+
+    @controller名字.route('/coverLetter')
+    def coverLetter():
+        return render_template('coverLetterPage.html')
+    
+    示例***********
+
+7. app.py 为 blueprint 的 注册引入文件，即连接 将 controller 注册到 blueprint项目中的文件，这里面只需要进行注册操作即可。
+    编写形式示例如下：
+
+    *********示例
+
+    from flask import Flask 
+    import controller文件名
+
+    app = Flask(__name__)
+
+    app.register_blueprint(controller文件名.上述controller名字)
+
+    if __name__ == '__main__':
+        app.run('127.0.0.1', port=5000, debug=True)
+
+    示例************************

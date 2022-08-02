@@ -125,5 +125,7 @@ function mainChart(dataArr_dis, detailDataArr , dataDetailArr){
             }
         }, 200)
  
+
+
 }
 

@@ -90,8 +90,9 @@
             const detailChartInfo = eval('(' + '{{skillsDetail|safe}}' + ')');   //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后eval（'(' + JSON字符串 + ')'） 可以将JSON字符串转回它原本的形式（object、array....）
             const skillsDistribution =  JSON.parse('{{skillsDis|safe}}');  //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后 JSON.parse(JSON字符串）同上述方法效果一样， 可以将JSON字符串转回它原本的形式（object、array....）
 
-            distributionMap(skillsDistribution, detailChartInfo);
-            distributionDetailMap(detailChartInfo["Language"]);
+            // distributionMap(skillsDistribution, detailChartInfo);     // these two are for separated situation don't delete
+            // distributionDetailMap(detailChartInfo["Language"]);       // these two are for separated situation don't delete
+            mainChart(skillsDistribution, detailChartInfo , detailChartInfo["Language"])
 
         </script>
 

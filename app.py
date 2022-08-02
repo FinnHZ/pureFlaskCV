@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 # app.secret_key = 'My_CV'
 app.config['SECRET_KEY'] = os.urandom(24)
-# app.config['PERMANENT_SESSION_LIFETIME'] = 1 #timedelta(days=7)
+app.config['PERMANENT_SESSION_LIFETIME'] = 3600 # = timedelta(days=7)
 
 app.register_blueprint(controller.cv_controller)
 

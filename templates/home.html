@@ -82,8 +82,9 @@
 
 
 
-            // $(window).on("unload", function() { 
-            //     $.closeWin(urlPath, "logout")
+            // $(window).bind("unload", function(e) { 
+
+ 
             // })
 
 
@@ -250,6 +251,7 @@
             logout_login.click(function(){
                 $.logoutCommand(urlPath, "logout")
             });
+
 
 
 

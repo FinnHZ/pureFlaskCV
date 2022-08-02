@@ -113,9 +113,7 @@ function mainChart(dataArr_dis, detailDataArr , dataDetailArr){
     
 
         myChart_distribution.on('click', (param) =>  {
-            option2.title.text = 'Skills Useage Frequnecy -- '+ detailDataArr[param.name][0];
-            option2.xAxis.data = detailDataArr[param.name][1];
-            detailChart.setOption(option2);
+            distributionDetailMap(detailDataArr[param.name])
         });
 
         setTimeout(function(){
@@ -123,7 +121,64 @@ function mainChart(dataArr_dis, detailDataArr , dataDetailArr){
               myChart_distribution.resize();
               detailChart.resize();
             }
-        }, 200)
+        }, 150)
  
+
+
 }
+
+
+
+function distributionDetailMap(dataDetailArr){
+    let dom2 = document.getElementById("detailChart");
+    //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+    let resizeWorldMapContainer2 = function () {
+        dom2.style.width = (window.innerWidth*0.4) +'px';
+        dom2.style.height =(window.innerHeight*0.4) +'px';
+    };
+    //设置容器高宽
+    resizeWorldMapContainer2();
+
+    let option2
+    let detailChart = echarts.init(document.getElementById('detailChart'));
+    option2 = {
+      title : {
+        show:true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
+        text: 'Skills Useage Frequnecy -- '+ dataDetailArr[0], //主标题文本，'\n'指定换行
+      },
+      xAxis: {    
+        type: "category",
+        data: dataDetailArr[1]
+      },
+      yAxis: {
+        type: 'value'
+      },
+      label: {
+        show: false,
+        position: 'top'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '40',
+          fontWeight: 'bold',
+        },
+        itemStyle: {
+          color: 'rgba(230, 145, 77)',
+        }
+      },
+      series: [
+        {
+          data: dataDetailArr[2],
+          type: 'bar',
+          showBackground: true,
+          backgroundStyle: {
+            color: 'rgba(180, 180, 180, 0.2)'
+          }
+        }
+      ]
+    };
+    detailChart.setOption(option2); // 绘制画布
+
+  }
 

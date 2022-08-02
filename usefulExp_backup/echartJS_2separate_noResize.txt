@@ -1,0 +1,124 @@
+function distributionMap(dataArr_dis, detailDataArr){
+
+        let dom1 = document.getElementById("distribution");
+        //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+        let resizeWorldMapContainer1 = function () {
+          // dom1.style.width = (window.innerWidth/2) +'px';
+          // dom1.style.height = (window.innerHeight/2)+'px';
+          dom1.style.width = (window.innerWidth*0.4) +'px';
+          dom1.style.height =(window.innerHeight*0.4) +'px';
+    
+        };
+        //设置容器高宽
+        resizeWorldMapContainer1();
+
+    
+        let option
+        let myChart_distribution = echarts.init(dom1);
+        option = {
+          title : {
+            show:true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
+            text: 'Skills Distribution', //主标题文本，'\n'指定换行
+          },
+          tooltip: {
+            trigger: 'item'
+          },
+          legend: {
+            top: '5%',
+            left: 'center'
+          },
+          series: [
+            {
+              name: 'Skills Distribution',
+              type: 'pie',
+              radius: ['40%', '70%'],
+              avoidLabelOverlap: false,
+              itemStyle: {
+                borderRadius: 10,
+                borderColor: '#fff',
+                borderWidth: 2
+              },
+              label: {
+                show: false,
+                position: 'center'
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: '40',
+                  fontWeight: 'bold'
+                }
+              },
+              labelLine: {
+                show: false
+              },
+              data: dataArr_dis
+            }
+          ]
+        };
+        
+        myChart_distribution.setOption(option); // 绘制画布 or 更新图表
+    
+
+        myChart_distribution.on('click', (param) =>  {
+            distributionDetailMap(detailDataArr[param.name])
+        });
+
+
+}
+
+
+
+function distributionDetailMap(dataDetailArr){
+    var dom2 = document.getElementById("detailChart");
+    //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+    var resizeWorldMapContainer2 = function () {
+      dom2.style.width = (window.innerWidth*0.4) +'px';
+      dom2.style.height =(window.innerHeight*0.4) +'px';
+};
+    //设置容器高宽
+    resizeWorldMapContainer2();
+
+    let option
+    let detailChart = echarts.init(document.getElementById('detailChart'));
+    option = {
+      title : {
+        show:true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
+        text: 'Skills Useage Frequnecy -- '+ dataDetailArr[0], //主标题文本，'\n'指定换行
+      },
+      xAxis: {    
+        type: "category",
+        data: dataDetailArr[1]
+      },
+      yAxis: {
+        type: 'value'
+      },
+      label: {
+        show: false,
+        position: 'top'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: '40',
+          fontWeight: 'bold',
+        },
+        itemStyle: {
+          color: 'rgba(230, 145, 77)',
+        }
+      },
+      series: [
+        {
+          data: dataDetailArr[2],
+          type: 'bar',
+          showBackground: true,
+          backgroundStyle: {
+            color: 'rgba(180, 180, 180, 0.2)'
+          }
+        }
+      ]
+    };
+    detailChart.setOption(option); // 绘制画布
+    // return myChart
+
+  }
