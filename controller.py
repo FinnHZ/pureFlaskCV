@@ -37,7 +37,8 @@ def loginValidate():
         if loginData in loginContent:
             file.close()
             session['username'] = loginData[0]
-            return render_template("home.html")
+            deliveryDict = {"info": loginData[0]}
+            return render_template("home.html", validateInfo = json.dumps(deliveryDict))
         else:
             flash("Sorry, please enter the valid username/password or contact with me!")
             return redirect(url_for('cv_controller.login' ))
@@ -49,7 +50,6 @@ def logout():
         logoutCmd = str(data_ajax['logout_json'])
         if logoutCmd == "logout":
             session.pop('username')
-            print("enter in !!!!!!!!!!!!!")
             delivery_logout = {}
             delivery_logout['cmd'] = "logout"
 
@@ -63,10 +63,11 @@ def logout():
 
 @cv_controller.route('/home', methods = ['GET','POST'])  #/home
 def home():
-
     try:
         if session['username'] != None:
-            return render_template('home.html')
+            deliveryDict = {"info": session['username']}
+            return render_template("home.html", validateInfo = json.dumps(deliveryDict))
+            # return render_template("home.html")
     except:
         return redirect(url_for('cv_controller.login' ))
 
@@ -86,8 +87,11 @@ def information():
 
     try:
         if session['username'] != None:
+            deliveryDict = {"info": session['username']}
             return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
-                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
+                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo, validateInfo = json.dumps(deliveryDict))
+            # return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
+            #                     educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
     except:
         return redirect(url_for('cv_controller.login' ))
     
@@ -153,7 +157,9 @@ def skills():
     try:
         if session['username'] != None:
             # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！
-            return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
+            deliveryDict = {"info": session['username']}
+            return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2), validateInfo = json.dumps(deliveryDict))
+            # return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
     except:
         return redirect(url_for('cv_controller.login' ))
 
@@ -191,7 +197,9 @@ def settings():
 
     try:
         if session['username'] == 'Finn':
-            return render_template('settings.html', accessList = accessContent)
+            deliveryDict = {"info": session['username']}
+            return render_template('settings.html', accessList = accessContent, validateInfo = json.dumps(deliveryDict))
+            # return render_template('settings.html', accessList = accessContent)
     except:
         return redirect(url_for('cv_controller.login' ))
 
