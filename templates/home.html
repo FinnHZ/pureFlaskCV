@@ -46,24 +46,48 @@
     <div id="backgroundDiv"></div>
 
     <script type="text/javascript">  
-        var urlPath_js = 'http://127.0.0.1:5000';
-
-        var storageObj = window.localStorage;
-        const initialDateTime = new Date();
-        const dateStr = initialDateTime.getTime()
-
-        storageObj.setItem("user", dateStr);
-
-        var dateValidateInterval = setInterval(function(){
-            let currentDateTime = new Date();
-            let currentDateStr = currentDateTime.getTime();
-            const beforeDate =  parseInt(storageObj.getItem("user"));
+        // var urlPath_js = 'http://127.0.0.1:5000';
+        // var dateHappenTimer;
+        
+        // try{
+        //     const homeSession =  JSON.parse('{{validateInfo|safe}}');  //{{flaskJson变量名|safe}} 这个可以把flask传过来的 JSON变量在不转码的情况变成JSON字符串，然后 JSON.parse(JSON字符串）同上述方法效果一样， 可以将JSON字符串转回它原本的形式（object、array....）
             
-            let timeGap = currentDateStr - beforeDate
+        //     if(homeSession["info"] != ""){
+        //         let firstDateTime = new Date();
+        //         let firstDateStr = firstDateTime.getTime();           
+        //         window.localStorage.setItem("user", firstDateStr);    
 
-        //    ?????????????????????????
-           
-        }, 60000)
+        //         dateHappenTimer = setInterval(function(){
+        //             let currentDateTime = new Date();
+        //             let currentDateStr = currentDateTime.getTime();           
+        //             window.localStorage.setItem("user", currentDateStr);   
+        //             console.log("eeee_home") 
+        //         }, 60000)
+        //     }else{
+        //         // window.location = urlPath_js
+        //     }
+        
+        // }catch(e){
+        //     console.log(e)
+        //     const lastRecord = parseInt(window.localStorage.getItem("user"));
+        //     const initialDateTime = new Date();
+        //     const intialDateInt = initialDateTime.getTime()
+        //     const tiemGap = intialDateInt - lastRecord
+    
+        //     if(tiemGap > 61000){      // 61000 ms  --> 1 minutes 1s
+        //         window.location = urlPath_js
+        //     }else{
+        //         let firstDateTime = new Date();
+        //         let firstDateStr = firstDateTime.getTime();           
+        //         window.localStorage.setItem("user", firstDateStr);    
+
+        //         dateHappenTimer = setInterval(function(){
+        //             let currentDateTime = new Date();
+        //             let currentDateStr = currentDateTime.getTime();           
+        //             window.localStorage.setItem("user", currentDateStr);    
+        //         }, 60000)
+        //     }
+        // }
 
     </script>
 

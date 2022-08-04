@@ -65,9 +65,9 @@ def logout():
 def home():
     try:
         if session['username'] != None:
-            deliveryDict = {"info": session['username']}
-            return render_template("home.html", validateInfo = json.dumps(deliveryDict))
-            # return render_template("home.html")
+            # deliveryDict = {"info": session['username']}
+            # return render_template("home.html", validateInfo = json.dumps(deliveryDict))
+            return render_template("home.html")
     except:
         return redirect(url_for('cv_controller.login' ))
 
@@ -87,11 +87,11 @@ def information():
 
     try:
         if session['username'] != None:
-            deliveryDict = {"info": session['username']}
-            return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
-                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo, validateInfo = json.dumps(deliveryDict))
+            # deliveryDict = {"info": session['username']}
             # return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
-            #                     educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
+            #                     educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo, validateInfo = json.dumps(deliveryDict))
+            return render_template('information.html', job_basic = job_basic, link_basic = link_basic, text_basic = text_basic, summary_basic = summary_basic,
+                                educationDicList = educationDicList, workInfo = workInfo, skillsInfo = skillsInfo)
     except:
         return redirect(url_for('cv_controller.login' ))
     
@@ -157,9 +157,9 @@ def skills():
     try:
         if session['username'] != None:
             # 变量名 = json.dumps(要传递的数据)  下面这种形式是用于传递JSON数据给前端js解析使用，要传递的数据这里可以是任何形式，不一定要字典类型！！
-            deliveryDict = {"info": session['username']}
-            return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2), validateInfo = json.dumps(deliveryDict))
-            # return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
+            # deliveryDict = {"info": session['username']}
+            # return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2), validateInfo = json.dumps(deliveryDict))
+            return render_template('skills.html', expInfo = expInfo, colKnowledges = colKnowledges, skillsDetail = json.dumps(skills_1), skillsDis = json.dumps(skills_2))
     except:
         return redirect(url_for('cv_controller.login' ))
 
@@ -197,9 +197,9 @@ def settings():
 
     try:
         if session['username'] == 'Finn':
-            deliveryDict = {"info": session['username']}
-            return render_template('settings.html', accessList = accessContent, validateInfo = json.dumps(deliveryDict))
-            # return render_template('settings.html', accessList = accessContent)
+            # deliveryDict = {"info": session['username']}
+            # return render_template('settings.html', accessList = accessContent, validateInfo = json.dumps(deliveryDict))
+            return render_template('settings.html', accessList = accessContent)
     except:
         return redirect(url_for('cv_controller.login' ))
 
