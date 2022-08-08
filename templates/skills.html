@@ -104,31 +104,29 @@
     </div>
 
     <script type="text/javascript">  
-        // var urlPath_js = 'http://127.0.0.1:5000';
-        // var dateHappenTimer;
-        
-        // const lastRecord = parseInt(window.localStorage.getItem("user"));
-        // const initialDateTime = new Date();
-        // const intialDateInt = initialDateTime.getTime()
-        // const tiemGap = intialDateInt - lastRecord
+        var urlPath_js = 'http://127.0.0.1:5000';
+        var dateRecordTimer;
+        var validateStandard = 120000;
+        var timeTimerNum = 60000;
 
-        // if(tiemGap > 61000){      // 61000 ms  --> 1 minutes 1s
-        //     window.location = urlPath_js
-        // }else{
-        //     dateHappenTimer = setInterval(function(){
-        //         let currentDateTime = new Date();
-        //         let currentDateStr = currentDateTime.getTime();           
-        //         window.localStorage.setItem("user", currentDateStr);    
-        //         console.log("22222222222222e - information - skills");
-        //     }, 60000)
-        // }
+        var initialDate = new Date();
+        var initialDateTime = initialDate.getTime();
+        var compareGape = initialDateTime - parseInt(window.localStorage.getItem("dateFlag"));
+
+        if(compareGape >= 0 && compareGape <= validateStandard){
+            let firstDate = new Date();
+            window.localStorage.setItem("dateFlag", firstDate.getTime());
+
+            dateRecordTimer = setInterval(function(){
+                let timerDate = new Date();
+                window.localStorage.setItem("dateFlag", timerDate.getTime());
+            }, timeTimerNum)
+
+        }else{
+            window.location = urlPath_js
+        }
 
     </script>
-
-
-
-
-
 
 
     <script type="text/javascript">

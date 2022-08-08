@@ -195,6 +195,8 @@ def settings():
     for i in range(0, len(accessContent)):
         accessContent[i].append(i+1)
 
+    print(session['username'])
+
     try:
         if session['username'] == 'Finn':
             # deliveryDict = {"info": session['username']}
@@ -230,7 +232,16 @@ def settingsValidate():
         validateInfo = request.get_json()
         infoList = validateInfo["setting_json"]
         delivery_validate = {}
-        if infoList[0] == "Finn" and infoList[1] == "1234567890!@#$%^&*()":
+
+        file_author = open (accessDocument)
+        authorContent = list(csv.reader(file_author))
+        requireName = authorContent[0][0]
+        requirePass = authorContent[0][1]
+
+        print(requireName, requirePass)
+
+
+        if infoList[0] == requireName and infoList[1] == requirePass:
             delivery_validate['result'] = "1"
             session['username'] = 'Finn'
         else:
