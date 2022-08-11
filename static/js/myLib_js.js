@@ -74,7 +74,7 @@ function mainChart(dataArr_dis, detailDataArr , dataDetailArr){
         option2 = {
           title : {
             show:true, //显示策略，默认值true,可选为：true（显示） | false（隐藏）
-            text: 'Skills Useage Frequnecy -- '+ dataDetailArr[0], //主标题文本，'\n'指定换行
+            text: 'Skills Useage Times -- '+ dataDetailArr[0], //主标题文本，'\n'指定换行
           },
           xAxis: {    
             type: "category",
@@ -90,7 +90,7 @@ function mainChart(dataArr_dis, detailDataArr , dataDetailArr){
           emphasis: {
             label: {
               show: true,
-              fontSize: '40',
+              fontSize: '20',
               fontWeight: 'bold',
             },
             itemStyle: {
@@ -113,8 +113,18 @@ function mainChart(dataArr_dis, detailDataArr , dataDetailArr){
     
 
         myChart_distribution.on('click', (param) =>  {
-            option2.title.text = 'Skills Useage Frequnecy -- '+ detailDataArr[param.name][0];
+            option2.title.text = 'Skills Useage Times -- '+ detailDataArr[param.name][0];
             option2.xAxis.data = detailDataArr[param.name][1];
+            option2.series =  [
+              {
+                data: detailDataArr[param.name][2],
+                type: 'bar',
+                showBackground: true,
+                backgroundStyle: {
+                  color: 'rgba(180, 180, 180, 0.2)'
+                }
+              }
+            ];
             detailChart.setOption(option2);
         });
 
